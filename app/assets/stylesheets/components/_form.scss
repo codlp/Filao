@@ -9,15 +9,15 @@
 
 /* Form Layout */
 .form-wrapper {
-    width: 50vw;
-    width: 100%;
-    margin: 0 auto;
-    padding: 20px;
+  width: 50vw;
+  width: 50%;
+  margin: 0 auto;
+  padding: 20px;
 }
 
 
 .form-wrapper h2 {
-    padding-left: 30px;
+  padding-left: 30px;
 }
 
 .form-post-wrapper {
@@ -64,7 +64,6 @@ form {
 }
 
 .button-panel .button-sign {
-  background: #f16272;
   border: none;
   color: #fff;
   cursor: pointer;
@@ -76,10 +75,12 @@ form {
   text-transform: uppercase;
   transition: background 0.3s ease-in-out;
   width: 100%;
+  background: linear-gradient(180deg, #6143AB 0%, #8BA4F9 100%);
+  border-radius: 22px;
 }
 
 .button-sign:hover {
-  background: #ee3e52;
+  opacity: 0.85;
 }
 
 .form-footer {
