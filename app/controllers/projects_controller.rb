@@ -3,12 +3,11 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   def index
-    @user = current_user
-    @projects = policy_scope(project).order(created_at: :desc)
+    @projects = policy_scope(Project).order(created_at: :desc)
   end
 
   def show
-    @project = project.find(params[:id])
+    @project = Project.find(params[:id])
   end
 
   def new
