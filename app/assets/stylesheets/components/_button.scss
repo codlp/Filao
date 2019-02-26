@@ -1,9 +1,10 @@
 .call-to-action {
-  background-color: #5e2bc9;
-  color: #d9fada;
+  background: linear-gradient(180deg, #6143AB 0%, #8BA4F9 100%);
+  border-radius: 22px;
+  color: white;
   border: none;
   border-radius: 25px;
-  padding: 10px;
+  padding: 10px 25px;
   &:hover {
     background-color: #05BD8D;
     color: white;

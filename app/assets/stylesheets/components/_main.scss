@@ -1,11 +1,11 @@
 h1 {
   font-family: Poppins;
   font-style: normal;
-  font-weight: bold;
+  font-weight: 600;
   line-height: normal;
   font-size: 36px;
 
-  color: #666666;
+  color: #7379E3;
 }
 
 p {
@@ -26,4 +26,11 @@ p {
   box-sizing: border-box;
   align-items: flex-start;
   justify-content: flex-end;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 30px;
 }
