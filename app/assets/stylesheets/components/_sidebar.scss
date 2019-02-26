@@ -1,0 +1,72 @@
+
+.side_nav_bg {
+  position: absolute;
+  width: 310px;
+  left: 0px;
+  top: 1px;
+  bottom: 0px;
+
+  /* white */
+  background: #FFFFFF;
+  /* sidebar shadow */
+  box-shadow: 6px 0px 18px rgba(0, 0, 0, 0.06);
+}
+
+.logo_name {
+  position: absolute;
+  width: 92px;
+  height: 27px;
+  left: 32px;
+  top: 19px;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  font-size: 18px;
+  padding: 5px 30px;
+  color: #109CF1;
+}
+
+.sidebar h5:hover {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  font-size: 13px;
+  letter-spacing: 0.01em;
+  color: #109CF1;
+  padding: 5px 30px;
+}
+
+.sidebar h5 {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  font-size: 13px;
+  letter-spacing: 0.01em;
+  color: #334D6E;
+  padding: 5px 30px;
+
+}
+
+.main-screen {
+  padding-left: 350px;
+  padding-top: 10px;
+}
+
+.toggle-sidebar {
+  position: absolute;
+  width: 195.05px;
+  height: 17.98px;
+  left: 73.48px;
+  bottom: 23.27px;
+
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  font-size: 11px;
+  letter-spacing: 0.01em;
+
+  color: #90A0B7;}

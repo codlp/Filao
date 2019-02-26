@@ -1,0 +1,22 @@
+<div class="side_nav_bg">
+  <div class="sidebar">
+    <div class="sidebar-titles">
+      <h3 class="logo_name">Filao</h3>
+      <h5> <%= @current_user.email %> </h5>
+      <h5>All my projects</h5>
+      <h5>Current projects</h5>
+      <h5>Settings</h5>
+    </div>
+  </div>
+</div>
+<div class="main-screen">
+  <h1>All my projects</h1>
+
+  <% @projects.each do |project| %>
+    <%= project.name %>
+  <% end %>
+
+  <div class="toggle-sidebar">
+    <p>Toggle sidebar</p>
+  </div>
+</div>
