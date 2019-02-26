@@ -1,7 +1,6 @@
-.icons-title {
+.section-title {
   font-size: 28px;
-  margin-top: 60px;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
 }
 
 .icon-description {
@@ -11,4 +10,19 @@
 
 .icon {
   text-align: center;
+}
+
+.container {
+  margin-top: 50px;
+  margin-bottom: 100px;
+}
+
+.flexbox {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.icons-wrapper {
+  background-color: white;
 }
