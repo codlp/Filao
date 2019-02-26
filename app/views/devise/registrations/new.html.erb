@@ -9,6 +9,17 @@
                 autofocus: true,
                 input_html: { autocomplete: "email" }%>
       </div>
+       <%= f.input :first_name,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "first name" }%>
+      </div>
+      </div>
+       <%= f.input :last_name,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "last name" }%>
+      </div>
       <div class="form-item">
     <%= f.input :password,
                 required: true,
