@@ -1,25 +1,33 @@
-<div class="side_nav_bg">
-  <div class="sidebar">
-    <div class="sidebar-titles">
-      <h3 class="logo_name">Filao</h3>
-      <h5> <%= current_user.first_name %> <%= current_user.last_name %> </h5>
-      <h5>All my projects</h5>
-      <h5>Current projects</h5>
-      <h5>Settings</h5>
-        <%= link_to destroy_user_session_path, method: :delete do %>
-        <i class="fa fa-sign-out-alt"></i>  <%= t(".sign_out", default: "Log out") %>
-        <% end %>
+<!-- Sidebar -->
+  <div class="side_nav_bg">
+    <div class="sidebar">
+      <div class="sidebar-titles">
+        <h3 class="logo_name">Filao</h3>
+        <ul>
+          <h5> <%= current_user.first_name %> <%= current_user.last_name %> </h5>
+          <li>Dashboard</li>
+          <li>All my projects</li>
+          <li>Current projects</li>
+          <li>Contacts</li>
+          <li>Settings</li>
+          <li>
+            <%= link_to destroy_user_session_path, method: :delete do %>
+            <%= t(".sign_out", default: "Log out") %>
+            <% end %>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
-</div>
-<div class="main-screen">
-  <h1>All my projects</h1>
 
-  <% @projects.each do |project| %>
-    <%= project.name %>
-  <% end %>
+  <div class="main-screen">
+    <h1>All my projects</h1>
 
-  <div class="toggle-sidebar">
-    <p>Toggle sidebar</p>
+    <% @projects.each do |project| %>
+      <%= project.name %>
+    <% end %>
+
+    <div class="toggle-sidebar">
+      <p>Toggle sidebar</p>
+    </div>
   </div>
-</div>
