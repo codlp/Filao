@@ -14,6 +14,7 @@ amelie = User.create(email: "amelie.perrier@gmail.com", password: "123456", firs
 grace = User.create(email: "grace.mehrabe@gmail.com", password: "123456", first_name: "Grace ", last_name: "Mehrabe", photo: 'images/avatar.svg')
 
 
-project = Project.create(user: coralie, customer: amelie, name: "Chatbot Project", description: "Big project for important CAC40 customer")
+project = Project.create(user: coralie, customer: amelie, name: "Chatbot Project", description: "Big project for important CAC40 customer", category: "Software")
+project = Project.create(user: grace, customer: amelie, name: "Landing page creation", description: "Small shop landing page work", category: "Web development")
 
 puts "project created"

@@ -2,6 +2,34 @@
   background: #FFFFFF;
   box-shadow: 0px 5px 15px rgba(31, 32, 65, 0.08);
   border-radius: 9px;
+  position: relative;
+  background: #FFFFFF;
+  box-shadow: 0px 5px 15px rgba(31, 32, 65, 0.08);
+  border-radius: 9px;
+  position: relative;
+  width: -webkit-fill-available;
+  max-width: 500px;
+}
+
+.card a {
+ color: white;
+}
+
+.inner-card {
+  padding: 1px 30px;
+}
+
+.row {
+  margin-right: -15px;
+  margin-left: -15px;
+  display: inline-flex;
+  justify-content: baseline;
+  justify-content: start;
+  align-items: end;
+}
+
+.card h3 {
+  padding-left: 30px;
 }
 
 .card p {
@@ -14,25 +42,55 @@
   color: rgba(31, 32, 65, 0.75);
 }
 
-.card-link {
-  background: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%);
-  border-radius: 22px;
-  width: 40%;
-  color: white;
-  text-decoration: none;
+.card-first-line {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    min-height: 100px;
 }
 
-.card-link p {
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: bold;
-  line-height: normal;
-  font-size: 12px;
-  text-align: center;
-  text-transform: uppercase;
-  padding: 10px 25px;
-  color: #FFFFFF;
-  &:hover{
+.card-category h4{
+    width: min-content;
+    height: 44.02px;
+    left: 746.58px;
+    justify-content: space-around;
+    top: 253px;
+    font-family: Montserrat;
+    font-style: normal;
+    line-height: normal;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    background: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%);
+    border-radius: 22px;
+    display: flex;
+    align-items: center;
+    /* position: absolute; */
+    left: 597px;
+    padding: 0px 25px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+  }
+
+  .card-link {
+    background: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%);
+    border-radius: 22px;
+    color: white;
+    margin: 0 80px;
     text-decoration: none;
   }
-}
+
+  .card-link p {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    line-height: normal;
+    font-size: 12px;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 10px 25px;
+    color: #FFFFFF;
+    &:hover{
+      text-decoration: none;
+    }
+  }
