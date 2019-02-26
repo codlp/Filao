@@ -1,35 +1,73 @@
-<%= render 'shared/navbar' %>
 
 <!-- Sidebar -->
+<div class="all">
   <div class="side_nav_bg">
     <div class="sidebar">
       <div class="sidebar-titles">
-        <h3 class="logo_name">Filao</h3>
-        <ul>
-          <h5> <%= current_user.first_name %> <%= current_user.last_name %> </h5>
-          <li>Dashboard</li>
-          <li>All my projects</li>
-          <li>Current projects</li>
-          <li>Contacts</li>
-          <li>Settings</li>
-          <li>
-            <%= link_to destroy_user_session_path, method: :delete do %>
-            <%= t(".sign_out", default: "Log out") %>
+        <h3 class="logo_name">My Filao</h3>
+
+          <div class="logo_photo">
+            <% if current_user.photo.present? %>
+            <div class="image">
+              <%= cl_image_tag current_user.photo, height: 50, width:50, crop: :fill%>
+              <div class="user"><h5>
+            <%= link_to user_path(current_user) do %>
+            <%= t(".profile", default: "#{current_user.first_name} #{current_user.last_name}") %>
             <% end %>
-          </li>
+          </h5>
+          <h6><%= current_user.email %></h6>
+            </div></div>
+            <% else %>
+            <div class="image">
+            <%= cl_image_tag "avatar", height: 50, crop: :fill%>
+            <div class="user"><h5><h5>
+            <%= link_to user_path(current_user) do %>
+            <%= t(".profile", default: "#{current_user.first_name} #{current_user.last_name}") %>
+            <% end %>
+          </h5>
+          <h6><%= current_user.email %></h6>
+            </div></div>
+            <% end %>
+          </div>
+
+        <ul>
+
+          <li><h5><i class="fas fa-tachometer-alt"></i> Dashboard</h5></li>
+
+          <li><h5><i class="fas fa-th "> </i><%= link_to " All my Projects", projects_path%></h5></li>
+
+          <li><h5><i class="fas fa-bars"></i> Current projects</h5> </li>
+
+          <li><h5><i class="fa fa-user"> </i> Contacts</h5></li>
+
+          <li><h5>
+            <%= link_to "#" do %>
+            <i class="fa fa-cog"> </i> <%= t(".settings", default: "Settings") %>
+            <% end %>
+          </h5></li>
+
+          <li><h5>
+            <%= link_to destroy_user_session_path, method: :delete do %>
+            <i class="fas fa-sign-out-alt"></i> <%= t(".sign_out", default: "Log out") %>
+            <% end %>
+          </h5></li>
         </ul>
+        <div class="toggle-sidebar">
+          <h5><i class="fas fa-angle-double-left"></i> Toggle sidebar</h5>
+        </div>
       </div>
     </div>
   </div>
+  <div class="all-without-sidebar">
+    <div class="navnav">
+      <%= render 'shared/navbar' %>
+    </div>
+    <div class="main-screen">
+      <h1>All my projects</h1>
 
-  <div class="main-screen">
-    <h1>All my projects</h1>
-
-    <% @projects.each do |project| %>
+      <% @projects.each do |project| %>
       <%= project.name %>
-    <% end %>
-
-    <div class="toggle-sidebar">
-      <p>Toggle sidebar</p>
+      <% end %>
     </div>
   </div>
+</div>

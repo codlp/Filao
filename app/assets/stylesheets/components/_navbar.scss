@@ -24,9 +24,16 @@
 
 /* Right section */
 .navbar-wagon-right {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    display: flex;
+    align-items: center;
+    background: white;
+    height: 50px;
+    padding-left: 305px;
+    align-items: flex-end;
+    justify-content: inherit;
+    padding-top: 20px;
+    display: inline-flex;
+    width: -webkit-fill-available;
 }
 
 /* Basic navbar item */
