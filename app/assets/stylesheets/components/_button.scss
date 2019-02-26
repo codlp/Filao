@@ -3,11 +3,14 @@
   border-radius: 22px;
   color: white;
   border: none;
+  margin: 10px;
   border-radius: 25px;
   padding: 10px 25px;
   &:hover {
     background-color: #05BD8D;
     color: white;
     border: none;
+    text-decoration: none;
+    opacity: 0.9;
   }
 }

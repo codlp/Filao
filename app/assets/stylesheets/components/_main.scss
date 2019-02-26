@@ -1,11 +1,31 @@
 h1 {
   font-family: Poppins;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 500;
   line-height: normal;
-  font-size: 36px;
+  font-size: 32px;
 
   color: #7379E3;
+}
+
+h2 {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  font-size: 24px;
+
+  color: #666666;
+}
+
+h3 {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  font-size: 19px;
+
+  color: #1F2041;
 }
 
 p {
@@ -32,5 +52,5 @@ p {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-right: 30px;
+  padding-right: 20px;
 }

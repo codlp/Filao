@@ -4,7 +4,7 @@
         <h3 class="logo_name">My Filao</h3>
 
           <div class="logo_photo">
-            <% if current_user.photo.present? %>
+            <% if current_user.photo != nil %>
             <div class="image">
               <%= cl_image_tag current_user.photo, height: 50, width:50, crop: :fill%>
               <div class="user"><h5>

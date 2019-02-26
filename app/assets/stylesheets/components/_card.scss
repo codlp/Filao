@@ -1,0 +1,38 @@
+.card {
+  background: #FFFFFF;
+  box-shadow: 0px 5px 15px rgba(31, 32, 65, 0.08);
+  border-radius: 9px;
+}
+
+.card p {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 24px;
+  font-size: 14px;
+
+  color: rgba(31, 32, 65, 0.75);
+}
+
+.card-link {
+  background: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%);
+  border-radius: 22px;
+  width: 40%;
+  color: white;
+  text-decoration: none;
+}
+
+.card-link p {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: 12px;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 10px 25px;
+  color: #FFFFFF;
+  &:hover{
+    text-decoration: none;
+  }
+}
