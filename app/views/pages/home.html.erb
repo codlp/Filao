@@ -1,3 +1,21 @@
+<!-- Navbar when the user is not logged in -->
+
+<% if user_signed_in? == false %>
+
+  <div class="navbar-wagon">
+    <!-- Logo -->
+    <%= link_to root_path, class: "navbar-wagon-brand" do %>
+      <%= image_tag "logo.png", height: 50 %>
+    <% end %>
+
+    <!-- Right Navigation -->
+    <div class="navbar-wagon-right hidden-xs hidden-sm">
+      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    </div>
+  </div>
+
+<% end %>
+
 <!-- Banner -->
 
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/1/work-station-straight-on-view.jpg?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80);">
@@ -7,4 +25,37 @@
     <p>Improving communication between freelancers and their clients</p>
     <%= link_to "Get started", new_user_session_path, class: "btn call-to-action" %>
   </div>
+</div>
+
+<!-- Icons -->
+
+  <div class="container icons text-center bg-light">
+    <div class="container testimonials-container">
+      <h2 class="testimonials-title">Why use Filao?</h2>
+      <div class="row">
+
+        <div class="col-lg-4">
+          <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+            <%= image_tag("placeholder.png", class: "img-circle") %>
+            <p class="font-weight-light mb-0">Have a clear vision of my projects</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+            <%= image_tag("placeholder.png", class: "img-circle") %>
+            <p class="font-weight-light mb-0">Exchange documents with my clients</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+            <%= image_tag("placeholder.png", class: "img-circle") %>
+            <p class="font-weight-light mb-0">My client can see my advancement</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </div>
