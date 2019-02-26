@@ -10,20 +10,27 @@
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
-      <%= link_to "Host", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Trips", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Messages", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-
+      <%= link_to "My Projects", projects_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "#{current_user.first_name}", user_path(current_user), class: "navbar-wagon-item navbar-wagon-link", style: "font-weight: bold" %>
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
-          <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+        <i class="dropdown-toggle" data-toggle="dropdown">
+
+          <% if current_user.photo.present? %>
+          <div class="image">
+            <%= cl_image_tag current_user.photo, height: 30, width:30, crop: :fill%>
+          </div>
+          <% else %>
+          <%= cl_image_tag "iconfinder_Contact_4074104", height: 30, crop: :fill%>
+          <% end %>
+        </i>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-            <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
-              <% end %>
-            </li>
+          <li>
+            <%= link_to user_path(current_user) do %>
+            <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+            <% end %>
+          </li>
             <li>
               <%= link_to "#" do %>
                 <i class="fa fa-cog"></i>  <%= t(".settings", default: "Settings") %>
