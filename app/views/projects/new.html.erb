@@ -1,0 +1,32 @@
+<div class="container">
+  <%= simple_form_for(@project) do |f| %>
+  <div class="post">
+    <div class="form-post-wrapper">
+      <h1 class="text-center">Create a new project</h1>
+      <div class="form-item">
+        <%= f.input :name, placeholder: 'Enter the project name' %>
+      </div>
+        <%= f.input :description, placeholder: 'Enter the project description' %>
+      </div>
+      <div class="form-item">
+        <%= f.input :price_per_hour, placeholder: 'Enter your price here' %>
+      </div>
+
+      <div class="calendar">
+        <div class="form-wrapper list-inline" style="width: 400px; margin: 0 auto;">
+        <h2>Book this rooftop now</h2>
+        <%= simple_form_for [@rooftop, @reservation] do |f| %>
+        <%= f.input :start_at, as: :string, required: false, input_html: {class: "datepicker"} %>
+        <%= f.input :end_at, as: :string, required: false, input_html: {class: "datepicker"} %>
+        <%= f.button :submit, "Book now", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+      </div>
+
+      <%= f.submit class: 'pricing-button-green'%>
+      <%= link_to 'Cancel', '#', class: 'pricing-button-red' %>
+      <% end %>
+      <br>
+    </div>
+  </div>
+</div>
