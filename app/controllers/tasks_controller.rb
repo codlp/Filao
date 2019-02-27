@@ -30,6 +30,11 @@ class TasksController < ApplicationController
     end
   end
 
+  def edit
+    skip_authorization
+    @task = Task.find(params[:id])
+  end
+
   def destroy
     @task = Task.find(params[:id])
     @task.destroy
@@ -48,7 +53,7 @@ class TasksController < ApplicationController
     @task.status = "Declined"
     @task.save
     redirect_to projects_tasks_path
-  end_date
+  end
 
   private
 
