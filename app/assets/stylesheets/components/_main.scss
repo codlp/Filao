@@ -13,6 +13,7 @@ h2 {
   font-weight: 600;
   line-height: normal;
   font-size: 20px;
+  padding: 10px 10px 0px 0px;
   color: #666666;
 }
 
@@ -49,4 +50,9 @@ p {
   align-items: center;
   justify-content: space-between;
   padding-right: 20px;
+}
+
+.fa-plus:before, .fa-clock, .fa-tasks {
+    content: "\f067";
+    padding-right: 8px;
 }
