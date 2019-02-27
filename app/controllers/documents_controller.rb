@@ -4,8 +4,6 @@ class DocumentsController < ApplicationController
     skip_authorization
     @document = Document.new(document_params)
     @document.user = current_user
-
-    # TODO
     @document.task = Task.find(params[:task_id])
     raise
     if @document.save
