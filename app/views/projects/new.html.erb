@@ -1,0 +1,57 @@
+<%= render 'shared/flashes' %>
+<%= render 'shared/sidebar' %>
+<div class="all-without-sidebar">
+  <div class="navnav">
+    <%= render 'shared/navbar' %>
+  </div>
+    <div class="main-screen">
+
+
+        <%= simple_form_for(@project) do |f| %>
+        <div class="post">
+          <div class="form-post-wrapper">
+            <h1 class="text-center">Create a new project</h1>
+            <div class="form-item">
+              <%= f.input :name, placeholder: 'Enter the project name' %>
+            </div>
+
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Category</label>
+              <select class="form-control" id="exampleFormControlSelect1">
+                <option>Software</option>
+                <option>Web development</option>
+                <option>Security</option>
+                <option>Mobile</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+                <%= f.input :customer, collection: User.where(is_customer: true), label_method: :company, placeholder: 'Company' %>
+            </div>
+
+            <div class="form-item">
+              <%= f.input :description, placeholder: 'Enter the project description' %>
+            </div>
+
+            <div class="calendar">
+              <h2>Please enter the project start date and end date</h2>
+              <div class="form-wrapper list-inline" style="width: 400px; margin: 0 auto;">
+                <%= simple_form_for [@project] do |f| %>
+                <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"} %>
+                <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker"} %>
+                <% end %>
+              </div>
+            </div>
+
+            <div class="text-center">
+              <%= f.submit class: 'btn btn-success'%>
+              <%= link_to 'Cancel', '#', class: 'btn btn-danger' %>
+            </div>
+          </div>
+        <% end %>
+        </div>
+
+
+    </div>
+  </div>
+</div>

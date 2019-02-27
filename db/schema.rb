@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_27_101554) do
+
+ActiveRecord::Schema.define(version: 2019_02_27_134754) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +66,7 @@ ActiveRecord::Schema.define(version: 2019_02_27_101554) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "is_done", default: false
     t.index ["project_id"], name: "index_tasks_on_project_id"
     t.index ["user_id"], name: "index_tasks_on_user_id"
   end
@@ -79,6 +82,8 @@ ActiveRecord::Schema.define(version: 2019_02_27_101554) do
     t.string "photo"
     t.string "first_name"
     t.string "last_name"
+    t.boolean "is_customer", default: false
+    t.string "company"
     t.string "google_token"
     t.string "google_refresh_token"
     t.index ["email"], name: "index_users_on_email", unique: true
