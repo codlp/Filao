@@ -3,56 +3,73 @@
     <div class="sidebar-titles">
       <h3 class="logo_name">My Filao</h3>
       <div class="logo_photo">
-
         <% if current_user.photo.present? %>
         <div class="image">
           <%= cl_image_tag current_user.photo, height: 50, width:50, crop: :fill%>
-          <div class="user"><h5>
-            <%= link_to user_path(current_user) do %>
-            <%= t(".profile", default: "#{current_user.first_name} #{current_user.last_name}") %>
-            <% end %>
-          </h5>
-          <h6><%= current_user.email %></h6>
-        </div></div>
+          <div class="user">
+            <h5>
+              <%= link_to user_path(current_user) do %>
+              <%= t(".profile", default: "#{current_user.first_name} #{current_user.last_name}") %>
+              <% end %>
+            </h5>
+            <h6><%= current_user.email %></h6>
+          </div>
+        </div>
         <% else %>
         <div class="image">
           <%= cl_image_tag "avatar", height: 50, crop: :fill%>
-          <div class="user"><h5><h5>
-            <%= link_to user_path(current_user) do %>
-            <%= t(".profile", default: "#{current_user.first_name} #{current_user.last_name}") %>
-            <% end %>
-          </h5>
-          <h6><%= current_user.email %></h6>
-        </div></div>
+          <div class="user">
+            <h5>
+              <%= link_to user_path(current_user) do %>
+              <%= t(".profile", default: "#{current_user.first_name} #{current_user.last_name}") %>
+              <% end %>
+            </h5>
+            <h6><%= current_user.email %></h6>
+          </div>
+        </div>
         <% end %>
       </div>
-
       <ul>
-        
-        <li><h5><i class="fas fa-tachometer-alt"></i><%= link_to "Dashboard", dashboard_path%> </h5></li>
-
-
-        <li><h5><i class="fas fa-th "> </i><%= link_to " All my Projects", projects_path%></h5></li>
-
-        <li><h5><i class="fas fa-bars"></i> Current projects</h5> </li>
-
-        <li><h5><i class="fa fa-user"> </i> Contacts</h5></li>
-
-        <li><h5>
-          <%= link_to user_path(current_user) do %>
-          <i class="fa fa-cog"> </i> <%= t(".settings", default: "Settings") %>
-          <% end %>
-        </h5></li>
-
-        <li><h5>
-          <%= link_to destroy_user_session_path, method: :delete do %>
-          <i class="fas fa-sign-out-alt"></i> <%= t(".sign_out", default: "Log out") %>
-          <% end %>
-        </h5></li>
+        <li>
+          <h5>
+            <i class="fas fa-tachometer-alt"></i><%= link_to "Dashboard", dashboard_path%>
+          </h5>
+        </li>
+        <li>
+          <h5>
+            <i class="fas fa-th "> </i><%= link_to " All my Projects", projects_path%>
+          </h5>
+        </li>
+        <li>
+          <h5>
+            <i class="fas fa-bars"></i> Current projects
+          </h5>
+        </li>
+        <li>
+          <h5>
+            <i class="fa fa-user"> </i> Contacts
+          </h5>
+        </li>
+        <li>
+          <h5>
+            <%= link_to user_path(current_user) do %>
+            <i class="fa fa-cog"> </i> <%= t(".settings", default: "Settings") %>
+            <% end %>
+          </h5>
+        </li>
+        <li>
+          <h5>
+            <%= link_to destroy_user_session_path, method: :delete do %>
+            <i class="fas fa-sign-out-alt"></i> <%= t(".sign_out", default: "Log out") %>
+            <% end %>
+          </h5>
+        </li>
       </ul>
-      <div class="toggle-sidebar">
-        <h5><i class="fas fa-angle-double-left"></i> Toggle sidebar</h5>
-      </div>
+<!--       <div class="toggle-sidebar">
+        <h5>
+          <i class="fas fa-angle-double-left"></i> Toggle sidebar
+        </h5>
+      </div> -->
     </div>
   </div>
 </div>
