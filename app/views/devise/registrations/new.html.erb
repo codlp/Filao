@@ -4,12 +4,6 @@
   <div class="form-wrapper">
     <h1 class="title-sign">Sign Up</h1>
       <div class="form-item">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
-      </div>
-      <div class="form-item">
        <%= f.input :first_name,
                 required: true,
                 autofocus: true,
@@ -20,6 +14,12 @@
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "last name" }%>
+      </div>
+      <div class="form-item">
+      <%= f.input :email,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "email" }%>
       </div>
       <div class="form-item">
     <%= f.input :password,
