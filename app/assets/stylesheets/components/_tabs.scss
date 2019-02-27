@@ -1,10 +1,10 @@
 .tabs {
   display: flex;
   padding: 10px 10px 0 10px;
-  width: 972px;
   height: 54px;
-  margin-right: 50px;
+  margin-right: 40px;
 }
+
 .tabs a {
   color: white;
 }
@@ -37,7 +37,7 @@
   justify-content: center;
   background: #FFFFFF;
   border-radius: 4px;
-  flex: 0 0 25%;
+  flex: auto;
   text-align: center;
 }
 .tab:first-child {
