@@ -19,6 +19,7 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
     authorize @project
     @project.user = current_user
+    raise
     if @project.save
       redirect_to @project
     else
