@@ -1,3 +1,7 @@
+<%= link_to "/auth/google_oauth2"  do %>
+  <p>Connect with google</p>
+<% end %>
+
 <%- if controller_name != 'sessions' %>
   <%= link_to "Log in", new_session_path(resource_name) %><br />
 <% end %>

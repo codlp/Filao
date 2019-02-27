@@ -17,6 +17,9 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 gem 'gibbon'
+gem "simple_calendar", "~> 2.0"
+gem 'omniauth-google-oauth2'
+gem 'bower-rails', '~> 0.10.0'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
@@ -34,4 +37,9 @@ end
 gem 'pundit'
 gem 'cloudinary', '~> 1.9.1'
 gem 'carrierwave', '~> 1.2'
+<<<<<<< HEAD
 gem 'dropzonejs-rails'
+=======
+
+gem 'dotenv-rails', groups: [:development, :test]
+>>>>>>> ad3d2999b7e615e29d965b7d0da59f84abdc8f0d
