@@ -21,5 +21,22 @@
 
 .call-to-action a {
  color: white;
+ font-size: 16px;
 }
 
+.send-message-btn {
+box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.07);
+color: #BC9CFF;
+border-radius: 22px;
+}
+
+
+.send-message-btn a {
+font-family: Montserrat;
+font-style: normal;
+font-weight: bold;
+line-height: normal;
+font-size: 12px;
+text-transform: uppercase;
+color: #BC9CFF;
+}

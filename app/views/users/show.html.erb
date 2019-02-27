@@ -9,11 +9,10 @@
       <div class="presentation-line">
         <h3>My Profile</h3>
       </div>
-      <hr>
       <div class="profile">
         <% if @user.photo.present? %>
         <div class="image">
-          <%= cl_image_tag @user.photo, height: 200, width:200, crop: :fill%>
+          <%= cl_image_tag @user.photo, height: 150, width:150, crop: :fill%>
         </div>
         <% else %>
         <%= cl_image_tag "iconfinder_Contact_4074104", height: 180, crop: :fill%>
