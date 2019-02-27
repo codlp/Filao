@@ -37,14 +37,7 @@ end
 gem 'pundit'
 gem 'cloudinary', '~> 1.9.1'
 gem 'carrierwave', '~> 1.2'
-<<<<<<< HEAD
-<<<<<<< HEAD
-gem 'dropzonejs-rails'
-=======
-
-gem 'dotenv-rails', groups: [:development, :test]
->>>>>>> ad3d2999b7e615e29d965b7d0da59f84abdc8f0d
-=======
 gem 'dropzonejs-rails'
 gem 'dotenv-rails', groups: [:development, :test]
->>>>>>> 13c62a47801e7b7fe20e11b136354eeed486bc3b
+gem 'dropzonejs-rails'
+gem 'dotenv-rails', groups: [:development, :test]
