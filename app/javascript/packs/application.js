@@ -1,5 +1,11 @@
 import "bootstrap";
 import { loadDynamicBannerText } from '../components/banner';
+import initFullCalendar from '../components/fullcalendar';
 
+if (document.getElementById('banner-typed-text')) {
+}
 
-loadDynamicBannerText();
+if (document.getElementById('calendar')) {
+  initFullCalendar();
+}
+  loadDynamicBannerText();
