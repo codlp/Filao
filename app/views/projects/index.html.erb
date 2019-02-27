@@ -19,17 +19,22 @@
           <div class="card">
             <div class="card-first-line">
               <h3><%= project.name %></h3>
+              <div class="edit-card"><i class="fas fa-pen"></i></div>
               <div class="card-category">
                 <h4><%= project.category %></h4>
               </div>
             </div>
 
               <div class="inner-card">
+                <div class="card-icons">
+                  <p><i class="far fa-clock"></i> <%= project.created_at.to_date %></p>
+                  <p><i class="fas fa-tasks"></i> 0 Tasks</p>
+                </div>
                 <div class="card-desc">
                   <p><%= project.description %></p>
                 </div>
                 <div class="card-link text-center">
-                  <p><%= link_to "Find out more", projects_path%> </p>
+                  <p><%= link_to "Find out more", project_path(project)%> </p>
                 </div>
               </div>
 

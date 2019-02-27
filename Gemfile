@@ -17,6 +17,9 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 gem 'gibbon'
+gem "simple_calendar", "~> 2.0"
+gem 'omniauth-google-oauth2'
+gem 'bower-rails', '~> 0.10.0'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
