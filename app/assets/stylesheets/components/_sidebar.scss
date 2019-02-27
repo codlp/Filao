@@ -27,14 +27,15 @@ ul {
     width: 100%;
     padding: 5px 40px;
     padding-bottom: 20px;
+    border-radius: 50%;
 }
 
 .logo_name {
-  font-style: normal;
-  font-weight: 600;
-  font-size: 18px;
-  padding: 5px 40px;
-  color: #7379E3;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    padding: 0px 40px;
+    color: #7379E3;
 }
 
 .sidebar h5:hover {

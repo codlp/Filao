@@ -1,11 +1,30 @@
 h1 {
   font-family: Poppins;
   font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  font-size: 28px;
+  color: #7379E3;
+}
+
+h2 {
+  font-family: Montserrat;
+  font-style: normal;
   font-weight: 600;
   line-height: normal;
-  font-size: 36px;
+  font-size: 20px;
+  padding: 10px 10px 0px 0px;
+  color: #666666;
+}
 
-  color: #7379E3;
+h3 {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  font-size: 19px;
+
+  color: #1F2041;
 }
 
 p {
@@ -14,8 +33,6 @@ p {
   font-weight: normal;
   line-height: 24px;
   font-size: 12px;
-
-  color: rgba(31, 32, 65, 0.75);
 }
 
 .flex {
@@ -32,5 +49,10 @@ p {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-right: 30px;
+  padding-right: 20px;
+}
+
+.fa-plus:before, .fa-clock, .fa-tasks {
+    content: "\f067";
+    padding-right: 8px;
 }
