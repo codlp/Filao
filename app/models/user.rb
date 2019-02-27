@@ -9,6 +9,17 @@ class User < ApplicationRecord
   has_many :customers, class_name: 'Project', foreign_key: 'customer_id'
   mount_uploader :photo, PhotoUploader
 
+  def self.from_omniauth(auth)
+    # Creates a new user only if it doesn't exist
+    where(email: auth.info.email).first_or_initialize do |user|
+      user.first_name = auth.info.first_name
+      user.last_name = auth.info.last_name
+      user.email = auth.info.email
+      user.password = SecureRandom.urlsafe_base64
+      user.remote_photo_url = auth.info.image
+    end
+  end
+
   private
 
   def send_welcome_email

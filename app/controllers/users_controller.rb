@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   def show
     skip_authorization
     @user = User.find(params[:id])
@@ -17,6 +18,11 @@ class UsersController < ApplicationController
     else
       render 'users/show'
     end
+  end
+
+  def dashboard
+    skip_authorization
+    @user = current_user
   end
 
   private
