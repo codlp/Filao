@@ -1,0 +1,59 @@
+<%= render 'shared/flashes' %>
+<div class="all">
+  <!-- Sidebar -->
+  <%= render 'shared/sidebar' %>
+  <div class="all-without-sidebar">
+    <div class="navnav">
+      <div class="navbar-wagon">
+        <div class="navbar-wagon-right hidden-xs hidden-sm">
+
+          <% if user_signed_in? %>
+
+          <!-- Links when logged in -->
+          <div class="navleft"><p><%= link_to "Home", projects_path, class: "navbar-wagon-item navbar-wagon-link" %> / <%= link_to "My projects", projects_path, class: "navbar-wagon-item navbar-wagon-link" %> / <%= link_to "#{@project.name}", project_path(@project), class: "navbar-wagon-item navbar-wagon-link" %></p></div>
+          <div class="navright"><p><%= cl_image_tag "notification", height: 30, crop: :fill %></p></div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="main-screen">
+      <div class="title">
+        <h1> <%= @project.name %><i class="fas fa-pen"></i></h1>
+      </div>
+
+      <h2>Timeline : current steps</h2>
+
+      <div class="tabs">
+        <a class="tab" href="/projects">
+          <h3>Wireframes</h3>
+        </a>
+        <a class="tab active" href="/projects">
+          <h3>Developpement</h3>
+        </a>
+        <a class="tab active" href="/projects">
+          <h3>Testing</h3>
+        </a>
+      </div>
+      <div class="tabs-content">
+        <div class="title">
+          <div class="checkbox">
+            <% if @project.status == "Pending" %>
+            <i class="fas fa-check-circle"></i>
+            <% else %>
+            <i class="fas fa-check-circle"></i>
+            <% end %>
+          </div>
+          <div class="message-body">
+            <p><strong><%= @project.name %></strong></p>
+            <p><%= @project.description %></p>
+          </div>
+          <div class="send-message-btn">
+            <%= link_to "Send message", projects_path %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

@@ -9,7 +9,13 @@
   position: relative;
   width: -webkit-fill-available;
   max-width: 500px;
+  margin-bottom: 25px;
 }
+
+.card-desc {
+  padding: 10px 0px;
+}
+
 
 .card a {
  color: white;
@@ -35,7 +41,7 @@
 .card p {
   font-family: Montserrat;
   font-style: normal;
-  font-weight: normal;
+  font-weight: 500;
   line-height: 24px;
   font-size: 14px;
 
@@ -43,13 +49,35 @@
 }
 
 .card-first-line {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 100px;
 }
 
-.card-category h4{
+.card-icons p {
+  color: grey;
+  font-weight: 400;
+  margin: 0 0 5px;
+}
+
+.card h3 {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  font-size: 19px;
+  color: #1F2041;
+    /* padding-top: 5px; */
+    padding-bottom: 10px
+  }
+
+  .fa-pen:before {
+    content: "\f304";
+    padding: 0px 15px;
+  }
+
+  .card-category h4{
     width: min-content;
     height: 44.02px;
     left: 746.58px;
@@ -72,11 +100,16 @@
     border-bottom-right-radius: 0px;
   }
 
+  .edit-card {
+    color: lightgrey;
+  }
+
   .card-link {
     background: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%);
     border-radius: 22px;
     color: white;
-    margin: 0 80px;
+    margin: 0 90px;
+
     text-decoration: none;
   }
 
@@ -88,8 +121,9 @@
     font-size: 12px;
     text-align: center;
     text-transform: uppercase;
-    padding: 10px 25px;
+    padding: 12px 20px;
     color: #FFFFFF;
+    margin-bottom: 20px;
     &:hover{
       text-decoration: none;
     }
