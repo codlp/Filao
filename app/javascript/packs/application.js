@@ -4,7 +4,8 @@ import initFullCalendar from '../components/fullcalendar';
 import initDropzone from '../components/dropzone';
 import "../components/flatpickr"
 import { initSweetalert } from '../components/init_sweetalert';
-import { initSortable } from '../components/init_sortable';
+=======
+// import { initSortable } from '../components/init_sortable';
 
 initSweetalert('#sweet-alert', {
   title: "Profil Update",
