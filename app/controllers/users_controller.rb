@@ -23,6 +23,7 @@ class UsersController < ApplicationController
   def dashboard
     skip_authorization
     @user = current_user
+    @tasks = @user.tasks
     # @google_events = get_google_calendar_events
   end
 
