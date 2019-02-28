@@ -24,7 +24,6 @@ class TasksController < ApplicationController
     @project = Project.find(params[:project_id])
     @task = Task.new(task_params)
     @task.project = @project
-    @task.user = current_user
     if @task.save
       redirect_to project_path(@project)
     else
@@ -50,20 +49,6 @@ class TasksController < ApplicationController
     authorize @task
     @task.destroy
     redirect_to projects_path
-  end
-
-  def accept
-    skip_authorization
-    @task.status = "Accepted"
-    @task.save
-    redirect_to projects_tasks_path
-  end
-
-  def decline
-    skip_authorization
-    @task.status = "Declined"
-    @task.save
-    redirect_to projects_tasks_path
   end
 
   private

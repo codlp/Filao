@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:show, :index, :new, :create, :edit]
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:show, :index, :new, :create, :edit, :is_done]
+  before_action :set_project, only: [:show, :edit, :update, :destroy, :is_done]
 
   def index
     @projects = policy_scope(Project).order(created_at: :desc)
@@ -42,6 +42,14 @@ class ProjectsController < ApplicationController
   def destroy
     @project.destroy
     redirect_to projects_path
+  end
+
+  def is_done
+    skip_authorization
+    @task = Task.find(params[:task_id])
+    @task.is_done
+    @task.save
+    redirect_to rooftops_tasks_path
   end
 
   private
