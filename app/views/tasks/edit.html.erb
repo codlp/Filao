@@ -10,7 +10,7 @@
         <%= simple_form_for([ @project, @task ]) do |f| %>
         <div class="post">
           <div class="form-post-wrapper">
-            <h1 class="text-center">Create a new task</h1>
+            <h1 class="text-center">Edit your task</h1>
             <div class="form-item">
               <%= f.input :name, placeholder: 'Enter the task name' %>
             </div>
@@ -35,7 +35,8 @@
 
             <div class="text-center">
               <%= f.submit class: 'btn btn-success'%>
-              <%= link_to 'Cancel', project_path(@project), class: 'btn btn-danger' %>
+              <%= link_to 'Cancel', projects_path(@project), class: 'btn btn-danger' %>
+              <%= link_to "Delete", task_path(@task), method: :delete, class: 'btn btn-danger' %>
             </div>
           </div>
         <% end %>
