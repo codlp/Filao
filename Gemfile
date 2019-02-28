@@ -17,9 +17,10 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 gem 'gibbon'
-gem "simple_calendar", "~> 2.0"
+gem 'google-api-client', require: 'google/apis/calendar_v3'
 gem 'omniauth-google-oauth2'
-gem 'bower-rails', '~> 0.10.0'
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
@@ -37,5 +38,4 @@ end
 gem 'pundit'
 gem 'cloudinary', '~> 1.9.1'
 gem 'carrierwave', '~> 1.2'
-
-gem 'dotenv-rails', groups: [:development, :test]
+gem 'dropzonejs-rails'

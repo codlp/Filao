@@ -1,15 +1,15 @@
+<%= render 'shared/sidebar' %>
 <div class="all-without-sidebar">
   <div class="navnav">
     <%= render 'shared/navbar' %>
   </div>
   <div class="main-screen">
-
     <div class="presentation-line">
       <h1>My Dashboard</h1>
-      <%= @google_events %>
-
+    </div>
+    <div class="grid-container">
       <div id="calendar">
-
+        <%= @google_events %>
         <%#= month_calendar do |date| %>
         <%#= date %>
         <%# end %>
@@ -17,4 +17,3 @@
     </div>
   </div>
 </div>
-
