@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+
   skip_before_action :authenticate_user!, only: [:show, :index]
   before_action :set_task, only: [:show, :new, :destroy]
 
@@ -64,4 +65,5 @@ class TasksController < ApplicationController
   def task_params
     params.require(:task).permit(:name, :description, :start_at, :end_at)
   end
+
 end

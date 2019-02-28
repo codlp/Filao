@@ -7,11 +7,17 @@
     <div class="presentation-line">
       <h1>My Dashboard</h1>
     </div>
-
     <div class="grid-container">
       <div id="calendar">
         <%= @google_events %>
+
     </div>
+
+        <%#= month_calendar do |date| %>
+        <%#= date %>
+        <%# end %>
+      </div>
+
     </div>
   <div class="in-process">
       <h3>Tasks in process</h3>
@@ -20,4 +26,4 @@
           <%= link_to "See all tasks", projects_path(current_user), class: 'call-to-action' %>
       </div>
   </div>
-
+</div>

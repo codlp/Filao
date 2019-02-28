@@ -13,36 +13,41 @@
         <div class="call-to-action"><i class="fas fa-plus"></i><%= link_to " Add a new project ", new_project_path %></div>
       </div>
       <h2>On-going (<%= @projects.count %>)</h2>
-      <div class="row">
-        <% @projects.each do |project| %>
-        <div class="col-xs-12 col-sm-4 col-md-6">
-          <div class="card">
-            <div class="card-first-line">
-              <h3><%= project.name %></h3>
-              <div class="edit-card"><i class="fas fa-pen"></i></div>
-              <div class="card-category">
-                <h4><%= project.category %></h4>
+      <div class="projects-list">
+        <div class="row">
+          <% @projects.each do |project| %>
+          <div class="col-xs-12 col-sm-4 col-md-6">
+            <div class="card">
+              <div class="card-first-line">
+                <h3><%= project.name %></h3>
+                <div class="edit-card">
+                  <%= link_to '<i class="fas fa-pen"></i>'.html_safe, edit_project_path(project) %>
+                </div>
+                <div class="card-category">
+                  <h4><%= project.category %></h4>
+                </div>
               </div>
-            </div>
-
               <div class="inner-card">
                 <div class="card-icons">
                   <p><i class="far fa-clock"></i> <%= project.created_at.to_date %></p>
-                  <p><i class="fas fa-tasks"></i> 0 Tasks</p>
+                  <p><i class="fas fa-tasks"></i> <%= project.tasks.count %> Tasks
+                  </p>
                 </div>
                 <div class="card-desc">
                   <p><%= project.description %></p>
                 </div>
                 <div class="card-link text-center">
-                  <p><%= link_to "Find out more", project_path(project)%> </p>
+                  <%= link_to "Find out more", project_path(project)%>
                 </div>
               </div>
-
+            </div>
           </div>
+          <% end %>
         </div>
-        <% end %>
       </div>
       <h2>Closed projects (0)</h2>
+      <div class="projects-list">
+      </div>
     </div>
   </div>
 </div>
