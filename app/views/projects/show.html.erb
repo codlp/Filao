@@ -16,6 +16,7 @@
         <% end %>
       </div>
     </div>
+
     <div class="main-screen">
       <div class="title">
         <h1> <%= @project.name %><i class="fas fa-pen"></i></h1>
@@ -53,16 +54,25 @@
         </div>
       </div>
 
-  <!-- Drag and drop -->
-  <%= simple_form_for [@task, @document] do |f| %>
-    <%= f.input :name, input_html: { class: 'hidden', id: 'photo-input'}, label_html: { class: 'upload-photo'}, label: '📷 Upload a document' %>
-    <%= f.submit 'Upload', class: 'btn btn-flat-card-book'%>
-  <% end %>
-    </div>
-  </div>
+      <div class="tasks_list">
+        <% @project.tasks.each do |task| %>
+          <h2><%= task.name %></h2>
+          <!-- Drag and drop -->
+          <%= simple_form_for(Document.new, url: task_documents_path(task)) do |f| %>
+            <%= f.input :name, input_html: { class: 'dropzone hidden', id: 'photo-input'}, label_html: { class: 'upload-photo'}, label: '📷 Upload a document' %>
+            <%= f.submit 'Upload', class: 'btn btn-flat-card-book'%>
+          <% end %>
+        <% end %>
+      </div>
 
     </div>
   </div>
 </div>
 
+<!-- Exemple de form qui marche -->
 
+<!--     <form action="/documents"
+          method="post"
+          class="dropzone"
+          height="300px"
+          id="my-awesome-dropzone"></form> -->
