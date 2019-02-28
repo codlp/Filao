@@ -19,7 +19,8 @@
 
     <div class="main-screen">
       <div class="title">
-        <h1> <%= @project.name %><i class="fas fa-pen"></i></h1>
+        <div class="project-name"><h1> <%= @project.name %></h1></div>
+        <div class="edit-project"><%= link_to "Edit", edit_project_path(@project) %><i class="fas fa-pen"></i></div>
       </div>
 
       <h2>Timeline : current steps</h2>
@@ -36,22 +37,24 @@
         </a>
       </div>
       <div class="tabs-content">
-        <div class="title">
+        <% @project.tasks.each do |task| %>
+        <div class="tasks-title">
           <div class="checkbox">
-            <% if @project.status == "Pending" %>
+            <% if @task.status == "Pending" %>
             <i class="fas fa-check-circle"></i>
             <% else %>
             <i class="fas fa-check-circle"></i>
             <% end %>
           </div>
           <div class="message-body">
-            <p><strong><%= @project.name %></strong></p>
-            <p><%= @project.description %></p>
+            <p><strong><%= @task.name %></strong></p>
+            <p><%= @task.description %></p>
           </div>
           <div class="send-message-btn">
             <%= link_to "Send message", projects_path %>
           </div>
         </div>
+        <% end %>
       </div>
 
     <div class="tasks_list">

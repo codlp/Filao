@@ -7,8 +7,8 @@ class User < ApplicationRecord
 
   has_many :documents
   has_many :messages
-  has_many :tasks
   has_many :projects
+  has_many :tasks, through: :projects
 
   mount_uploader :photo, PhotoUploader
 

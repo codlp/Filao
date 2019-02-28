@@ -8,44 +8,47 @@
     <div class="presentation-line">
       <h3>My Profile</h3>
     </div>
+
+    <%= simple_form_for(@user) do |f| %>
+  <div class="form-wrapper">
     <div class="profile">
       <% if @user.photo.present? %>
       <div class="image">
-        <%= cl_image_tag @user.photo, height: 150, width:150, crop: :fill%>
+        <%= cl_image_tag @user.photo,  width: 150, height: 150, crop: :thumb, gravity: :face%>
       </div>
       <% else %>
       <%= cl_image_tag "iconfinder_Contact_4074104", height: 180, crop: :fill%>
       <% end %>
+    <h1 class="title-sign">Edit your profile</h1>
+    <div class="form-inputs">
+      <label>Name:</label> <%= @user.first_name %> <%= @user.last_name %> <br>
+      <label>Email: </label> <%= @user.email %>
+      <hr>
+      <div class="form-item">
+        <%= f.input :first_name %>
+      </div>
+      <div class="form-item">
+        <%= f.input :last_name %>
+      </div>
+       <div class="form-item">
+        <%= f.input :email %>
+      </div>
+      <div class="form-item">
+      <%= image_tag "", width: 300, class: "hidden", id: "photo-preview" %>
+      </div>
+      <div class="form-item" >
+        <%= f.input :photo, input_html: { class: 'hidden', id: 'photo-input'}, label_html: { class: 'upload-photo'}, label: '📷 Upload a photo' %>
+      </div>
+      <div class="button-panel">
+        <%= f.submit 'Update changes', class: 'btn button-sign'%>
+        <%= link_to 'Cancel', '#', class: 'btn-flat-card-cancel' %>
+      </div>
 
-      <div class="profile-head">
-        <h5>
-          <ul>
-            <li>
-              <label>Name:</label> <%= @user.first_name %> <%= @user.last_name %>
-            </li>
-            <br>
-            <li>
-              <label>Email: </label> <%= @user.email %>
-            </li>
-          </ul>
-        </h5>
       </div>
     </div>
-    <div class="presentation-line">
-      <h3>Edit your profile</h3>
-    </div>
-    <hr>
-    <%= simple_form_for(@user) do |f| %>
-    <%= f.input :first_name %>
-    <%= f.input :last_name %>
-    <%= f.input :email %>
-    <%= image_tag "", width: 300, class: "hidden", id: "photo-preview" %>
-    <%= f.input :photo, input_html: { class: 'hidden', id: 'photo-input'}, label_html: { class: 'upload-photo'}, label: '📷 Upload a photo' %>
-
-    <%= f.submit 'Update changes', class: 'btn btn-flat-card-book'%>
-    <%= link_to 'Cancel', '#', class: 'btn-flat-card-cancel' %>
     <% end %>
-    <br><br>
   </div>
-</div>
+
+
+
 
