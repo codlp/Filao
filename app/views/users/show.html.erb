@@ -11,7 +11,7 @@
     <div class="profile">
       <% if @user.photo.present? %>
       <div class="image">
-        <%= cl_image_tag @user.photo, height: 150, width:150, crop: :fill%>
+        <%= cl_image_tag @user.photo, width: 150, height: 150, crop: :thumb, gravity: :face%>
       </div>
       <% else %>
       <%= cl_image_tag "iconfinder_Contact_4074104", height: 180, crop: :fill%>
