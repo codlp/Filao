@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:show]
+  skip_before_action :authenticate_user!, only: [:show, :index, :new, :create, :edit]
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -20,7 +20,6 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
     authorize @project
     @project.user = current_user
-    raise
     if @project.save
       redirect_to @project
     else
