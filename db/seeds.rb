@@ -5,16 +5,29 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Task.destroy_all
+
 User.destroy_all
 Project.destroy_all
-puts "destroyed every user & projects"
+puts "destroyed every users, projects and tasks"
 
-coralie = User.create(email: "coralie.d@gmail.com", password: "123456", first_name: "Coralie ", last_name: "Delpha", photo: 'images/avatar.svg')
-amelie = User.create(email: "amelie.perrier@gmail.com", password: "123456", first_name: "Amélie ", last_name: "Perrier", photo: 'images/avatar.svg')
-grace = User.create(email: "grace.mehrabe@gmail.com", password: "123456", first_name: "Grace ", last_name: "Mehrabe", photo: 'images/avatar.svg')
+coralie = User.create!(email: "coralie.d@gmail.com", password: "123456", first_name: "Coralie ", last_name: "Delpha", photo: 'images/avatar.svg')
+amelie = User.create!(email: "amelie.perrier@gmail.com", password: "123456", first_name: "Amélie ", last_name: "Perrier", photo: 'images/avatar.svg')
+elie = User.create!(email: "elie.perrier@gmail.com", password: "123456", first_name: "Elie ", last_name: "Perrier", photo: 'images/avatar.svg')
+grace = User.create!(email: "grace.mehrabe@gmail.com", password: "123456", first_name: "Grace ", last_name: "Mehrabe", photo: 'images/avatar.svg')
+
+jason = User.create!(email: "jason.perrier@microsoft.com", password: "123456", first_name: "Jason ", last_name: "Perrier", photo: 'images/avatar.svg', is_customer: true, company: "Microsoft")
+matt = User.create!(email: "matt.perrier@awesomecompany.com", password: "123456", first_name: "Matt", last_name: "Perrier", photo: 'images/avatar.svg', is_customer: true, company: "IBM")
 
 
-project = Project.create(user: coralie, customer: amelie, name: "Chatbot Project", description: "Big project for important CAC40 customer", category: "Software")
-project = Project.create(user: grace, customer: amelie, name: "Landing page creation", description: "Small shop landing page work", category: "Web development")
+chatbot = Project.create!(user: coralie, customer: amelie, name: "Chatbot Project", description: "Big project for important CAC40 customer", category: "Software")
+landing_page = Project.create!(user: grace, customer: amelie, name: "Landing page creation", description: "Small shop landing page work", category: "Web development")
 
 puts "project created"
+
+
+Task.create!(user: coralie, project: chatbot, name: 'documentation', description: 'check messenger bot doc')
+Task.create!(user: coralie, project: chatbot, name: 'code', description: 'je code')
+Task.create!(user: coralie, project: chatbot, name: 'debug', description: 'je debug')
+Task.create!(user: grace, project: landing_page, name: 'documentation', description: 'check w3school bot doc')
+

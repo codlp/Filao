@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:show]
+  skip_before_action :authenticate_user!, only: [:show, :index, :new, :create, :edit]
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -8,6 +8,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    @document = Document.new
   end
 
   def new
@@ -51,6 +52,6 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:name, :description)
+    params.require(:project).permit(:name, :description, :category, :company, :start_date, :end_date)
   end
 end
