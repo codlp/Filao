@@ -18,21 +18,19 @@
 }
 
 .in-process h3 {
-  margin-left: 25%
+  display: flex;
+  justify-content: center;
 }
 
 .in-process .call-btn {
 text-align: center;
-
 }
 
 .count-tasks {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  display: flex;
+  justify-content: center;
   font-size: 70px;
   color: #7379E3;
-  justify-content: center;
 }
 
 

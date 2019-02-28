@@ -13,7 +13,7 @@
   <div class="form-wrapper">
     <div class="profile">
       <% if @user.photo.present? %>
-      <div class="image">
+      <div class="image-edit">
         <%= cl_image_tag @user.photo,  width: 150, height: 150, crop: :thumb, gravity: :face%>
       </div>
       <% else %>
@@ -40,7 +40,7 @@
         <%= f.input :photo, input_html: { class: 'hidden', id: 'photo-input'}, label_html: { class: 'upload-photo'}, label: '📷 Upload a photo' %>
       </div>
       <div class="button-panel">
-        <%= f.submit 'Update changes', class: 'btn button-sign'%>
+        <%= f.submit 'Update changes', class: 'btn button-sign', id:'sweet-alert'%>
         <%= link_to 'Cancel', '#', class: 'btn-flat-card-cancel' %>
       </div>
 

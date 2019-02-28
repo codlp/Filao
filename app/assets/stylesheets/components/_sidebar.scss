@@ -134,3 +134,14 @@ ul {
   padding: 20px;
   border-radius: 5px;
 }
+
+.image-edit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+.image-edit img {
+  border-radius: 50%;
+}
