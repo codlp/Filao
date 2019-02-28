@@ -36,6 +36,7 @@
           <h3>Testing</h3>
         </a>
       </div>
+
       <div class="tabs-content">
         <% @project.tasks.each do |task| %>
         <div class="tasks-title">
@@ -46,13 +47,23 @@
             <i class="fas fa-check-circle"></i>
             <% end %>
           </div>
-          <div class="message-body">
             <p><strong><%= task.name %></strong></p>
+          <div class="message-body">
             <p><%= task.description %></p>
           </div>
-          <div class="send-message-btn">
-            <%= link_to "Send message", projects_path %>
+
+          <div class="wrapper">
+            <div class="container">
+                <%= simple_form_for([task, Message.new]) do |f| %>
+                  <%= f.input :content %>
+                  <%= f.submit "Add a message" %>
+                <% end %>
+            </div>
           </div>
+<!--           <div class="send-message-btn">
+            <%= link_to "Send message", projects_path %>
+          </div> -->
+
         </div>
         <% end %>
 

@@ -16,11 +16,11 @@ Rails.application.routes.draw do
   resources :tasks, only: [:edit, :update, :destroy]
   resources :tasks, only: :show do
     resources :documents, only: [:new, :create]
+    resources :messages, only: [:index, :create]
   end
 
   resources :documents, only: [:index, :destroy]
 
-  resources :messages, only: [:index, :new, :create, :update, :edit]
   get '/dashboard' => 'users#dashboard'
 
   # Routes for Google authentication
