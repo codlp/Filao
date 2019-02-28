@@ -18,7 +18,8 @@
     </div>
     <div class="main-screen">
       <div class="title">
-        <h1> <%= @project.name %><i class="fas fa-pen"></i></h1>
+        <div class="project-name"><h1> <%= @project.name %></h1></div>
+        <div class="edit-project"><%= link_to "Edit", projects_path %><i class="fas fa-pen"></i></div>
       </div>
 
       <h2>Timeline : current steps</h2>
@@ -35,7 +36,7 @@
         </a>
       </div>
       <div class="tabs-content">
-        <div class="title">
+        <div class="tasks-title">
           <div class="checkbox">
             <% if @project.status == "Pending" %>
             <i class="fas fa-check-circle"></i>
