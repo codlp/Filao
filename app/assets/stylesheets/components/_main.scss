@@ -38,6 +38,7 @@ p {
 #calendar {
   padding-right: 30px;
   padding-bottom: 50px;
+}
 
 .flex {
   display: flex;
@@ -109,14 +110,9 @@ p {
   padding-right: 8px;
 }
 
-
-.fa-pen {
-  &:before {
-    content: "\f304";
-    padding: 0px 15px;
-    color: lightgrey;
-  }
-  &:hover {
-    color: #7275eb;
-  }
+.fa-pen :before {
+  content: "\f304";
+  padding: 0px 15px;
+  color: lightgrey;
 }
+
