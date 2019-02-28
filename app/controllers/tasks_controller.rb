@@ -1,5 +1,4 @@
 class TasksController < ApplicationController
-
   skip_before_action :authenticate_user!, only: [:show, :index, :destroy]
   before_action :set_task, only: [:show, :destroy]
 
@@ -17,6 +16,7 @@ class TasksController < ApplicationController
     skip_authorization
     @project = Project.find(params[:project_id])
     @task = Task.new
+    authorize @task
   end
 
   def create
