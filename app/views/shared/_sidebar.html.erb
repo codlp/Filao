@@ -7,13 +7,12 @@
         <% if current_user.photo.present? %>
         <div class="image">
           <%= cl_image_tag current_user.photo, height: 50, width:50, crop: :fill%>
-          <%= link_to dashboard_path(current_user) %>
           <div class="user"><h5>
             <%= link_to user_path(current_user) do %>
             <%= t(".profile", default: "#{current_user.first_name} #{current_user.last_name}") %>
             <% end %>
           </h5>
-          <h6> Hello <%= current_user.email %></h6>
+          <h6> Hello <%= current_user.first_name %></h6>
         </div></div>
         <% else %>
         <div class="image">

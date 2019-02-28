@@ -28,7 +28,6 @@ ul {
   height: 140;
   padding: 15px 40px;
   padding-bottom: 20px;
-  background-color: #f8f9fa;
 }
 
 .image img {
@@ -51,7 +50,7 @@ ul {
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  font-size: 14px;
+  font-size: 19px;
   letter-spacing: 0.01em;
   color: #109CF1;
   text-decoration: none;
@@ -62,7 +61,7 @@ ul {
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    font-size: 14px;
+    font-size: 18px;
     letter-spacing: 0.01em;
     color: #334D6E;
     padding: 4px 0px;
@@ -120,4 +119,12 @@ ul {
   font-size: 11px;
   letter-spacing: 0.01em;
 
-  color: #90A0B7;}
+  color: #90A0B7;
+}
+
+.profile {
+  background-color: white;
+  height: 900px;
+  padding: 20px;
+  border-radius: 5px;
+}
