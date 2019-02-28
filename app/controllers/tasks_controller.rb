@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:show, :index]
+  skip_before_action :authenticate_user!, only: [:show, :index, :destroy]
   before_action :set_task, only: [:show, :destroy]
 
   def index
@@ -13,19 +13,20 @@ class TasksController < ApplicationController
   end
 
   def new
+    skip_authorization
     @project = Project.find(params[:project_id])
     @task = Task.new
     authorize @task
   end
 
   def create
+    skip_authorization
     @project = Project.find(params[:project_id])
     @task = Task.new(task_params)
-    authorize @task
     @task.project = @project
     @task.user = current_user
     if @task.save
-      redirect_to user_tasks_path
+      redirect_to project_path(@project)
     else
       render :new
     end
@@ -37,12 +38,18 @@ class TasksController < ApplicationController
   end
 
   def update
+    @task = Task.find(params[:id])
+    if @task.update_attributes(task_params)
+      redirect_to @task
+    else
+      render 'edit'
+    end
   end
 
   def destroy
-    @task = Task.find(params[:id])
+    authorize @task
     @task.destroy
-    redirect_to tasks_path
+    redirect_to projects_path
   end
 
   def accept
@@ -66,7 +73,7 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:name, :description, :start_at, :end_at)
+    params.require(:task).permit(:name, :description, :deliverable, :start_date, :end_date)
   end
 
 end

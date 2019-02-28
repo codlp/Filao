@@ -4,9 +4,10 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update]
 
   resources :projects do
-    resources :tasks, only: [:index, :new, :create]
-  end
 
+    resources :tasks, only: [:new, :create]
+  end
+  resources :tasks, only: [:edit, :update, :destroy]
   resources :tasks, only: :show do
     resources :documents, only: [:new, :create]
   end
