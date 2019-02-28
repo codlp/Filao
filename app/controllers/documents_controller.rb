@@ -10,11 +10,13 @@ class DocumentsController < ApplicationController
     @document = Document.new(document_params)
     @document.user = current_user
     @document.task = Task.find(params[:task_id])
-    if @document.save
-      redirect_to root_path
-    else
-      redirect_to root_path
-    end
+    @document.save
+    redirect_to project_path(@document.task.project)
+  end
+
+  def destroy
+    @document = Document.find(params[:id])
+    @document.destroy
   end
 
   private

@@ -57,14 +57,18 @@
         <% end %>
       </div>
 
-<!-- Dropzone -->
-
     <div class="tasks_list">
       <% @project.tasks.each do |task| %>
         <h2><%= task.name %></h2>
+        <!-- List of documents -->
+      <% task.documents.each do |document| %>
+        <%= cl_image_tag(document.name, width: 100) %>
+      <% end %>
+      <br >
         <!-- Drag and drop -->
         <%= simple_form_for(Document.new, url: task_documents_path(task)) do |f| %>
-          <%= f.input :name, input_html: { class: 'dropzone', id: 'photo-input'}, label_html: { class: 'upload-photo'}, label: '📷 Upload a document' %>
+          <%= f.input :name, input_html: { class: 'dropzone', id: 'photo-input'}, label_html: { class: 'upload-photo'}, label: 'Add a document' %>
+          <!-- 📷 Upload a document -->
           <%= f.submit 'Upload', class: 'btn call-to-action'%>
         <% end %>
       <% end %>
