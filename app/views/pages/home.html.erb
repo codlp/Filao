@@ -1,5 +1,3 @@
-<!-- Navbar when the user is not logged in -->
-
 <% if notice %>
   <div class="alert alert-home alert-info alert-dismissible" role="alert">
     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -14,6 +12,8 @@
   </div>
 <% end %>
 
+<!-- Navbar when the user is not logged in -->
+
 <% if user_signed_in? == false %>
 
   <div class="navbar-wagon">
@@ -27,6 +27,24 @@
       <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
     </div>
   </div>
+
+<!-- Navbar when the user is logged in -->
+
+<% else %>
+
+<div class="navbar-wagon">
+  <!-- Logo -->
+  <%= link_to root_path, class: "navbar-wagon-brand" do %>
+  <%= image_tag "logo.png", height: 50 %>
+  <% end %>
+
+  <!-- Right Navigation -->
+  <div class="navbar-wagon-right hidden-xs hidden-sm">
+    <%= link_to destroy_user_session_path, class: "navbar-wagon-item navbar-wagon-link", method: :delete do %>
+    <%= t(".sign_out", default: "Log out") %>
+    <% end %>
+  </div>
+</div>
 
 <% end %>
 
