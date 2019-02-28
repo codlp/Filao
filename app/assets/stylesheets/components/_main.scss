@@ -110,9 +110,8 @@ p {
   padding-right: 8px;
 }
 
-.fa-pen :before {
-  content: "\f304";
-  padding: 0px 15px;
-  color: lightgrey;
+.fa-pen:before {
+    content: "\f304";
+    padding: 0px 15px;
+    color: lightgrey;
 }
-
