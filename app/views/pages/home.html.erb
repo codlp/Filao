@@ -1,30 +1,32 @@
 <!-- Navbar when the user is not logged in -->
+
 <% if notice %>
-<div class="alert alert-home alert-info alert-dismissible" role="alert">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <div class="alert alert-home alert-info alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
   <%= notice %>
-</div>
+  </div>
 <% end %>
+
 <% if alert %>
-<div class="alert alert-home alert-warning alert-dismissible" role="alert">
+  <div class="alert alert-home alert-warning alert-dismissible" role="alert">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
   <%= alert %>
-</div>
+  </div>
 <% end %>
 
 <% if user_signed_in? == false %>
 
-<div class="navbar-wagon">
-  <!-- Logo -->
-  <%= link_to root_path, class: "navbar-wagon-brand" do %>
-  <%= image_tag "logo.png", height: 50 %>
-  <% end %>
+  <div class="navbar-wagon">
+    <!-- Logo -->
+    <%= link_to root_path, class: "navbar-wagon-brand" do %>
+    <%= image_tag "logo.png", height: 50 %>
+    <% end %>
 
-  <!-- Right Navigation -->
-  <div class="navbar-wagon-right hidden-xs hidden-sm">
-    <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <!-- Right Navigation -->
+    <div class="navbar-wagon-right hidden-xs hidden-sm">
+      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    </div>
   </div>
-</div>
 
 <% end %>
 
@@ -42,6 +44,7 @@
 </div>
 
 <!-- Icons -->
+
 <div class="icons-wrapper">
   <div class="container">
     <h2 class="section-title text-center">Why use Filao?</h2>
@@ -79,7 +82,7 @@
         <%= link_to "Get started", new_user_session_path, class: "btn call-to-action" %>
       </div>
       <div class="flex-item">
-        <%= image_tag("placeholder.png", class: "icon img-circle") %>
+        <%= image_tag("mac-screenshot.png", width: 900, height: 625) %>
       </div>
     </div>
   </div>
