@@ -80,10 +80,10 @@ ActiveRecord::Schema.define(version: 2019_02_27_134754) do
     t.string "photo"
     t.string "first_name"
     t.string "last_name"
-    t.boolean "is_customer", default: false
-    t.string "company"
     t.string "google_token"
     t.string "google_refresh_token"
+    t.boolean "is_customer", default: false
+    t.string "company"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
