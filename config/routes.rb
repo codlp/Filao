@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resources :users, only: [:show, :edit, :update]
   resources :projects do
-    resources :tasks
+    resources :tasks, only: [:new, :create]
   end
+  resources :tasks, only: [:edit, :update, :destroy]
   resources :documents, only: [:index, :new, :create, :destroy]
   resources :messages, only: [:index, :new, :create, :update, :edit]
   get '/dashboard' => 'users#dashboard'
