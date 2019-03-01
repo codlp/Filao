@@ -22,7 +22,7 @@ class MessagesController < ApplicationController
     @message.task = @task
     @message.user = current_user
     if @message.save
-      redirect_to project_path(@message)
+      redirect_to project_path(@project)
     else
       render "projects/show"
     end
