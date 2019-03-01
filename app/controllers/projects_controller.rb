@@ -8,7 +8,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
-    @document = Document.new
+    authorize @project
   end
 
   def new
