@@ -26,8 +26,8 @@ landing_page = Project.create!(user: grace, customer: amelie, name: "Landing pag
 puts "project created"
 
 
-Task.create!(user: coralie, project: chatbot, name: 'documentation', description: 'check messenger bot doc')
-Task.create!(user: coralie, project: chatbot, name: 'code', description: 'je code')
-Task.create!(user: coralie, project: chatbot, name: 'debug', description: 'je debug')
-Task.create!(user: grace, project: landing_page, name: 'documentation', description: 'check w3school bot doc')
+Task.create!(project: chatbot, name: 'documentation', description: 'check messenger bot doc')
+Task.create!(project: chatbot, name: 'code', description: 'je code')
+Task.create!(project: chatbot, name: 'debug', description: 'je debug')
+Task.create!(project: landing_page, name: 'documentation', description: 'check w3school bot doc')
 
