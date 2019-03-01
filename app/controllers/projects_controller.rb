@@ -18,8 +18,8 @@ class ProjectsController < ApplicationController
     # Le stocker dans une variable qui sera exposee a la vue : @progress
     # raise
     @progress = (@done_tasks.size).fdiv(@tasks.size) * 100
+    authorize @project
   end
-
 
   def new
     @project = Project.new

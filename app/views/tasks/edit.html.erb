@@ -17,11 +17,6 @@
             <div class="form-item">
               <%= f.input :description, placeholder: 'Enter the task description' %>
             </div>
-            <div class="form-item">
-              <%= f.input :deliverable, :as => :boolean, :label => false, :inline_label => true %>
-              <span> Is the task deliverable? </span>
-            </div>
-
 
             <div class="calendar">
               <h2>Please enter the task start date and end date</h2>
@@ -36,8 +31,7 @@
             <div class="text-center">
               <%= f.submit class: 'btn btn-success'%>
               <%= link_to 'Cancel', projects_path(@project), class: 'btn btn-danger' %>
-              <button id="sweet-alert-demo" class="btn btn-danger">Delete</button>
-                     <%= link_to "Delete", task_path(@task), method: :delete, id: "delete-link", class: "hidden" %>
+              <%= link_to "Delete", task_path(@task), method: :delete, id: "delete-link", class: "hidden" %>
             </div>
           </div>
         <% end %>

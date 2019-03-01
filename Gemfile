@@ -21,6 +21,9 @@ gem 'google-api-client', require: 'google/apis/calendar_v3'
 gem 'omniauth-google-oauth2'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
+gem "letter_opener", group: :development
+gem 'postmark-rails'
+
 
 group :development do
   gem 'web-console', '>= 3.3.0'

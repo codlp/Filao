@@ -38,6 +38,7 @@ class TasksController < ApplicationController
   end
 
   def update
+    skip_authorization
     @task = Task.find(params[:id])
     if @task.update_attributes(task_params)
       redirect_to @task

@@ -26,6 +26,7 @@
         <div class="project-name"><h1> <%= @project.name %></h1></div>
         <!-- Edit a project -->
         <div class="edit-project"><%= link_to "Edit", edit_project_path(@project) %><i class="fas fa-pen"></i></div>
+        <div class="edit-project"><%= link_to "Add a new task", new_project_task_path(@project) %><i class="fas fa-pen"></i></div>
       </div>
 
       <h2>Timeline : current steps</h2>
@@ -91,6 +92,72 @@
       <% end %>
       <% end %>
     </div>
+
+        <%= link_to task_path(task), method: :delete, data: {confirm: "Are you sure?"} do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
+          <%= link_to edit_task_path(task) do %>
+            <i class="fas fa-pen"></i>
+          <% end %>
+          <i class="fas fa-angle-down"></i>
+
+          <div class="tasks-title">
+            <div class="checkbox">
+              <% if task.is_done == true %>
+                <i class="fas fa-check-circle"></i>
+              <% else %>
+                <i class="fas fa-check-circle"></i>
+              <% end %>
+            </div>
+            <div class="message-title">
+              <h3><%= task.name %></h3>
+              <p><%= task.end_date.to_date %></p>
+            </div>
+            <div class="message-body">
+              <p><%= task.description %></p>
+            </div>
+              <div class="container">
+                <%= simple_form_for([task, Message.new]) do |f| %>
+                  <%= f.input :content %>
+                  <%= f.submit "Add a message" %>
+                <% end %>
+              </div>
+              <div class="tasks_list">
+                <% @project.tasks.each do |task| %>
+                  <%= simple_form_for(Document.new, url: task_documents_path(task)) do |f| %>
+                    <%= f.input :name, input_html: { class: 'dropzone', id: 'photo-input'}, label_html: { class: 'upload-photo'}, label: '📷 Upload a document' %>
+                    <%= f.submit 'Upload', class: 'btn call-to-action'%>
+                  <% end %>
+                <% end %>
+              </div>
+          </div>
+
+          <div class="container">
+            <div class="wrapper">
+              <div class="container">
+              <br><br>
+                <% task.messages.each do |message| %>
+                  <div class="message">
+                    <% if message.user.is_customer %>
+                      <%= cl_image_tag message.user.photo, class:"avatar" %>
+                      <strong><%= message.user.first_name.upcase %> <%= message.user.last_name.upcase %></strong>
+                      <div class="message-body">
+                        <div class="message-content"><%= message.content %></div>
+                      </div>
+                    <% else %>
+                      <div class="message-body">
+                        <div class="message-content", id="right"><%= message.content %></div>
+                      </div>
+                      <strong><%= message.user.first_name.upcase %> <%= message.user.last_name.upcase %> </strong>
+                      <%= cl_image_tag message.user.photo, class:"avatar" %>
+                    <% end %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
 
       </div>
       <!-- End of class task content -->
