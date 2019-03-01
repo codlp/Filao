@@ -1,7 +1,6 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  after_create :send_welcome_email
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
@@ -11,6 +10,8 @@ class User < ApplicationRecord
   has_many :tasks, through: :projects
 
   mount_uploader :photo, PhotoUploader
+
+  after_create :send_welcome_email
 
   def self.from_omniauth(auth)
     # Creates a new user only if it doesn't exist
@@ -28,4 +29,5 @@ class User < ApplicationRecord
   def send_welcome_email
     UserMailer.welcome(self).deliver_now
   end
+
 end
