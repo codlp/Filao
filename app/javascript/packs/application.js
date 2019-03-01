@@ -6,11 +6,17 @@ import "../components/flatpickr"
 import { initSweetalert } from '../components/init_sweetalert';
 
 initSweetalert('#sweet-alert', {
-  title: "Profil Update",
+  title: "Profil Updated",
   text: "Great your profile is up-to-date",
   icon: "success"
 }, (value) => {
-  console.log(value);
+});
+
+initSweetalert('#sweet-alert-task', {
+  title: "Task created 🚀",
+  text: "Great your task is create",
+  icon: "success"
+}, (value) => {
 });
 
 initSweetalert('#sweet-alert-demo', {
