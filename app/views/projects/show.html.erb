@@ -21,6 +21,7 @@
       <div class="title">
         <div class="project-name"><h1> <%= @project.name %></h1></div>
         <div class="edit-project"><%= link_to "Edit", edit_project_path(@project) %><i class="fas fa-pen"></i></div>
+        <div class="edit-project"><%= link_to "Add a new task", new_project_task_path(@project) %><i class="fas fa-pen"></i></div>
       </div>
 
       <h2>Timeline : current steps</h2>
@@ -39,8 +40,8 @@
 
       <div class="tabs-content">
         <% @project.tasks.each do |task| %>
-          <%= link_to task_path(task), method: :delete do %>
-            <i class="fas fa-trash-alt" id="sweet-alert-demo"></i>
+          <%= link_to task_path(task), method: :delete, data: {confirm: "Are you sure?"} do %>
+            <i class="fas fa-trash-alt"></i>
           <% end %>
           <%= link_to edit_task_path(task) do %>
             <i class="fas fa-pen"></i>
@@ -55,7 +56,10 @@
                 <i class="fas fa-check-circle"></i>
               <% end %>
             </div>
+            <div class="message-title">
               <h3><%= task.name %></h3>
+              <p><%= task.end_date.to_date %></p>
+            </div>
             <div class="message-body">
               <p><%= task.description %></p>
             </div>

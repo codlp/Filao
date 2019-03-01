@@ -31,8 +31,7 @@
             <div class="text-center">
               <%= f.submit class: 'btn btn-success'%>
               <%= link_to 'Cancel', projects_path(@project), class: 'btn btn-danger' %>
-              <button id="sweet-alert-demo" class="btn btn-danger">Delete</button>
-                     <%= link_to "Delete", task_path(@task), method: :delete, id: "delete-link", class: "hidden" %>
+              <%= link_to "Delete", task_path(@task), method: :delete, id: "delete-link", class: "hidden" %>
             </div>
           </div>
         <% end %>
