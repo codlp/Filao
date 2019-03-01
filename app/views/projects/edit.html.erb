@@ -39,7 +39,7 @@
 
               <div class="text-center">
                 <%= f.submit class: 'btn btn-success'%>
-                <%= link_to 'Cancel', projects_path, class: 'btn btn-danger' %>
+                <%= link_to 'Cancel', project_path(@project), class: 'btn btn-danger' %>
                 <%= link_to project_path(@project), method: :delete do %>
                   <button id="sweet-alert-demo" class="btn btn-danger">Delete</button>
                 <% end %>
