@@ -74,8 +74,8 @@ p {
 .each-task {
   background: #FFFFFF;
   border-radius: 9px;
-  box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.07);
-  margin: 20px 10px;
+  box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.1);
+  margin: 22px 10px;
   padding: 15px;
 }
 
@@ -125,4 +125,24 @@ p {
 
 input[type=file]{
   border-radius: 15px;
+}
+
+.tasks_list {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: auto;
+  padding: 20px;
+}
+
+.doc_list {
+  display: block;
+  width: auto;
+  padding: 10px 20px;
+  min-height: 0px;
+  height: auto;
+}
+
+.task {
+  font-size: 16px;
 }

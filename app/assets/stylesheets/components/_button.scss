@@ -46,7 +46,7 @@
   }
 }
 
-.send-message-btn a {
+.send-message-btn {
   font-family: Montserrat;
   font-style: normal;
   font-weight: bold;
@@ -129,4 +129,8 @@
   &:hover {
     color: rgba(108, 208, 182, 1);
   }
+}
+
+.send-message .call-to-action {
+  font-size: 14px;
 }
