@@ -1,6 +1,8 @@
 .dropzone {
     position: relative;
     border: 1px dashed #B2B2B2;
+    height: 100px;
+    width: 100%;
   &:after {
     display: block;
     content: "Drag and drop a file here";
@@ -19,4 +21,8 @@
 
 form {
   padding: 0;
+}
+
+#photo-input {
+  margin-bottom: 25px;
 }

@@ -1,7 +1,6 @@
 .tabs {
   display: flex;
   padding: 10px 10px 0 10px;
-  height: 54px;
   margin-right: 40px;
 }
 
@@ -38,22 +37,32 @@
   border-radius: 4px;
   flex: auto;
   text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-bottom: 0px;
+  box-shadow: 0px -1px 5px rgba(105, 100, 118, 0.22);
+  border-radius: 5px 5px 0 0;
 }
-.tab:first-child {
-  border-radius: 10px 0 0 0;
-}
-.tab:last-child {
-  border-radius: 0 10px 0 0;
-}
+
 .tab.active {
-  background: white;
+  background: red;
   color: black;
 }
 
 .tabs-content {
   width: auto;
   padding: 10px;
-  background: white;
+  background: #fafafa;
   margin: 0px 10px;
   margin-right: 50px;
+  border-radius: 0px 0px 8px 8px;
+  box-shadow: 0px 1px 5px rgba(105, 100, 118, 0.15);
 }
+
+.progress {
+  background: #FFFFFF;
+  border-radius: 9px;
+  margin: 20px 10px;
+  margin-right: 8px;
+}
+
