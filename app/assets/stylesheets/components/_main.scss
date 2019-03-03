@@ -66,11 +66,18 @@ p {
 
 .tasks-title {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   padding-right: 35px;
 }
 
+.each-task {
+  background: #FFFFFF;
+  border-radius: 9px;
+  box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.07);
+  margin: 20px 10px;
+  padding: 15px;
+}
 
 .title .fa-pen:before {
   content: "\f304";
@@ -111,7 +118,11 @@ p {
 }
 
 .fa-pen:before {
-    content: "\f304";
-    padding: 0px 15px;
-    color: lightgrey;
+  content: "\f304";
+  padding: 0px 15px;
+  color: lightgrey;
+}
+
+input[type=file]{
+  border-radius: 15px;
 }

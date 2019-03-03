@@ -4,13 +4,20 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update]
 
   resources :projects do
-    member do
-      get :is_done
-    end
     resources :tasks, only: [:new, :create]
   end
 
-  resources :tasks, only: [:edit, :update, :destroy]
+  resources :steps, only: [:index, :show, :edit, :update, :edit, :update, :mark_as_completed] do
+    resources :tasks, only: [:show, :index]
+  end
+
+  resources :tasks, only: [:edit, :update, :destroy] do
+    member do
+      get :mark_as_done
+      get :mark_as_undone
+    end
+  end
+
   resources :tasks, only: :show do
     resources :documents, only: [:new, :create]
     resources :messages, only: [:index, :create, :new]
@@ -18,12 +25,12 @@ Rails.application.routes.draw do
 
   resources :documents, only: [:index, :destroy]
 
+  resources :messages, only: [:index, :new, :create, :update, :edit]
+
   get '/dashboard' => 'users#dashboard'
 
   # Routes for Google authentication
   get 'auth/:provider/callback', to: 'sessions#googleAuth'
   get 'auth/failure', to: redirect('/')
 end
-
-
 

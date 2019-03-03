@@ -7,7 +7,19 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.find(params[:id])
+    @document = Document.new
+    @step = Step.find(params[:step_id])
+    @steps = @project.steps
+    @tasks = @step.tasks
+    # TODO: progress bar
+    # Recuperer toutes les taches du projet
+    @tasks = @step.tasks
+    # Recuperer toutes les taches qui sont is done
+    @done_tasks = Task.where(is_done: true)
+    # Calculer le pourcentage des taches realisees
+    # Le stocker dans une variable qui sera exposee a la vue : @progress
+    # raise
+    @progress = (@done_tasks.size).fdiv(@tasks.size) * 100
     authorize @project
   end
 
@@ -44,22 +56,14 @@ class ProjectsController < ApplicationController
     redirect_to projects_path
   end
 
-  def is_done
-    skip_authorization
-    @task = Task.find(params[:task_id])
-    @task.is_done
-    @task.save
-    redirect_to rooftops_tasks_path
-  end
-
   private
 
   def set_project
+    skip_authorization
     @project = Project.find(params[:id])
-    authorize @project
   end
 
   def project_params
-    params.require(:project).permit(:name, :description, :category, :company, :start_date, :end_date)
+    params.require(:project).permit(:name, :step_id, :description, :category, :company, :start_date, :end_date)
   end
 end

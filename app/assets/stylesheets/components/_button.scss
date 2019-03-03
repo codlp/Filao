@@ -31,7 +31,7 @@
  transition: all ease-in-out 0.4s;
  &:hover{
   text-decoration: none;
-  }
+}
 }
 
 .send-message-btn {
@@ -64,38 +64,69 @@
 }
 
 .card-link {
-    background: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%);
-    border-radius: 22px;
-    color: white;
-    margin: 0px 90px;
+  background: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%);
+  border-radius: 22px;
+  color: white;
+  margin: 0px 90px;
+  text-decoration: none;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: 12px;
+  width: auto;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 12px 10px;
+  color: #FFFFFF;
+  margin-bottom: 20px;
+  &:hover {
+    box-shadow: 0px 0px 15px rgba(195, 151, 255, 0.54);
     text-decoration: none;
-    font-family: Montserrat;
-    font-style: normal;
-    font-weight: bold;
-    line-height: normal;
-    font-size: 12px;
-    width: auto;
-    text-align: center;
-    text-transform: uppercase;
-    padding: 12px 10px;
-    color: #FFFFFF;
-    margin-bottom: 20px;
-    &:hover {
-      box-shadow: 0px 0px 15px rgba(195, 151, 255, 0.54);
-      text-decoration: none;
-      opacity: 0.9;
-  -webkit-transition: all ease-in-out 0.2s;
-  transition: all ease-in-out 0.2s;
+    opacity: 0.9;
+    -webkit-transition: all ease-in-out 0.2s;
+    transition: all ease-in-out 0.2s;
     &:hover a{
-    text-decoration: none;
-  }
+      text-decoration: none;
     }
   }
+}
 
-  .button-panel a {
-    display: flex;
-    justify-content: center;
+.button-panel a {
+  display: flex;
+  justify-content: center;
+}
+
+.checked-circle {
+  font-family: Material Icons;
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: 50px;
+  text-align: center;
+  text-shadow: 6px 5px 4px #F6F6F6;
+}
+
+.checked-circle a {
+  color: rgba(108, 208, 182, 1);
+  &:hover {
+    color: lightgrey;
   }
+}
 
+.unchecked-circle {
+  font-family: Material Icons;
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: 50px;
+  text-align: center;
+  text-shadow: 6px 5px 4px #F6F6F6;
+}
 
-
+.unchecked-circle a {
+  color: lightgrey;
+  &:hover {
+    color: rgba(108, 208, 182, 1);
+  }
+}
