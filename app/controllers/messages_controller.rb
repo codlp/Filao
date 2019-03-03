@@ -17,12 +17,14 @@ class MessagesController < ApplicationController
   def create
     skip_authorization
     @task = Task.find(params[:task_id])
+    @step = @task.step
+    @tasks = @step.tasks
     @project = @task.project
     @message = Message.new(message_params)
     @message.task = @task
     @message.user = current_user
     if @message.save
-      redirect_to project_path(@project)
+      redirect_to project_path(@project, step_id: @step.id)
     else
       render "projects/show"
     end
@@ -41,6 +43,7 @@ class MessagesController < ApplicationController
   end
 
   def message_params
-    params.require(:message).permit(:content)
+   params.require(:message).permit(:content, :task_id, :user_id)
   end
 end
+

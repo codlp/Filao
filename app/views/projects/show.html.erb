@@ -20,153 +20,104 @@
       </div>
     </div>
 
-    <!-- Begininng of main screen -->
     <div class="main-screen">
       <div class="title">
         <div class="project-name"><h1> <%= @project.name %></h1></div>
         <!-- Edit a project -->
         <div class="edit-project"><%= link_to "Edit", edit_project_path(@project) %><i class="fas fa-pen"></i></div>
-        <div class="edit-project"><%= link_to "Add a new task", new_project_task_path(@project) %><i class="fas fa-pen"></i></div>
+        <!-- <div class="edit-project"><%#= link_to "Add a new task", :anchor => "myform" %><i class="fas fa-pen"></i></div> -->
       </div>
 
       <h2>Timeline : current steps</h2>
 
       <div class="tabs">
-        <a class="tab" href="/projects">
-          <h3>Wireframes</h3>
-        </a>
-        <a class="tab active" href="/projects">
-          <h3>Developpement</h3>
-        </a>
-        <a class="tab active" href="/projects">
-          <h3>Testing</h3>
-        </a>
+        <% @project.steps.each do |step| %>
+          <div class="tab"><%= link_to project_path(@project, step_id: step.id) do %>
+            <%= step.name %></div>
+          <% end %>
+        <% end %>
       </div>
 
       <!-- Progress bar -->
 
       <div class="progress">
-        <div class="progress-bar bg-success" role="progressbar" style="width: <%= @progress %>%" aria-valuenow="<%= @progress %>" aria-valuemin="0" aria-valuemax="100"></div>
+        <div class="progress-bar bg-success" role="progressbar" style="width: <%= @progress %>%" aria-valuenow="<%= @progress %>" aria-valuemin="0" aria-valuemax="100">
+        </div>
       </div>
 
       <div class="tabs-content">
-        <% @project.tasks.each do |task| %>
-          <div class="tasks-title">
-            <div class="checkbox">
-              <% if task.is_done == true %>
-              <i class="fas fa-check-circle"></i>
-              <% else %>
-              <i class="fas fa-check-circle"></i>
-              <% end %>
-            </div>
-              <p><strong><%= task.name %></strong></p>
-            <div class="message-body">
-              <p><%= task.description %></p>
-            </div>
-
-        <!-- Messages -->
-        <div class="wrapper">
-          <div class="container">
-              <%= simple_form_for([task, Message.new]) do |f| %>
-                <%= f.input :content %>
-                <%= f.submit "Add a message" %>
-              <% end %>
-          </div>
-        </div>
-<!--           <div class="send-message-btn">
-            <%= link_to "Send message", projects_path %>
-          </div> -->
-
-          </div>
-      <% end %>
-
-    <!-- Dropzone to upload documents -->
-
-    <div class="tasks_list">
-      <% @project.tasks.each do |task| %>
-      <h2><%= task.name %></h2>
-      <!-- Drag and drop -->
-      <%= simple_form_for(Document.new, url: task_documents_path(task)) do |f| %>
-      <%= f.input :name, input_html: { class: 'dropzone', id: 'photo-input'}, label_html: { class: 'upload-photo'}, label: 'Add a document' %>
-      <%= f.submit 'Upload', class: 'btn call-to-action'%>
-      <% end %>
-      <% end %>
-    </div>
-
-        <%= link_to task_path(task), method: :delete, data: {confirm: "Are you sure?"} do %>
-            <i class="fas fa-trash-alt"></i>
-          <% end %>
-          <%= link_to edit_task_path(task) do %>
-            <i class="fas fa-pen"></i>
-          <% end %>
-          <i class="fas fa-angle-down"></i>
-
-          <div class="tasks-title">
-            <div class="checkbox">
-              <% if task.is_done == true %>
-                <i class="fas fa-check-circle"></i>
-              <% else %>
-                <i class="fas fa-check-circle"></i>
-              <% end %>
-            </div>
-            <div class="message-title">
-              <h3><%= task.name %></h3>
-              <p><%= task.end_date.to_date %></p>
-            </div>
-            <div class="message-body">
-              <p><%= task.description %></p>
-            </div>
-              <div class="container">
+        <% @tasks.each do |task| %>
+          <div class="each-task">
+            <div class="tasks-title">
+              <div class="checkbox-and-task">
+                <div class="checkbox">
+                  <% if task.is_done == false %>
+                  <div class="checked-circle">
+                    <%= link_to '<i class="fas fa-check-circle"></i>'.html_safe, mark_as_done_task_path(task, step_id: @step.id) %>
+                  </div>
+                  <% else %>
+                  <div class="unchecked-circle">
+                    <%= link_to '<i class="fas fa-check-circle"></i>'.html_safe, mark_as_undone_task_path(task, step_id: @step.id) %>
+                  </div>
+                  <% end %>
+                </div>
+                <div class="message-body">
+                  <%= link_to task_path(task), method: :delete, data: {confirm: "Are you sure?"} do %>
+                    <i class="fas fa-trash-alt"></i>
+                  <% end %>
+                  <%= link_to edit_task_path(task) do %>
+                    <i class="fas fa-pen"></i>
+                  <% end %>
+                  <p><strong><%= task.name %></strong></p>
+                  <p><%= task.description %></p>
+                </div>
                 <%= simple_form_for([task, Message.new]) do |f| %>
                   <%= f.input :content %>
                   <%= f.submit "Add a message" %>
                 <% end %>
               </div>
+              <div class="send-message-btn">
+                <%= link_to "Send message", projects_path %>
+              </div>
+            </div>
               <div class="tasks_list">
-                <% @project.tasks.each do |task| %>
+                <% task.documents.each do |document| %>
+                  <%= cl_image_tag(document.name, width: 100) %>
+                <% end %>
+              <!-- Drag and drop -->
                   <%= simple_form_for(Document.new, url: task_documents_path(task)) do |f| %>
-                    <%= f.input :name, input_html: { class: 'dropzone', id: 'photo-input'}, label_html: { class: 'upload-photo'}, label: '📷 Upload a document' %>
+                    <%= f.input :name, input_html: { class: 'dropzone', id: 'photo-input'}, label_html: { class: 'upload-photo'}, label: 'Add a document' %>
                     <%= f.submit 'Upload', class: 'btn call-to-action'%>
                   <% end %>
-                <% end %>
               </div>
-          </div>
-
-          <div class="container">
-            <div class="wrapper">
-              <div class="container">
-              <br><br>
                 <% task.messages.each do |message| %>
                   <div class="message">
                     <% if message.user.is_customer %>
                       <%= cl_image_tag message.user.photo, class:"avatar" %>
-                      <strong><%= message.user.first_name.upcase %> <%= message.user.last_name.upcase %></strong> <p><%= message.created_at %></p>
+                      <strong><%= message.user.first_name.upcase %> <%= message.user.last_name.upcase %></strong>
                       <div class="message-body">
-                        <div class="message-content"><%= message.content %></div>
+                        <div class="message-content">
+                          <%= message.content %>
+                        </div>
                       </div>
                     <% else %>
                       <div class="message-body">
-                        <div class="message-content", id="right"><%= message.content %></div>
+                        <div class="message-content", id="right">
+                          <%= message.content %>
+                        </div>
                       </div>
-                      <strong><%= message.user.first_name.upcase %> <%= message.user.last_name.upcase %></strong> <p><%= message.created_at %></p>
+                      <strong>
+                        <%= message.user.first_name.upcase %> <%= message.user.last_name.upcase %>
+                      </strong>
                       <%= cl_image_tag message.user.photo, class:"avatar" %>
-                    <% end %>
+                  <% end %>
                   </div>
                 <% end %>
-              </div>
-            </div>
           </div>
         <% end %>
       </div>
-
-      </div>
-      <!-- End of class task content -->
-
+      <%= render 'projects/newtask' %>
     </div>
     <!-- End of class main screen -->
-
   </div>
-  <!-- End of class all without sidebar -->
-
 </div>
-<!-- End of class all -->

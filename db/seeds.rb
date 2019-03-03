@@ -19,15 +19,21 @@ grace = User.create!(email: "grace.mehrabe@filao.co", password: "123456", first_
 jason = User.create!(email: "jason.perrier@filao.co", password: "123456", first_name: "Jason ", last_name: "Perrier", photo: 'images/avatar.svg', is_customer: true, company: "Microsoft")
 matt = User.create!(email: "matt.perrier@filao.co", password: "123456", first_name: "Matt", last_name: "Perrier", photo: 'images/avatar.svg', is_customer: true, company: "IBM")
 
-
-chatbot = Project.create!(user: coralie, customer: amelie, name: "Chatbot Project", description: "Big project for important CAC40 customer", category: "Software")
 landing_page = Project.create!(user: grace, customer: amelie, name: "Landing page creation", description: "Small shop landing page work", category: "Web development")
+chatbot = Project.create!(user: coralie, customer: amelie, name: "Chatbot Project", description: "Big project for important CAC40 customer", category: "Software")
 
 puts "project created"
 
+step1 = Step.create!(project_id: Project.last.id, name: "Wireframes", is_completed: false)
+step2 = Step.create!(project_id: Project.last.id, name: "Development", is_completed: false)
+step3 = Step.create!(project_id: Project.last.id, name: "Testing", is_completed: false)
+step4 = Step.create!(project_id: Project.second_to_last.id, name: "Development", is_completed: false)
+step5 = Step.create!(project_id: Project.second_to_last.id, name: "Testing", is_completed: false)
 
-Task.create!(project: chatbot, name: 'documentation', description: 'check messenger bot doc')
-Task.create!(project: chatbot, name: 'code', description: 'je code')
-Task.create!(project: chatbot, name: 'debug', description: 'je debug')
-Task.create!(project: landing_page, name: 'documentation', description: 'check w3school bot doc')
+puts "steps created"
+
+Task.create!(project: chatbot, step: step1, name: 'documentation', description: 'check messenger bot doc')
+Task.create!(project: chatbot, step: step2, name: 'code', description: 'je code')
+Task.create!(project: chatbot, step: step3, name: 'debug', description: 'je debug')
+Task.create!(project: landing_page, step: step1, name: 'documentation', description: 'check w3school bot doc')
 

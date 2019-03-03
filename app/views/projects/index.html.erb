@@ -1,5 +1,3 @@
-<%= render 'shared/flashes' %>
-
 <div class="all">
   <!-- Sidebar -->
   <%= render 'shared/sidebar' %>
@@ -31,14 +29,13 @@
               <div class="inner-card">
                 <div class="card-icons">
                   <p><i class="far fa-clock"></i> <%= project.created_at.to_date %></p>
-                  <p><i class="fas fa-tasks"></i> <%= project.tasks.count %> Tasks
-                  </p>
+                  <p><i class="fas fa-tasks"></i> <%= project.tasks.count %> Tasks</p>
                 </div>
                 <div class="card-desc">
                   <p><%= project.description %></p>
                 </div>
                 <div class="card-link text-center">
-                  <%= link_to "Find out more", project_path(project)%>
+                  <%= link_to "Find out more", project_path(project, step_id: Step.first)%>
                 </div>
               </div>
             </div>
@@ -52,4 +49,3 @@
     </div>
   </div>
 </div>
-

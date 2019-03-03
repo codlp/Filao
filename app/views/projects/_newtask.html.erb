@@ -1,0 +1,29 @@
+<%= simple_form_for([@project, Task.new ]) do |f| %>
+  <div class="post">
+    <div class="form-post-wrapper">
+      <h1 class="text-center">Create a new task</h1>
+      <div class="form-item" id='myform'>
+        <%= f.input :name, placeholder: 'Enter the task name' %>
+      </div>
+      <div class="form-item">
+        <%= f.input :description, placeholder: 'Enter the task description' %>
+      </div>
+      <div class="form-item">
+        <br>
+        <span> Choose a step : </span>
+        <%= f.collection_select :step_id, Step.all, :id, :name, placeholder: 'Choose a Step' %>
+      </div>
+      <div class="calendar">
+        <h2>Please enter the task start date and end date</h2>
+        <div class="form-wrapper list-inline" style="width: 400px; margin: 0 auto;">
+          <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"} %>
+          <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker"} %>
+        </div>
+      </div>
+      <div class="text-center">
+        <%= f.submit class: 'btn btn-success'%>
+        <%= link_to 'Cancel', project_path(@project), class: 'btn btn-danger' %>
+      </div>
+    </div>
+  </div>
+<% end %>

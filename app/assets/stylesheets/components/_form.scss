@@ -15,6 +15,18 @@
   padding: 20px;
 }
 
+.checkbox-and-task {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: auto;
+}
+
+.checkbox-and-task p {
+  margin: 0 0 5px;
+  margin-left: 30px;
+  font-size: 14px;
+}
 
 .form-wrapper h2 {
   padding-left: 30px;
@@ -23,9 +35,8 @@
 .form-post-wrapper {
   background: #fafafa;
   padding: 30px;
-  width: 600px;
-  margin: 0 30px;
-  margin-right: 55px;
+  margin: 0 10px;
+  margin-right: 50px;
   margin-top: 30px;
   margin-bottom: 30px;
   border-radius: 1%;

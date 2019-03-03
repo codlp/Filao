@@ -10,8 +10,14 @@ class DocumentsController < ApplicationController
     @document = Document.new(document_params)
     @document.user = current_user
     @document.task = Task.find(params[:task_id])
-    @document.save
-    redirect_to project_path(@document.task.project)
+    @task = @document.task
+    @project = @task.project
+    @step = @task.step
+    if @document.save
+      redirect_to project_path(@project)
+    else
+      render :new
+    end
   end
 
   def destroy
@@ -22,7 +28,7 @@ class DocumentsController < ApplicationController
   private
 
   def document_params
-    params.require(:document).permit(:name, :name_cache, :task_id, :upload_date)
+    params.require(:document).permit(:name, :name_cache, :task_id, :upload_date, :step_id, :project)
   end
 
 end
