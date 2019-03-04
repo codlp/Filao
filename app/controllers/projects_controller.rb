@@ -13,20 +13,13 @@ class ProjectsController < ApplicationController
 
   def show
     @document = Document.new
-    @project = Project.find(params[:id])
-    @step = @project.steps.first
-
+    @step = Step.find(params[:step_id])
     @steps = @project.steps
     @tasks = @step.tasks
-    @messages = Message.where(task: @tasks).where.not(user: current_user).update_all(read_at: Time.now)
-    # TODO: progress bar
-    # Recuperer toutes les taches du projet
-    @tasks = @step.tasks
     # Recuperer toutes les taches qui sont is done
-    @done_tasks = @tasks.where(is_done: true)
     # Calculer le pourcentage des taches realisees
     # Le stocker dans une variable qui sera exposee a la vue : @progress
-    @progress = (@done_tasks.size).fdiv(@tasks.size) * 100
+    @messages = Message.where(task: @tasks).where.not(user: current_user).update_all(read_at: Time.now)
     authorize @project
   end
 
