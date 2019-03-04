@@ -64,6 +64,6 @@ class StepsController < ApplicationController
   end
 
   def step_params
-    params.require(:step).permit(:name)
+    params.require(:step).permit(:name, :project_id)
   end
 end
