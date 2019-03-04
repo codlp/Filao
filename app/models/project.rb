@@ -4,7 +4,7 @@ class Project < ApplicationRecord
   belongs_to :customer, class_name: 'User', required: false
   has_many :steps, dependent: :destroy
   has_many :tasks, dependent: :destroy
-  has_many :documents, dependent: :destroy
-  has_many :messages, dependent: :destroy
+  has_many :documents, through: :tasks
+  has_many :messages, through: :tasks
   validates :category, inclusion: { in: CATEGORIES }
 end
