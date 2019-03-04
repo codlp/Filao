@@ -38,7 +38,7 @@
 
         <div class="tabs-content">
           <%= render 'projects/progressbar' %>
-          <% @tasks.each do |task| %>
+          <% @step.tasks.each do |task| %>
           <div class="each-task">
             <div class="tasks-title">
               <div class="checkbox-and-task">
@@ -97,7 +97,40 @@
               <% end %>
               </div>
             </div>
-            <%= render 'projects/messages' %>
+            <% task.messages.each do |message| %>
+
+              <div class="message">
+                <% if message.user.is_customer %>
+                  <%= cl_image_tag message.user.photo, class:"avatar" %>
+                  <strong><%= message.user.first_name %> <%= message.user.last_name %></strong>
+                  <div class="message-body">
+                    <div class="message-content">
+                      <%= message.content %>
+                    </div>
+                  </div>
+                  <div class="tasklinks">
+                    <%= link_to message_path(message), method: :delete, data: {confirm: "Are you sure?"} do %>
+                      <i class="fas fa-trash-alt"></i>
+                    <% end %>
+                  </div>
+                <% else %>
+                  <div class="tasklinks">
+                    <%= link_to message_path(message), method: :delete, data: {confirm: "Are you sure?"} do %>
+                      <i class="fas fa-trash-alt"></i>
+                    <% end %>
+                  </div>
+                  <div class="message-body">
+                    <div class="message-content", id="right">
+                      <%= message.content %>
+                    </div>
+                  </div>
+                  <strong>
+                    <%= message.user.first_name.upcase %> <%= message.user.last_name.upcase %>
+                  </strong>
+                  <%= cl_image_tag message.user.photo, class:"avatar" %>
+                <% end %>
+              </div>
+            <% end %>
           </div>
           <% end %>
         </div>

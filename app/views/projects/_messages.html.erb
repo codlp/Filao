@@ -1,5 +1,5 @@
-<% @tasks.each do |task| %>
-  <% task.messages.each do |message| %>
+  <% @task.messages.each do |message| %>
+
     <div class="message">
       <% if message.user.is_customer %>
         <%= cl_image_tag message.user.photo, class:"avatar" %>
@@ -11,6 +11,7 @@
         </div>
         <div class="tasklinks">
           <%= link_to task_message_path(message), method: :delete, data: {confirm: "Are you sure?"} do %>
+
             <i class="fas fa-trash-alt"></i>
           <% end %>
           <%= link_to edit_task_message_path(message) do %>
@@ -38,4 +39,3 @@
       <% end %>
     </div>
   <% end %>
-<% end %>
