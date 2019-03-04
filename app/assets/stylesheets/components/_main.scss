@@ -36,8 +36,9 @@ p {
 }
 
 #calendar {
-  padding-right: 30px;
-  padding-bottom: 50px;
+    padding-right: 30px;
+    padding-bottom: 50px;
+    width: 90%;
 }
 
 .flex {
@@ -159,6 +160,5 @@ input[type=file]{
 
 .task {
   font-size: 16px;
-  max-width: 50%;
 }
 

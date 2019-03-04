@@ -24,9 +24,13 @@
 
 /* Right section */
 .navbar-wagon-right {
-  background: white;
-  justify-content: inherit;
-  display: inline-flex;
+    background: white;
+    justify-content: space-between;
+    display: flex;
+    width: 100vw;
+    margin-left: 300px;
+    align-items: center;
+    padding-top: 12px;
 }
 
 /* Basic navbar item */
@@ -41,6 +45,6 @@
   font-size: 14px;
 }
 .navbar-wagon-link:hover {
-  color: #7379E3;
+  color: #da552f;
   text-decoration: none;
 }
