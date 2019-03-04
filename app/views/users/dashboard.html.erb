@@ -10,20 +10,25 @@
     <div class="grid-container">
       <div id="calendar">
         <%= @google_events %>
-
     </div>
-
-        <%#= month_calendar do |date| %>
-        <%#= date %>
-        <%# end %>
       </div>
-
     </div>
+
   <div class="in-process">
       <h3>Tasks in process</h3>
         <h2 class="count-tasks"> <%= @tasks.count %>  </h2>
         <div class="call-btn">
           <%= link_to "See all tasks", projects_path(current_user), class: 'call-to-action' %>
       </div>
+      <ul class="list-post">
+        <li class="item-post" >
+          <a contenteditable="true" class="task" href="#">
+            <h2 class="title-post"> Edit a note</h2>
+            <p  contenteditable="true" class="content-post">Text Content</p>
+          </a>
+        </li>
+      </ul>
   </div>
+
+
 </div>
