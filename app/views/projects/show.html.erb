@@ -30,9 +30,9 @@
 
       <div class="tabs">
         <% @project.steps.each do |step| %>
-          <div class="tab">
-            <%= link_to project_path(@project, step_id: step.id) do %>
-            <%= step.name %>
+          <div class="tab <%= "active" if params[:step_id].to_i == step.id %>">
+              <%= link_to project_path(@project, step_id: step.id) do %>
+              <%= step.name %>
             <%= render 'projects/progressbar', progress: step.progress %>
             <% end %>
           </div>

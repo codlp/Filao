@@ -9,14 +9,13 @@
   color: grey;
 }
 
-.tabs a:hover {
+.tab:hover {
   cursor: pointer;
   text-decoration: none;
-  box-shadow: 0px 0px 8px white;
-  background-color: white;
-  opacity: 0.95;
-  color: #3945C3;
+  background: #eaeffe5c;
+  box-shadow: 0px -0.3px 4px rgba(59, 137, 255, 0.63);
 }
+
 .tabs h3 {
   font-family: Open Sans;
   font-style: normal;
@@ -44,6 +43,7 @@
   margin-bottom: 0px;
   box-shadow: 0px -1px 5px rgba(105, 100, 118, 0.22);
   border-radius: 5px 5px 0 0;
+  margin: 0px 1px;
 }
 
 .tab a {
@@ -52,8 +52,13 @@
 }
 
 .tab.active {
-  background: red;
-  color: black;
+  background: #8093f114;
+  box-shadow: 0px -0.3px 4px rgba(59, 137, 255, 0.63);
+}
+
+.tab.active a {
+  color: #257cff;
+  font-weight: bolder;
 }
 
 .tabs-content {
