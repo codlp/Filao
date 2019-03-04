@@ -19,11 +19,10 @@ grace = User.create!(email: "grace.mehrabe@filao.co", password: "123456", first_
 jason = User.create!(email: "jason.perrier@filao.co", password: "123456", first_name: "Jason ", last_name: "Perrier", photo: 'images/jason.png', is_customer: true, company: "Microsoft")
 matt = User.create!(email: "matt.perrier@filao.co", password: "123456", first_name: "Matt", last_name: "Perrier", photo: 'images/matt.png', is_customer: true, company: "IBM")
 
-landing_page = Project.create!(user: grace, customer: amelie, name: "Landing page creation", description: "Small shop landing page work", category: "Web development")
-chatbot = Project.create!(user: coralie, customer: amelie, name: "Chatbot Project", description: "Big project for important CAC40 customer", category: "Software")
+landing_page = Project.create!(user: coralie, customer: matt, name: "Landing page creation", description: "Small shop landing page work", category: "Web development")
+chatbot = Project.create!(user: grace, customer: jason, name: "Chatbot Project", description: "Big project for important CAC40 customer", category: "Software")
 
 puts "project created"
-
 
 step1 = Step.create!(project_id: Project.last.id, name: "Wireframes", is_completed: false)
 step2 = Step.create!(project_id: Project.last.id, name: "Development", is_completed: false)
