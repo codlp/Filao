@@ -16,14 +16,14 @@
 
 <% if user_signed_in? == false %>
 
-  <div class="navbar-wagon">
+  <div class="navbar-wagon-home">
     <!-- Logo -->
     <%= link_to root_path, class: "navbar-wagon-brand" do %>
     <%= image_tag "logo.png", height: 50 %>
     <% end %>
 
     <!-- Right Navigation -->
-    <div class="navbar-wagon-right hidden-xs hidden-sm">
+    <div class="navbar-wagon-right-home hidden-xs hidden-sm">
       <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
     </div>
   </div>
@@ -39,7 +39,7 @@
   <% end %>
 
   <!-- Right Navigation -->
-  <div class="navbar-wagon-right hidden-xs hidden-sm">
+  <div class="navbar-wagon-right-home hidden-xs hidden-sm">
     <%= link_to destroy_user_session_path, class: "navbar-wagon-item navbar-wagon-link", method: :delete do %>
     <%= t(".sign_out", default: "Log out") %>
     <% end %>
