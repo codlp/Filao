@@ -22,11 +22,11 @@ class TasksController < ApplicationController
 
   def create
     skip_authorization
+    @step = Step.find(task_params[:step_id])
     @task = Task.new(task_params)
-    @project = Project.find(params[:project_id])
-    @task.project = @project
+    @project = @step.project
+    @task.step = @step
     if @task.save
-      @step = @task.step
       redirect_to project_path(@project, step_id: @step.id)
     else
       render :new
