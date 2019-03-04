@@ -19,7 +19,7 @@ grace = User.create!(email: "grace.mehrabe@filao.co", password: "123456", first_
 jason = User.create!(email: "jason.perrier@filao.co", password: "123456", first_name: "Jason ", last_name: "Perrier", photo: 'images/jason.png', is_customer: true, company: "Microsoft")
 matt = User.create!(email: "matt.perrier@filao.co", password: "123456", first_name: "Matt", last_name: "Perrier", photo: 'images/matt.png', is_customer: true, company: "IBM")
 
-landing_page = Project.create!(user: grace, customer: amelie, name: "Landing page creation", description: "Small shop landing page work", category: "Web development")
+landing_page = Project.create!(user: elie, customer: amelie, name: "Landing page creation", description: "Small shop landing page work", category: "Web development")
 chatbot = Project.create!(user: coralie, customer: amelie, name: "Chatbot Project", description: "Big project for important CAC40 customer", category: "Software")
 
 puts "project created"
@@ -39,12 +39,3 @@ Task.create!(project: chatbot, step: step2, name: 'code', description: 'je code'
 Task.create!(project: chatbot, step: step3, name: 'debug', description: 'je debug')
 Task.create!(project: landing_page, step: step5, name: 'documentation', description: 'check w3school bot doc')
 
-Push.create("Hello world!", {
-    body: "How's it hangin'?",
-    icon: '/icon.png',
-    timeout: 4000,
-    onClick: function () {
-        window.focus();
-        this.close();
-    }
-});
