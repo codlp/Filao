@@ -9,7 +9,23 @@
             <%= message.content %>
           </div>
         </div>
+        <div class="tasklinks">
+          <%= link_to task_message_path(message), method: :delete, data: {confirm: "Are you sure?"} do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
+          <%= link_to edit_task_message_path(message) do %>
+            <i class="fas fa-pen"></i>
+          <% end %>
+        </div>
       <% else %>
+        <div class="tasklinks">
+          <%= link_to task_message_path(message), method: :delete, data: {confirm: "Are you sure?"} do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
+          <%= link_to edit_task_message_path(message) do %>
+            <i class="fas fa-pen"></i>
+          <% end %>
+        </div>
         <div class="message-body">
           <div class="message-content", id="right">
             <%= message.content %>

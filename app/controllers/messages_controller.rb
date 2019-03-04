@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :destroy]
+  skip_before_action :authenticate_user!, only: [:index, :destroy, :edit]
   before_action :set_task, only: [:show, :destroy]
 
   def index
@@ -29,7 +29,14 @@ class MessagesController < ApplicationController
     end
   end
 
+  def edit
+    @task = Task.find(params[:task_id])
+    @message = Message.find(params[:id])
+  end
+
   def destroy
+    skip_authorization
+    @task = Task.find(params[:task_id])
     @message = Message.find(params[:id])
     @message.destroy
     redirect_to projects_path

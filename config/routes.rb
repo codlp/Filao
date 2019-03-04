@@ -20,12 +20,10 @@ Rails.application.routes.draw do
 
   resources :tasks, only: :show do
     resources :documents, only: [:new, :create]
-    resources :messages, only: [:index, :create, :new]
+    resources :messages, only: [:index, :new, :create, :update, :edit, :destroy]
   end
 
   resources :documents, only: [:index, :destroy]
-
-  resources :messages, only: [:index, :new, :create, :update, :edit]
 
   get '/dashboard' => 'users#dashboard'
 
