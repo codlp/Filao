@@ -20,8 +20,8 @@
 }
 
 .banner p {
-  font-size: 23px;
-  padding-top: 9px;
+    font-size: 23px;
+    padding: 30px;
 }
 
 .icon {
@@ -30,4 +30,13 @@
 
 #banner-typed-text {
   font-size: 25px;
+}
+
+.acontainer {
+    padding-right: 160px;
+    padding-left: 160px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-top: 50px;
+    padding-bottom: 50px;
 }
