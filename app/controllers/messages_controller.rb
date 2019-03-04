@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :destroy]
-  before_action :set_task, only: [:show, :destroy]
+  skip_before_action :authenticate_user!, only: [:index, :destroy, :edit]
+  before_action :set_message, only: [:show, :destroy]
 
   def index
     @tasks = Task.all
@@ -9,7 +9,7 @@ class MessagesController < ApplicationController
 
   def new
     skip_authorization
-    @task = Task.find(params[:project_id])
+    @task = Task.find(params[:task_id])
     @message = Message.new
     authorize @message
   end
@@ -18,21 +18,26 @@ class MessagesController < ApplicationController
     skip_authorization
     @task = Task.find(params[:task_id])
     @message = Message.new(message_params)
+    @step = @task.step
+    @project = @step.project
     @message.task = @task
     @message.user = current_user
     if @message.save
-      @project = @task.project
-      @step = @task.step
       redirect_to project_path(@project, step_id: @step.id)
     else
       render "projects/show"
     end
   end
 
-  def destroy
+  def edit
     @message = Message.find(params[:id])
+    @task = @message.task
+  end
+
+  def destroy
+    skip_authorization
     @message.destroy
-    redirect_to projects_path
+    redirect_to project_path(@message.task.step.project)
   end
 
   private
