@@ -38,5 +38,3 @@ Task.create!(project: chatbot, step: step1, name: 'documentation', description: 
 Task.create!(project: chatbot, step: step2, name: 'code', description: 'je code')
 Task.create!(project: chatbot, step: step3, name: 'debug', description: 'je debug')
 Task.create!(project: landing_page, step: step5, name: 'documentation', description: 'check w3school bot doc')
-
-});
