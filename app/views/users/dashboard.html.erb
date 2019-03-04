@@ -18,7 +18,7 @@
       <h2 class="count-tasks">
         <%= @tasks.count %>
       </h2>
-
+    <div class="container">
       <div class="call-btn">
         <%= link_to "See all tasks", projects_path(current_user), class: 'call-to-action' %>
       </div>
@@ -30,6 +30,7 @@
           </a>
         </li>
       </ul>
+    </div>
     </div>
   </div>
 </div>
