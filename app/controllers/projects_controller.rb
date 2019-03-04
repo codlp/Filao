@@ -3,7 +3,12 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy, :is_done]
 
   def index
-    @projects = policy_scope(Project).order(created_at: :desc)
+    if current_user.is_customer?
+      @projects = current_user.projects_as_customer
+    else
+      @projects = current_user.projects
+    end
+    # @projects = policy_scope(Project).order(created_at: :desc)
   end
 
   def show
