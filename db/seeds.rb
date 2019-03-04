@@ -20,21 +20,21 @@ jason = User.create!(email: "jason.perrier@filao.co", password: "123456", first_
 matt = User.create!(email: "matt.perrier@filao.co", password: "123456", first_name: "Matt", last_name: "Perrier", photo: 'images/matt.png', is_customer: true, company: "IBM")
 
 
+chatbot = Project.create!(user: coralie, customer: matt, name: "Nucleo Mobile App", description: "Creation of the whole native application", category: "Web development")
 landing_page = Project.create!(user: coralie, customer: matt, name: "Landing page creation", description: "Small shop landing page work", category: "Web development")
-chatbot = Project.create!(user: grace, customer: jason, name: "Chatbot Project", description: "Big project for important CAC40 customer", category: "Software")
 
 puts "project created"
 
-step1 = Step.create!(project_id: Project.last.id, name: "Wireframes", is_completed: false)
-step2 = Step.create!(project_id: Project.last.id, name: "Development", is_completed: false)
-step3 = Step.create!(project_id: Project.last.id, name: "Testing", is_completed: false)
 step4 = Step.create!(project_id: Project.second_to_last.id, name: "Wireframes", is_completed: false)
 step5 = Step.create!(project_id: Project.second_to_last.id, name: "Development", is_completed: false)
 step6 = Step.create!(project_id: Project.second_to_last.id, name: "Testing", is_completed: false)
+step1 = Step.create!(project_id: Project.last.id, name: "Wireframes", is_completed: false)
+step2 = Step.create!(project_id: Project.last.id, name: "Development", is_completed: false)
+step3 = Step.create!(project_id: Project.last.id, name: "Testing", is_completed: false)
 
 puts "steps created"
 
-Task.create!(project: chatbot, step: step1, name: 'documentation', description: 'check messenger bot doc')
-Task.create!(project: chatbot, step: step2, name: 'code', description: 'je code')
-Task.create!(project: chatbot, step: step3, name: 'debug', description: 'je debug')
-Task.create!(project: landing_page, step: step1, name: 'documentation', description: 'check w3school bot doc')
+task1 = Task.create!(project: landing_page, step: step1, name: 'documentation', description: 'check messenger bot doc', is_done: true)
+task2 = Task.create!(project: landing_page, step: step2, name: 'code', description: 'je code', is_done: true)
+task3 = Task.create!(project: landing_page, step: step3, name: 'debug', description: 'je debug', is_done: false)
+task4 = Task.create!(project: chatbot, step: step4, name: 'documentation', description: 'check w3school bot doc')

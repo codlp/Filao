@@ -10,7 +10,6 @@ class TasksController < ApplicationController
   def show
     @task = Task.find(params[:id])
     @step = @task.step
-
   end
 
   def new
@@ -25,8 +24,8 @@ class TasksController < ApplicationController
     @step = Step.find(task_params[:step_id])
     @task = Task.new(task_params)
     @project = @step.project
-    @task.step = @step
     if @task.save
+      @task.step = @step
       redirect_to project_path(@project, step_id: @step.id)
     else
       render :new
