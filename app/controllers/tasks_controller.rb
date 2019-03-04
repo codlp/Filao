@@ -42,10 +42,10 @@ class TasksController < ApplicationController
     skip_authorization
     @task = Task.find(params[:id])
     if @task.update_attributes(task_params)
-    @project = @task.project
-    @task.project = @project
-    @step = @task.step
-    redirect_to project_path(@project, step_id: @step.id)
+      @project = @task.project
+      @task.project = @project
+      @step = @task.step
+      redirect_to project_path(@project, step_id: @step.id)
     else
       render 'edit'
     end
