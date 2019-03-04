@@ -1,6 +1,6 @@
 class Step < ApplicationRecord
   belongs_to :project
-  has_many :tasks
-  has_many :messages
-  has_many :documents
+  has_many :tasks, dependent: :destroy
+  has_many :messages, dependent: :destroy
+  has_many :documents, dependent: :destroy
 end

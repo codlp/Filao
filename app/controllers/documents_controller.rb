@@ -8,21 +8,24 @@ class DocumentsController < ApplicationController
   def create
     skip_authorization
     @document = Document.new(document_params)
+    @task = Task.find(params[:task_id])
     @document.user = current_user
-    @document.task = Task.find(params[:task_id])
-    @task = @document.task
-    @project = @task.project
-    @step = @task.step
+    @document.task = @task
     if @document.save
-      redirect_to project_path(@project)
+      @project = @task.project
+      @step = @task.step
+      redirect_to project_path(@project, step_id: @step.id)
     else
-      render :new
+      render "projects/show"
     end
   end
 
   def destroy
     @document = Document.find(params[:id])
     @document.destroy
+    @project = @task.project
+    @step = @task.step
+    redirect_to project_path(@project, step_id: @step.id)
   end
 
   private
@@ -30,5 +33,4 @@ class DocumentsController < ApplicationController
   def document_params
     params.require(:document).permit(:name, :name_cache, :task_id, :upload_date, :step_id, :project)
   end
-
 end
