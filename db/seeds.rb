@@ -24,11 +24,13 @@ chatbot = Project.create!(user: coralie, customer: amelie, name: "Chatbot Projec
 
 puts "project created"
 
+
 step1 = Step.create!(project_id: Project.last.id, name: "Wireframes", is_completed: false)
 step2 = Step.create!(project_id: Project.last.id, name: "Development", is_completed: false)
 step3 = Step.create!(project_id: Project.last.id, name: "Testing", is_completed: false)
-step4 = Step.create!(project_id: Project.second_to_last.id, name: "Development", is_completed: false)
-step5 = Step.create!(project_id: Project.second_to_last.id, name: "Testing", is_completed: false)
+step4 = Step.create!(project_id: Project.second_to_last.id, name: "Wireframes", is_completed: false)
+step5 = Step.create!(project_id: Project.second_to_last.id, name: "Development", is_completed: false)
+step6 = Step.create!(project_id: Project.second_to_last.id, name: "Testing", is_completed: false)
 
 puts "steps created"
 
