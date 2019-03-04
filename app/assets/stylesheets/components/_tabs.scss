@@ -9,14 +9,13 @@
   color: grey;
 }
 
-.tabs a:hover {
+.tab:hover {
   cursor: pointer;
   text-decoration: none;
-  box-shadow: 0px 0px 8px white;
-  background-color: white;
-  opacity: 0.95;
-  color: #3945C3;
+  background: #eaeffe5c;
+  box-shadow: 0px -0.3px 4px rgba(59, 137, 255, 0.63);
 }
+
 .tabs h3 {
   font-family: Open Sans;
   font-style: normal;
@@ -53,8 +52,8 @@
 }
 
 .tab.active {
-  background: #657ef914;
-  box-shadow: 0px -1px 3px rgba(37, 124, 255, 0.58);
+  background: #8093f114;
+  box-shadow: 0px -0.3px 4px rgba(59, 137, 255, 0.63);
 }
 
 .tab.active a {
