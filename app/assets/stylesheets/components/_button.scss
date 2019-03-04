@@ -17,10 +17,13 @@
     -webkit-transition: all ease-in-out 0.4s;
     transition: all ease-in-out 0.4s;
     opacity: 0.9;
+    text-decoration: none;
+    cursor: pointer;
   }
   & a {
     color: white;
     text-decoration: none;
+    cursor: pointer;
   }
 }
 
@@ -31,6 +34,7 @@
  transition: all ease-in-out 0.4s;
  &:hover{
   text-decoration: none;
+  cursor: pointer;
 }
 }
 
@@ -43,6 +47,8 @@
     text-decoration: none;
     -webkit-transition: all ease-in-out 0.4s;
     transition: all ease-in-out 0.4s;
+    text-decoration: none;
+    cursor: pointer;
   }
 }
 
