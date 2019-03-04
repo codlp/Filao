@@ -8,9 +8,12 @@ class ProjectsController < ApplicationController
 
   def show
     @document = Document.new
-    @step = Step.find(params[:step_id])
+    @project = Project.find(params[:id])
+    @step = @project.steps.first
+
     @steps = @project.steps
     @tasks = @step.tasks
+    @messages = Message.where(task: @tasks).where.not(user: current_user).update_all(read_at: Time.now)
     # TODO: progress bar
     # Recuperer toutes les taches du projet
     @tasks = @step.tasks
@@ -63,6 +66,6 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:name, :step_id, :description, :category, :company, :start_date, :end_date)
+    params.require(:project).permit(:name, :description, :category, :company, :start_date, :end_date)
   end
 end
