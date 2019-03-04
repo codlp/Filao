@@ -30,15 +30,16 @@
 
       <div class="tabs">
         <% @project.steps.each do |step| %>
-        <div class="tab"><%= link_to project_path(@project, step_id: step.id) do %>
-          <%= step.name %></div>
-          <% end %>
-          <% end %>
-        </div>
-
+          <div class="tab">
+            <%= link_to project_path(@project, step_id: step.id) do %>
+            <%= step.name %>
+            <%= render 'projects/progressbar', progress: step.progress %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
         <div class="tabs-content">
-          <%= render 'projects/progressbar' %>
-          <% @step.tasks.each do |task| %>
+          <% @tasks.each do |task| %>
           <div class="each-task">
             <div class="tasks-title">
               <div class="checkbox-and-task">

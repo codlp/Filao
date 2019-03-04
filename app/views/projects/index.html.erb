@@ -35,7 +35,7 @@
                   <p><%= project.description %></p>
                 </div>
                 <div class="card-link text-center">
-                  <%= link_to "Find out more", project_path(project, step_id: Step.first)%>
+                  <%= link_to "Find out more", project_path(project, step_id: Step.last)%>
                 </div>
               </div>
             </div>
