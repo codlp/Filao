@@ -5,5 +5,6 @@ class Project < ApplicationRecord
   has_many :steps, dependent: :destroy
   has_many :tasks, dependent: :destroy
   has_many :documents, dependent: :destroy
+  has_many :messages, dependent: :destroy
   validates :category, inclusion: { in: CATEGORIES }
 end
