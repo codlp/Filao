@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_04_094353) do
+ActiveRecord::Schema.define(version: 2019_03_04_100223) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,7 +75,9 @@ ActiveRecord::Schema.define(version: 2019_03_04_094353) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "is_done", default: false
+    t.bigint "step_id"
     t.index ["project_id"], name: "index_tasks_on_project_id"
+    t.index ["step_id"], name: "index_tasks_on_step_id"
     t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 
@@ -104,5 +106,6 @@ ActiveRecord::Schema.define(version: 2019_03_04_094353) do
   add_foreign_key "messages", "users"
   add_foreign_key "steps", "projects"
   add_foreign_key "tasks", "projects"
+  add_foreign_key "tasks", "steps"
   add_foreign_key "tasks", "users"
 end
