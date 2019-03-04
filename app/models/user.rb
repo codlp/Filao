@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :projects
+  has_many :projects_as_customer, source: :projects, foreign_key: :customer_id, class_name: "Project"
   has_many :tasks, through: :projects
   has_many :messages, dependent: :destroy
   has_many :documents, dependent: :destroy
