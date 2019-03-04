@@ -16,8 +16,8 @@ ul {
 }
 
 .fa-th:before, .fa-user, .fa-cog, .fa-bars, .fa-sign-out, .fa-angle-double-left, .fa-sign-out-alt, .fa-tachometer-alt {
-    content: "\f00a";
-    padding-right: 10px;
+  content: "\f00a";
+  padding-right: 10px;
 }
 
 .image {
@@ -39,14 +39,14 @@ ul {
 }
 
 .logo_name {
-    font-style: normal;
-    font-weight: 500;
-    font-size: 15px;
-    padding: 5px 35px;
-    color: #7379E3;
-    height: 17px;
-    display: flex;
-    align-items: flex-end;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  padding: 5px 35px;
+  color: #7379E3;
+  height: 17px;
+  display: flex;
+  align-items: flex-end;
 }
 
 .sidebar h5:hover {
@@ -61,15 +61,15 @@ ul {
 }
 
 .sidebar h5 {
-    font-family: Poppins;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    font-size: 15px;
-    letter-spacing: 0.01em;
-    color: #334D6E;
-    padding: 4px 0px;
-    margin-left: 0px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  font-size: 15px;
+  letter-spacing: 0.01em;
+  color: #334D6E;
+  padding: 4px 0px;
+  margin-left: 0px;
   &:hover{
     text-decoration: none;
   }
@@ -90,13 +90,15 @@ ul {
 }
 
 .sidebar li:hover {
-  padding-left: 15px;
+  color: #7379E3;
+  text-decoration: none;
 }
 
 .sidebar ul, .sidebar ol {
   margin-top: 30px;
   margin-bottom: 12.5px;
   margin-left: 0px;
+  padding-right: 40px;
 }
 
 .sidebar h6 {
@@ -109,14 +111,19 @@ ul {
   padding: 0px 25px;
   &:hover{
     text-decoration: none;
+    box-shadow: 0px 0px 15px rgba(195, 151, 255, 0.54);
+    text-decoration: none;
+    -webkit-transition: all ease-in-out 0.2s;
+    transition: all ease-in-out 0.2s;
   }
 }
 
 .main-screen {
-padding-left: 350px;
-    padding-top: 10px;
-    background: #f7f8fd;
-    padding-bottom: 10px;
+  padding-left: 350px;
+  padding-top: 10px;
+  background: #f7f8fd;
+  padding-bottom: 10px;
+  padding-bottom: 30px;
 }
 
 .toggle-sidebar {
@@ -155,4 +162,11 @@ padding-left: 350px;
 .sidebar h5, a {
   color: #666666;
   cursor: pointer;
+  &:hover{
+    color: #7379E3;
+    text-decoration: none;
+    -webkit-transition: all ease-in-out 0.2s;
+    transition: all ease-in-out 0.2s;
+  }
 }
+
