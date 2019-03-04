@@ -1,7 +1,7 @@
 import "bootstrap";
 import { loadDynamicBannerText } from '../components/banner';
 import initFullCalendar from '../components/fullcalendar';
-import initDropzone from '../components/dropzone';
+import { initDropzone, toggleTaskMessages } from '../components/dropzone';
 import "../components/flatpickr"
 import { initSweetalert } from '../components/init_sweetalert';
 
@@ -40,5 +40,6 @@ if (document.getElementById('calendar')) {
 
 loadDynamicBannerText();
 initDropzone();
+toggleTaskMessages();
 initSweetalert();
 

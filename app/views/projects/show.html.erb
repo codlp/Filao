@@ -30,9 +30,9 @@
 
       <div class="tabs">
         <% @project.steps.each do |step| %>
-          <div class="tab"><%= link_to project_path(@project, step_id: step.id) do %>
-              <%= step.name %></div>
-            <% end %>
+        <div class="tab"><%= link_to project_path(@project, step_id: step.id) do %>
+          <%= step.name %></div>
+          <% end %>
           <% end %>
         </div>
 
@@ -58,13 +58,18 @@
                     <h5><strong><%= task.name %></strong></h5>
                     <p><strong><%= task.description %></strong></p>
                   </div>
-                  <div class="tasklinks">
-                    <%= link_to task_path(task), method: :delete, data: {confirm: "Are you sure?"} do %>
+                  <div class="task-right">
+                    <div >
+                      <h5 id="messages-toggler" class="send-message-btn">Send elements</h5>
+                    </div>
+                    <div class="tasklinks">
+                      <%= link_to task_path(task), method: :delete, data: {confirm: "Are you sure?"} do %>
                       <i class="fas fa-trash-alt"></i>
-                    <% end %>
-                    <%= link_to edit_task_path(task) do %>
+                      <% end %>
+                      <%= link_to edit_task_path(task) do %>
                       <i class="fas fa-pen"></i>
-                    <% end %>
+                      <% end %>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -72,32 +77,35 @@
             </div>
             <div class="doc_list">
               <% if task.documents.present? %>
-                <h5>Shared files for this task ( <%= task.documents.count %> Files)</h5>
+              <h5>Shared files for this task ( <%= task.documents.count %> Files)</h5>
                 <% task.documents.each do |document| %>
                   <%= cl_image_tag(document.name, width: 100) %>
                 <% end %>
-                <% else %>
+              <% else %>
                 <% task.documents.each do |document| %>
                   <%= cl_image_tag(document.name, width: 100) %>
                 <% end %>
               <% end %>
             </div>
-            <div class="tasks_list">
+
+            <div class="active-task" id="tasks_list">
               <div class="send-message">
-                  <%= simple_form_for([task, Message.new]) do |f| %>
-                    <%= f.input :content, label: 'Send a message' %>
-                    <%= f.submit "Add a message", class: 'btn call-to-action' %>
-                  <% end %>
-                </div>
+                <%= simple_form_for([task, Message.new]) do |f| %>
+                <%= f.input :content, label: 'Send a message' %>
+                <%= f.submit "Add a message", class: 'btn call-to-action' %>
+                <% end %>
+              </div>
               <div class="send-doc">
-              <!-- Drag and drop -->
-              <%= simple_form_for(Document.new, url: task_documents_path(task)) do |f| %>
-              <%= f.input :name, input_html: { class: 'dropzone', id: 'photo-input'}, label_html: { class: 'upload-photo'}, label: 'Add a document' %>
-              <%= f.submit 'Upload File', class:"send-message-btn"%>
-              <% end %>
+                <!-- Drag and drop -->
+                <%= simple_form_for(Document.new, url: task_documents_path(task)) do |f| %>
+                <%= f.input :name, input_html: { class: 'dropzone', id: 'photo-input'}, label_html: { class: 'upload-photo'}, label: 'Add a document' %>
+                <%= f.submit 'Upload File', class:"send-message-btn"%>
+                <% end %>
               </div>
             </div>
+
             <%= render 'projects/messages' %>
+
           </div>
           <% end %>
         </div>
