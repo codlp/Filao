@@ -86,7 +86,7 @@
                     <p><%= task.description %></p>
                   </div>
                   <div class="task-right">
-                    <h6 id="messages-toggler" data-target="<%= task.id %>" class="send-message-btn">Send new elements</h6>
+                    <h6 id="messages-toggler" data-target="<%= task.id %>" class="send-message-btn">See details</h6>
                     <div class="tasklinks">
                       <%= link_to edit_task_path(task) do %>
                         <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
@@ -100,15 +100,16 @@
           <div class="tasks_list hide-task" id="tasks_list_<%= task.id %>">
 
             <div class="doc_list">
-            <% if task.documents.present? %>
-                <h5><i class="fas fa-angle-right"></i> Shared files for this task ( <%= task.documents.count %> Files)</h5>
-              <div class="docs-div flex">
-                <div class="docs-img flex-s">
-                  <% task.documents.each do |document| %>
-                    <%= cl_image_tag(document.name, width: 100, class: "zoom") %>
+              <h5><i class="fas fa-angle-right"></i> Shared files for this task ( <%= task.documents.count %> Files)</h5>
+              <% if task.documents.present? %>
+
+                <div class="docs-div flex">
+                  <div class="docs-img flex-s">
+                    <% task.documents.each do |document| %>
+                      <%= cl_image_tag(document.name, width: 100, class: "zoom") %>
                   <% end %>
                 </div>
-                <div class="send-doc">
+                <div class="send-doc" style="width:100%">
                   <!-- Drag and drop -->
                   <%= simple_form_for(Document.new, url: task_documents_path(task)) do |f| %>
                     <%= f.input :name, input_html: { class: 'dropzone', id: 'photo-input'}, label_html: { class: 'upload-photo'}, label: 'Add a document' %>
@@ -116,17 +117,17 @@
                   <% end %>
                 </div>
               </div>
-            <% else %>
-                <div class="docs-img">
-                  <% task.documents.each do |document| %>
-                    <%= cl_image_tag(document.name, width: 100, class: "zoom") %>
-                  <% end %>
-                </div>
-            <% end %>
 
-            <% if task.messages.present? %>
-              <h5><i class="fas fa-angle-right"></i> Messages ( <%= task.messages.count %> Messages)</h5>
+            <% else %>
+
+                <!-- Drag and drop -->
+                <%= simple_form_for(Document.new, url: task_documents_path(task)) do |f| %>
+                  <%= f.input :name, input_html: { class: 'dropzone', id: 'photo-input'}, label_html: { class: 'upload-photo'}, label: 'Add a document' %>
+                  <%= f.submit 'Upload File', class:"send-message-btn"%>
+                <% end %>
+
             <% end %>
+            <h5><i class="fas fa-angle-right"></i> Messages ( <%= task.messages.count %> Messages)</h5>
 
             <% task.messages.each do |message| %>
               <div class="message">
