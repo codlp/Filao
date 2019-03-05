@@ -63,10 +63,12 @@
         <% end %>
       </div>
 
-        <div class="tabs-content">
-          <h4>Tasks</h4>
-          <% @tasks.each do |task| %>
-          <div class="each-task">
+      <div class="tabs-content">
+        <h4>Tasks</h4>
+
+        <% @tasks.each do |task| %>
+          <div data-aos="fade-right" data-aos-duration="1000" data-aos-easing="ease-in-out" class="each-task">
+
             <div class="tasks-title">
               <div class="checkbox-and-task">
                 <div class="checkbox">
