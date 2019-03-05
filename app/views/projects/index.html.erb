@@ -19,12 +19,15 @@
             <div class="card">
               <div class="card-first-line">
                 <h3><%= project.name %></h3>
-                <div class="edit-card">
-                  <%= link_to '<i class="fas fa-pen"></i>'.html_safe, edit_project_path(project) %>
-                </div>
-                <div class="card-category">
-                  <h4><%= project.category %></h4>
-                </div>
+                <% if project.category != "Software" %>
+                  <div class="card-category">
+                    <h4><%= project.category %></h4>
+                  </div>
+                <% else %>
+                  <div class="card-category-2">
+                    <h4><%= project.category %></h4>
+                  </div>
+                <% end %>
               </div>
               <div class="inner-card">
                 <div class="card-icons">

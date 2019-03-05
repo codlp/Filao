@@ -57,9 +57,6 @@
         <div class="edit-project"><%= link_to "Edit", edit_project_path(@project) %><i class="fas fa-pen"></i></div>
         <!-- <div class="edit-project"><%#= link_to "Add a new task", :anchor => "myform" %><i class="fas fa-pen"></i></div> -->
       </div>
-
-      <h2>Timeline : current steps</h2>
-
       <div class="tabs">
         <% @project.steps.each do |step| %>
           <div class="tab <%= "active" if params[:step_id].to_i == step.id %>">
@@ -71,6 +68,7 @@
         <% end %>
       </div>
         <div class="tabs-content">
+          <h4>Tasks</h4>
           <% @tasks.each do |task| %>
           <div class="each-task">
             <div class="tasks-title">
@@ -89,25 +87,25 @@
                 <div class="message-body">
                   <div class="task">
                     <h5><strong><%= task.name %></strong></h5>
-                    <p><strong><%= task.description %></strong></p>
+                    <p><%= task.description %></p>
                   </div>
                   <div class="task-right">
                     <div >
                       <h5 id="messages-toggler" class="send-message-btn">Send new elements</h5>
                     </div>
                     <div class="tasklinks">
-                      <%= link_to task_path(task), method: :delete, data: {confirm: "Are you sure?"} do %>
+<!--                       <%#= link_to task_path(task), method: :delete, data: {confirm: "Are you sure?"} do %>
                       <i class="fas fa-trash-alt"></i>
-                      <% end %>
+                      <%# end %> -->
                       <%= link_to edit_task_path(task) do %>
-                      <i class="fas fa-pen"></i>
+                      <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
                       <% end %>
                     </div>
                   </div>
                 </div>
               </div>
-
             </div>
+            <% if task.documents.present? %>
             <div class="doc_list">
               <% if task.documents.present? %>
               <h5>Shared files for this task ( <%= task.documents.count %> Files)</h5>
@@ -118,8 +116,8 @@
                 <% task.documents.each do |document| %>
                   <%= cl_image_tag(document.name, width: 100) %>
                 <% end %>
-              <% end %>
-            </div>
+                          </div><% end %>
+
 
             <div class="active-task" id="tasks_list">
               <div class="send-message">
@@ -136,6 +134,7 @@
                 <% end %>
               </div>
             </div>
+            <% end %>
             <% task.messages.each do |message| %>
               <div class="message">
                 <% if message.user.is_customer %>

@@ -12,8 +12,7 @@
 .tab:hover {
   cursor: pointer;
   text-decoration: none;
-  background: #eaeffe5c;
-  box-shadow: 0px -0.3px 4px rgba(59, 137, 255, 0.63);
+  background: #ffffff59;
 }
 
 .tabs h3 {
@@ -26,54 +25,59 @@
   text-transform: uppercase;
   color: #6FCF97;
 }
+
+.fa-ellipsis-v:before {
+    content: "\f142";
+    color: lightgrey;
+}
+
 .tabs p {
   opacity: 0.5;
   margin-bottom: 0;
 }
 .tab {
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  background: #FFFFFF;
-  border-radius: 4px;
-  flex: auto;
-  text-align: center;
-  padding-top: 15px;
-  padding-bottom: 10px;
-  margin-bottom: 0px;
-  box-shadow: 0px -1px 5px rgba(105, 100, 118, 0.22);
-  border-radius: 5px 5px 0 0;
-  margin: 0px 1px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    background: #ecf1fdb3;
+    border-radius: 4px;
+    flex: auto;
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    margin-bottom: 0px;
+    border-radius: 5px 5px 0 0;
+    margin: 0px 1px;
 }
 
 .tab a {
   width: -webkit-fill-available;
   padding: 0 30px;
+  font-size: 16px;
 }
 
 .tab.active {
-  background: #8093f114;
-  box-shadow: 0px -0.3px 4px rgba(59, 137, 255, 0.63);
+  background: white;
 }
 
 .tab.active a {
-  color: #257cff;
+  color: #7379E3;
   font-weight: bolder;
 }
 
 .tabs-content {
   width: auto;
   padding: 1px 10px;
-  background: #e9eaefc4;  margin: 0px 8px;
+  background: white;
+  margin: 0px 9px;
   margin-right: 50px;
   border-radius: 0px 0px 8px 8px;
-  box-shadow: 0px 1px 5px rgba(105, 100, 118, 0.15);
+  // box-shadow: 0px 1px 5px rgba(105, 100, 118, 0.15);
 }
 
-.progress {
-  background: #FFFFFF;
-  border-radius: 9px;
-  margin: 20px 10px;
-  margin-right: 8px;
+.tabs-content h4 {
+    font-size: 20px;
+    margin-top: 36.5px;
+    margin-left: 15px;
+    margin-bottom: 32px;
 }
-
