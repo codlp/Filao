@@ -54,7 +54,7 @@
         <% @project.steps.each do |step| %>
           <div class="tab <%= "active" if params[:step_id].to_i == step.id %>">
             <%= link_to project_path(@project, step_id: step.id) do %>
-              <%= step.name %>
+              <%= step.name %> <p>( <%= step.tasks.where(is_done: true).count %> / <%= step.tasks.count %> )</p>
               <%= render 'projects/progressbar', progress: step.progress %>
             <% end %>
           </div>
@@ -87,7 +87,7 @@
                     <p><%= task.description %></p>
                   </div>
                   <div class="task-right">
-                    <h5 id="messages-toggler" data-target="<%= task.id %>" class="send-message-btn">Send new elements</h5>
+                    <h6 id="messages-toggler" data-target="<%= task.id %>" class="send-message-btn">Send new elements</h6>
                     <div class="tasklinks">
                       <%= link_to edit_task_path(task) do %>
                         <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
@@ -112,7 +112,6 @@
                 <% end %>
               </div>
             <% end %>
-
             <div class="tasks_list hide-task" id="tasks_list_<%= task.id %>">
               <div class="send-message">
                 <%= simple_form_for([task, Message.new]) do |f| %>
@@ -145,11 +144,10 @@
                       </p>
                     </div>
                   </div>
-
                 <% else %>
 
                   <div class="message-body">
-                    <div class="message-content", id="right">
+                    <div class="message-content">
                       <%= message.content %>
                       <p>Send on <%= message.created_at.strftime("%m/%d/%Y")%> at <%= message.created_at.strftime("%I:%M%p") %>
                       </p>
