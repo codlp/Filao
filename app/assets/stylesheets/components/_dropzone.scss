@@ -28,16 +28,15 @@ form {
 }
 
 .zoom {
-  padding: 50px;
-  background-color: green;
+  padding: 0px;
   transition: transform .2s;
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
   margin: 0 auto;
 }
 
 .zoom:hover {
-  -ms-transform: scale(2.2); /* IE 9 */
-  -webkit-transform: scale(2.2); /* Safari 3-8 */
-  transform: scale(2.2);
+  -ms-transform: scale(1.8); /* IE 9 */
+  -webkit-transform: scale(1.8); /* Safari 3-8 */
+  transform: scale(1.8);
 }
