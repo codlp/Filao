@@ -133,11 +133,11 @@ input[type=file]{
   margin-right: 40px;
 }
 
-#tasks_list.active-task {
+.tasks_list.hide-task {
   display:none !important;
 }
 
-#tasks_list {
+.tasks_list {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
