@@ -3,6 +3,7 @@
   "private": true,
   "dependencies": {
     "@rails/webpacker": "3.5",
+    "aos": "^3.0.0-beta.6",
     "bootstrap": "3.4.0",
     "flatpickr": "^4.5.4",
     "fullcalendar": "^3.10.0",

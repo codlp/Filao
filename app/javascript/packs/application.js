@@ -2,8 +2,10 @@ import "bootstrap";
 import { loadDynamicBannerText } from '../components/banner';
 import initFullCalendar from '../components/fullcalendar';
 import { initDropzone, toggleTaskMessages } from '../components/dropzone';
-import "../components/flatpickr"
+import "../components/flatpickr";
 import { initSweetalert } from '../components/init_sweetalert';
+import initAOS from "../components/init_aos.js";
+
 
 initSweetalert('#sweet-alert', {
   title: "Profil Updated",
@@ -37,9 +39,10 @@ if (document.getElementById('calendar')) {
   initFullCalendar();
 }
 
-
 loadDynamicBannerText();
 initDropzone();
 toggleTaskMessages();
 initSweetalert();
+
+initAOS();
 
