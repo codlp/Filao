@@ -5,36 +5,41 @@
   <%= render 'shared/sidebar' %>
 
   <div class="all-without-sidebar">
-
     <div class="navnav">
       <!-- Navbar -->
       <div class="navbar-wagon">
         <div class="navbar-wagon-right">
-
           <% if user_signed_in? %>
           <!-- Links when logged in -->
-            <div class="navleft">
-              <p>
-                <%= link_to "Home", projects_path, class: "navbar-wagon-item navbar-wagon-link" %> / <%= link_to "My projects", projects_path, class: "navbar-wagon-item navbar-wagon-link" %> / <%= link_to "#{@project.name}", project_path(@project), class: "navbar-wagon-item navbar-wagon-link" %>
-              </p>
+            <div class="navleft"><p><%= link_to "Home", projects_path, class: "navbar-wagon-item navbar-wagon-link" %> / <%= link_to "My projects", projects_path, class: "navbar-wagon-item navbar-wagon-link" %> / <%= link_to "#{@project.name}", project_path(@project), class: "navbar-wagon-item navbar-wagon-link" %></p>
             </div>
 
             <div class="navright">
-              <div class="navbar-wagon-item">
-                <div class="dropdown">
-                  <% if @messages == 0 %>
-                    <%= cl_image_tag "notification", height: 30, crop: :fill, class: "grayscale", data: {toggle: "dropdown"} %>
-                  <% else %>
-                    <%= cl_image_tag "notification", height: 30, crop: :fill, data: {toggle: "dropdown"} %>
-                  <% end %>
-                  <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu" aria-labelledby="dropdownNotification">
-                    <li class="dropdown-item">
-                      <%= link_to "You have a new message from Matt", project_path(@project, step_id: @step.id, anchor: "message")  %>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+              <% if @messages == 0 %>
+                  <div class="navbar-wagon-item">
+                    <div class="dropdown">
+                      <%= cl_image_tag "notification", height: 30, crop: :fill, class: "grayscale", data: {toggle: "dropdown"} %>
+                      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu" aria-labelledby="dropdownNotification">
+                        <li class="dropdown-item">
+                          <%= link_to "", project_path(@project, step_id: @step.id, anchor: "message")  %>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+              <% else %>
+                  <div class="navbar-wagon-item">
+                    <div class="dropdown">
+                      <%= cl_image_tag "notification", height: 30, crop: :fill, data: {toggle: "dropdown"} %>
+                      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu" aria-labelledby="dropdownNotification">
+                        <li class="dropdown-item">
+                          <%= link_to "You have a new message from Matt", project_path(@project, step_id: @step.id, anchor: "message")  %>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+              <% end %>
             </div>
+
           <% end %>
         </div>
       </div>
@@ -42,130 +47,130 @@
 
     <div class="main-screen">
       <div class="title">
-        <div class="project-name"><h1><%= @project.name %></h1></div>
+        <div class="project-name"><h1> <%= @project.name %></h1></div>
         <!-- Edit a project -->
-        <div class="edit-project">
-          <%= link_to "Edit", edit_project_path(@project) %>
-          <i class="fas fa-pen"></i>
-        </div>
+        <div class="edit-project"><%= link_to "Edit", edit_project_path(@project) %><i class="fas fa-pen"></i></div>
+        <!-- <div class="edit-project"><%#= link_to "Add a new task", :anchor => "myform" %><i class="fas fa-pen"></i></div> -->
       </div>
-
       <div class="tabs">
         <% @project.steps.each do |step| %>
           <div class="tab <%= "active" if params[:step_id].to_i == step.id %>">
             <%= link_to project_path(@project, step_id: step.id) do %>
-              <%= step.name %> <p>( <%= step.tasks.where(is_done: true).count %> / <%= step.tasks.count %> )</p>
+              <%= step.name %>
               <%= render 'projects/progressbar', progress: step.progress %>
             <% end %>
           </div>
         <% end %>
       </div>
 
-      <div class="tabs-content">
-        <h4>Tasks</h4>
-
-        <% @tasks.each do |task| %>
+        <div class="tabs-content">
+          <h4>Tasks</h4>
+          <% @tasks.each do |task| %>
           <div class="each-task">
-
             <div class="tasks-title">
               <div class="checkbox-and-task">
                 <div class="checkbox">
                   <% if task.is_done == false %>
-                    <div class="unchecked-circle">
-                      <%= link_to '<i class="fas fa-check-circle"></i>'.html_safe, mark_as_done_task_path(task, step_id: @step.id) %>
-                    </div>
+                  <div class="unchecked-circle">
+                    <%= link_to '<i class="fas fa-check-circle"></i>'.html_safe, mark_as_done_task_path(task, step_id: @step.id) %>
+                  </div>
                   <% else %>
-                    <div class="checked-circle">
-                      <%= link_to '<i class="fas fa-check-circle"></i>'.html_safe, mark_as_undone_task_path(task, step_id: @step.id) %>
-                    </div>
+                  <div class="checked-circle">
+                    <%= link_to '<i class="fas fa-check-circle"></i>'.html_safe, mark_as_undone_task_path(task, step_id: @step.id) %>
+                  </div>
                   <% end %>
                 </div>
-
                 <div class="message-body">
                   <div class="task">
                     <h5><strong><%= task.name %></strong></h5>
                     <p><%= task.description %></p>
                   </div>
                   <div class="task-right">
-                    <h6 id="messages-toggler" data-target="<%= task.id %>" class="send-message-btn">Send new elements</h6>
+                    <h5 id="messages-toggler" data-target="<%= task.id %>" class="send-message-btn">Send new elements</h5>
                     <div class="tasklinks">
+<!--                       <%#= link_to task_path(task), method: :delete, data: {confirm: "Are you sure?"} do %>
+                      <i class="fas fa-trash-alt"></i>
+                      <%# end %> -->
                       <%= link_to edit_task_path(task) do %>
-                        <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                      <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
                       <% end %>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-
             <% if task.documents.present? %>
-              <div class="doc_list">
-                <% if task.documents.present? %>
-                  <h5><i class="fas fa-angle-right"></i> Shared files for this task ( <%= task.documents.count %> Files)</h5>
-                  <% task.documents.each do |document| %>
-                    <%= cl_image_tag(document.name, width: 100, class: "zoom") %>
-                  <% end %>
-                <% else %>
-                  <% task.documents.each do |document| %>
-                    <%= cl_image_tag(document.name, width: 100) %>
-                  <% end %>
+            <div class="doc_list">
+              <% if task.documents.present? %>
+              <h5>Shared files for this task ( <%= task.documents.count %> Files)</h5>
+                <% task.documents.each do |document| %>
+                  <%= cl_image_tag(document.name, width: 100) %>
                 <% end %>
-              </div>
-            <% end %>
+              <% else %>
+                <% task.documents.each do |document| %>
+                  <%= cl_image_tag(document.name, width: 100) %>
+                <% end %>
+                          </div><% end %>
+
 
             <div class="tasks_list hide-task" id="tasks_list_<%= task.id %>">
               <div class="send-message">
                 <%= simple_form_for([task, Message.new]) do |f| %>
-                  <%= f.input :content, label: 'Send a message' %>
-                  <%= f.submit "Add a message", class: 'btn call-to-action' %>
+                <%= f.input :content, label: 'Send a message' %>
+                <%= f.submit "Add a message", class: 'btn call-to-action' %>
                 <% end %>
               </div>
               <div class="send-doc">
                 <!-- Drag and drop -->
                 <%= simple_form_for(Document.new, url: task_documents_path(task)) do |f| %>
-                  <%= f.input :name, input_html: { class: 'dropzone', id: 'photo-input'}, label_html: { class: 'upload-photo'}, label: 'Add a document' %>
-                  <%= f.submit 'Upload File', class:"send-message-btn"%>
+                <%= f.input :name, input_html: { class: 'dropzone', id: 'photo-input'}, label_html: { class: 'upload-photo'}, label: 'Add a document' %>
+                <%= f.submit 'Upload File', class:"send-message-btn"%>
                 <% end %>
               </div>
             </div>
-
-            <% if task.messages.present? %>
-              <h5><i class="fas fa-angle-right"></i> Messages ( <%= task.messages.count %> Messages)</h5>
             <% end %>
-
             <% task.messages.each do |message| %>
               <div class="message">
-                <% if message.user.is_customer == false%>
-                  <div class="message-body">
-                    <div class="user-name">
-                      <%= cl_image_tag message.user.photo, class:"avatar" %>
-                      <strong><%= message.user.first_name %> <%= message.user.last_name %></strong>
-                      <h6><%= message.content %></h6>
+                <% if message.user.is_customer %>
+                  <%= cl_image_tag message.user.photo, class:"avatar" %>
+                  <div class="user-name">
+                    <strong><%= message.user.first_name %> <%= message.user.last_name %></strong>
+                  </div>
+                  <div class="message-body-right">
+                    <div class="message-content">
+                      <%= message.content %>
                       <p>Send on <%= message.created_at.strftime("%m/%d/%Y")%> at <%= message.created_at.strftime("%I:%M%p") %></p>
                     </div>
                   </div>
+<!--                   <div class="tasklinks" style="opacity: 0">
+                    <%#= link_to message_path(message), method: :delete, data: {confirm: "Are you sure?"} do %>
+                      <i class="fas fa-trash-alt"></i>
+                    <%# end %>
+                  </div> -->
                 <% else %>
+<!--                   <div class="tasklinks" style="opacity: 0">
+                    <%#= link_to message_path(message), method: :delete, data: {confirm: "Are you sure?"} do %>
+                      <i class="fas fa-trash-alt"></i>
+                    <%# end %>
+                  </div> -->
                   <div class="message-body">
-                    <div class="user-name">
-                      <%= cl_image_tag message.user.photo, class:"avatar" %>
-                      <strong><%= message.user.first_name %> <%= message.user.last_name %></strong>
-                      <h6><%= message.content %></h6>
+                    <div class="message-content", id="right">
+                      <%= message.content %>
                       <p>Send on <%= message.created_at.strftime("%m/%d/%Y")%> at <%= message.created_at.strftime("%I:%M%p") %></p>
                     </div>
                   </div>
+                  <div class="user-name">
+                    <strong><%= message.user.first_name %> <%= message.user.last_name %></strong>
+                  </div>
+                  <%= cl_image_tag message.user.photo, class:"avatar" %>
                 <% end %>
               </div>
             <% end %>
-
-            <!-- end of iteration on messages -->
           </div>
-          <!-- end of .each-task -->
-        <% end %>
-        <!-- end of iteration on @tasks -->
+          <% end %>
+        </div>
+        <%= render 'projects/newtask' %>
       </div>
-      <!-- end of .tabs-content -->
-      <%= render 'projects/newtask' %>
+      <!-- End of class main screen -->
     </div>
-    <!-- End of class main screen -->
   </div>
-</div>
