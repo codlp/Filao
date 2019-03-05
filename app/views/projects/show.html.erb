@@ -13,28 +13,28 @@
 
           <% if user_signed_in? %>
           <!-- Links when logged in -->
-          <div class="navleft">
-            <p>
-              <%= link_to "Home", projects_path, class: "navbar-wagon-item navbar-wagon-link" %> / <%= link_to "My projects", projects_path, class: "navbar-wagon-item navbar-wagon-link" %> / <%= link_to "#{@project.name}", project_path(@project), class: "navbar-wagon-item navbar-wagon-link" %>
-            </p>
-          </div>
+            <div class="navleft">
+              <p>
+                <%= link_to "Home", projects_path, class: "navbar-wagon-item navbar-wagon-link" %> / <%= link_to "My projects", projects_path, class: "navbar-wagon-item navbar-wagon-link" %> / <%= link_to "#{@project.name}", project_path(@project), class: "navbar-wagon-item navbar-wagon-link" %>
+              </p>
+            </div>
 
-          <div class="navright">
-            <div class="navbar-wagon-item">
-              <div class="dropdown">
-                <% if @messages == 0 %>
-                  <%= cl_image_tag "notification", height: 30, crop: :fill, class: "grayscale", data: {toggle: "dropdown"} %>
-                <% else %>
-                  <%= cl_image_tag "notification", height: 30, crop: :fill, data: {toggle: "dropdown"} %>
-                <% end %>
-                <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu" aria-labelledby="dropdownNotification">
-                  <li class="dropdown-item">
-                    <%= link_to "You have a new message from Matt", project_path(@project, step_id: @step.id, anchor: "message")  %>
-                  </li>
-                </ul>
+            <div class="navright">
+              <div class="navbar-wagon-item">
+                <div class="dropdown">
+                  <% if @messages == 0 %>
+                    <%= cl_image_tag "notification", height: 30, crop: :fill, class: "grayscale", data: {toggle: "dropdown"} %>
+                  <% else %>
+                    <%= cl_image_tag "notification", height: 30, crop: :fill, data: {toggle: "dropdown"} %>
+                  <% end %>
+                  <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu" aria-labelledby="dropdownNotification">
+                    <li class="dropdown-item">
+                      <%= link_to "You have a new message from Matt", project_path(@project, step_id: @step.id, anchor: "message")  %>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
-          </div>
           <% end %>
         </div>
       </div>
@@ -101,9 +101,9 @@
             <% if task.documents.present? %>
               <div class="doc_list">
                 <% if task.documents.present? %>
-                  <h5>Shared files for this task ( <%= task.documents.count %> Files)</h5>
+                  <h5><i class="fas fa-angle-right"></i> Shared files for this task ( <%= task.documents.count %> Files)</h5>
                   <% task.documents.each do |document| %>
-                    <%= cl_image_tag(document.name, width: 100) %>
+                    <%= cl_image_tag(document.name, width: 100, class: "zoom") %>
                   <% end %>
                 <% else %>
                   <% task.documents.each do |document| %>
@@ -112,6 +112,7 @@
                 <% end %>
               </div>
             <% end %>
+
             <div class="tasks_list hide-task" id="tasks_list_<%= task.id %>">
               <div class="send-message">
                 <%= simple_form_for([task, Message.new]) do |f| %>
@@ -128,40 +129,34 @@
               </div>
             </div>
 
+            <% if task.messages.present? %>
+              <h5><i class="fas fa-angle-right"></i> Messages ( <%= task.messages.count %> Messages)</h5>
+            <% end %>
+
             <% task.messages.each do |message| %>
               <div class="message">
-
-                <% if message.user.is_customer %>
-                  <%= cl_image_tag message.user.photo, class:"avatar" %>
-                  <div class="user-name">
-                    <strong><%= message.user.first_name %> <%= message.user.last_name %></strong>
-                  </div>
-                  <div class="message-body-right">
-                    <div class="message-content">
-                      <%= message.content %>
-                      <p>
-                        Send on <%= message.created_at.strftime("%m/%d/%Y")%> at <%= message.created_at.strftime("%I:%M%p") %>
-                      </p>
+                <% if message.user.is_customer == false%>
+                  <div class="message-body">
+                    <div class="user-name">
+                      <%= cl_image_tag message.user.photo, class:"avatar" %>
+                      <strong><%= message.user.first_name %> <%= message.user.last_name %></strong>
+                      <h6><%= message.content %></h6>
+                      <p>Send on <%= message.created_at.strftime("%m/%d/%Y")%> at <%= message.created_at.strftime("%I:%M%p") %></p>
                     </div>
                   </div>
                 <% else %>
-
                   <div class="message-body">
-                    <div class="message-content">
-                      <%= message.content %>
-                      <p>Send on <%= message.created_at.strftime("%m/%d/%Y")%> at <%= message.created_at.strftime("%I:%M%p") %>
-                      </p>
+                    <div class="user-name">
+                      <%= cl_image_tag message.user.photo, class:"avatar" %>
+                      <strong><%= message.user.first_name %> <%= message.user.last_name %></strong>
+                      <h6><%= message.content %></h6>
+                      <p>Send on <%= message.created_at.strftime("%m/%d/%Y")%> at <%= message.created_at.strftime("%I:%M%p") %></p>
                     </div>
                   </div>
-                  <div class="user-name">
-                    <strong><%= message.user.first_name %> <%= message.user.last_name %></strong>
-                  </div>
-                  <%= cl_image_tag message.user.photo, class:"avatar" %>
                 <% end %>
-                <!-- end of if message user is customer -->
               </div>
-              <!-- .messages -->
             <% end %>
+
             <!-- end of iteration on messages -->
           </div>
           <!-- end of .each-task -->
