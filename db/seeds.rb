@@ -34,7 +34,14 @@ step3 = Step.create!(project_id: Project.last.id, name: "Testing", is_completed:
 
 puts "steps created"
 
-task1 = Task.create!(project: landing_page, step: step1, name: 'documentation', description: 'check messenger bot doc', is_done: true)
-task2 = Task.create!(project: landing_page, step: step2, name: 'code', description: 'je code', is_done: true)
-task3 = Task.create!(project: landing_page, step: step3, name: 'debug', description: 'je debug', is_done: false)
-task4 = Task.create!(project: chatbot, step: step4, name: 'documentation', description: 'check w3school bot doc')
+task1 = Task.create!(project: landing_page, step: step1, name: 'Documentation', description: 'check messenger bot doc', is_done: true)
+task2 = Task.create!(project: landing_page, step: step1, name: 'User sessions', description: 'check messenger bot doc', is_done: true)
+task3 = Task.create!(project: landing_page, step: step1, name: 'Profile pages', description: 'check messenger bot doc', is_done: true)
+task4 = Task.create!(project: landing_page, step: step2, name: 'Code', description: 'je code', is_done: true)
+task5 = Task.create!(project: landing_page, step: step2, name: 'Policies', description: 'je code', is_done: true)
+task6 = Task.create!(project: landing_page, step: step2, name: 'Messages', description: 'je code', is_done: true)
+task7 = Task.create!(project: landing_page, step: step3, name: 'Logo and Icons', description: 'Final logo proposal and validation of icons', is_done: true)
+task8 = Task.create!(project: landing_page, step: step3, name: 'Debug', description: 'Debugging some issues related to editing', is_done: true)
+task9 = Task.create!(project: landing_page, step: step3, name: 'Footer', description: 'Validated the updated footer')
+
+task10 = Task.create!(project: chatbot, step: step4, name: 'documentation', description: 'check w3school bot doc')
