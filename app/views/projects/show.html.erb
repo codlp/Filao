@@ -56,7 +56,7 @@
         <% @project.steps.each do |step| %>
           <div class="tab <%= "active" if params[:step_id].to_i == step.id %>">
             <%= link_to project_path(@project, step_id: step.id) do %>
-              <%= step.name %>
+              <%= step.name %> <p>( <%= step.tasks.where(is_done: true).count %> / <%= step.tasks.count %> )</p>
               <%= render 'projects/progressbar', progress: step.progress %>
             <% end %>
           </div>
@@ -86,7 +86,7 @@
                     <p><%= task.description %></p>
                   </div>
                   <div class="task-right">
-                    <h5 id="messages-toggler" data-target="<%= task.id %>" class="send-message-btn">Send new elements</h5>
+                    <h6 id="messages-toggler" data-target="<%= task.id %>" class="send-message-btn">Send new elements</h6>
                     <div class="tasklinks">
 <!--                       <%#= link_to task_path(task), method: :delete, data: {confirm: "Are you sure?"} do %>
                       <i class="fas fa-trash-alt"></i>
@@ -102,17 +102,16 @@
             <% if task.documents.present? %>
             <div class="doc_list">
               <% if task.documents.present? %>
-              <h5>Shared files for this task ( <%= task.documents.count %> Files)</h5>
+              <h5><i class="fas fa-angle-right"></i> Shared files for this task ( <%= task.documents.count %> Files)</h5>
                 <% task.documents.each do |document| %>
                   <%= cl_image_tag(document.name, width: 100, class: "zoom") %>
                 <% end %>
               <% else %>
                 <% task.documents.each do |document| %>
                   <%= cl_image_tag(document.name, width: 100) %>
-                <% end %>
-                          </div><% end %>
-
-
+              <% end %>
+            </div>
+            <% end %>
             <div class="tasks_list hide-task" id="tasks_list_<%= task.id %>">
               <div class="send-message">
                 <%= simple_form_for([task, Message.new]) do |f| %>
@@ -129,19 +128,21 @@
               </div>
             </div>
             <% end %>
+            <% if task.messages.present? %>
+              <h5><i class="fas fa-angle-right"></i> Messages ( <%= task.messages.count %> Messages)</h5>
+            <% end %>
+
             <% task.messages.each do |message| %>
               <div class="message">
-                <% if message.user.is_customer %>
-                  <%= cl_image_tag message.user.photo, class:"avatar" %>
-                  <div class="user-name">
+                <% if message.user.is_customer == false%>
+
+                                    <div class="message-body"><div class="user-name">
+                    <%= cl_image_tag message.user.photo, class:"avatar" %>
                     <strong><%= message.user.first_name %> <%= message.user.last_name %></strong>
-                  </div>
-                  <div class="message-body-right">
-                    <div class="message-content">
-                      <%= message.content %>
+                      <h6><%= message.content %></h6>
                       <p>Send on <%= message.created_at.strftime("%m/%d/%Y")%> at <%= message.created_at.strftime("%I:%M%p") %></p>
-                    </div>
-                  </div>
+                    </div></div>
+
 <!--                   <div class="tasklinks" style="opacity: 0">
                     <%#= link_to message_path(message), method: :delete, data: {confirm: "Are you sure?"} do %>
                       <i class="fas fa-trash-alt"></i>
@@ -154,7 +155,7 @@
                     <%# end %>
                   </div> -->
                   <div class="message-body">
-                    <div class="message-content", id="right">
+                    <div class="message-content">
                       <%= message.content %>
                       <p>Send on <%= message.created_at.strftime("%m/%d/%Y")%> at <%= message.created_at.strftime("%I:%M%p") %></p>
                     </div>

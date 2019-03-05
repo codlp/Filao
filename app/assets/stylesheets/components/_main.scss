@@ -66,11 +66,12 @@ p {
   padding-left: 5px;
 }
 
-.tasks-title {
+.tasks_list {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  padding-right: 18px;
+  align-items: flex-start;
+  width: auto;
+  padding: 20px 0px;
 }
 
 .each-task {
@@ -152,17 +153,42 @@ p {
   display: block;
   width: auto;
   padding: 10px 40px;
-  padding-bottom: 26px;
+  padding-bottom: 0px;
   min-height: 0px;
   height: auto;
   margin-left: -15px;
   margin-right: -15px;
-  border-bottom: solid 1px lightgrey;
-  border-top: solid 1px lightgrey;
+  border-top: solid 1px #d3d3d37a;
+}
+
+.checkbox-and-task p {
+  margin: 18px 0px;
+}
+
+.checkbox {
+  margin: 25px;
+}
+
+.doc_list h5 {
+  color: #7275eb;
+  font-size: 15px;
+  margin: 20px 0px;
+}
+
+.doc_list img {
+  vertical-align: middle;
+  margin-bottom: 30px;
+  margin-right: 25px;
 }
 
 .task {
   font-size: 16px;
+  padding-left: 10px;
+}
+
+.checkbox-and-task h5 {
+  margin: 9px 0px;
+  padding: 0px 5px 0px 0px;
 }
 
 // overwrite present css
