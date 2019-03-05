@@ -1,7 +1,7 @@
 .message {
   display: flex;
   align-items: center;
-  padding: 20px;
+  padding: 25px;
   border-bottom: 1px solid rgba(220,224,244,0.4);
 }
 
@@ -17,6 +17,19 @@
 .message-body {
   flex-grow: 1;
 }
+
+.message-body-right {
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.7);
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 20px;
+  padding-right: 10px;
+  color: rgba(0, 0, 0, 0.4);
+  text-align: right;
+  width: -webkit-fill-available;
+}
+
 .message-name {
   padding-left: 10px;
   min-width: 100px;
@@ -60,6 +73,7 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  margin: 10px;
 }
 
 .avatar {
@@ -69,6 +83,7 @@
 #message-content {
   font-size: 20px;
   height: 150px;
+  color: darkgray;
 }
 
 .message-right {
@@ -97,3 +112,6 @@
   margin-right: 30px;
 }
 
+.user-name {
+  padding: 0px 30px;
+}
