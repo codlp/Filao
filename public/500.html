@@ -6,7 +6,6 @@
     <link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" />
     <link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
 
-
     <style>
      * {
          -moz-box-sizing:border-box;
@@ -48,6 +47,7 @@
          height: auto;
          border: 0;
          -ms-interpolation-mode: bicubic;
+         border-radius: 4px;
      }
 
      body {
@@ -69,6 +69,7 @@
          clear: both;
      }
     </style>
+
     <style>
   .plain.error-page-wrapper {
     font-family: 'Source Sans Pro', sans-serif;
@@ -83,7 +84,6 @@
     -ms-transition: left .5s ease-out, opacity .5s ease-out;
     -o-transition: left .5s ease-out, opacity .5s ease-out;
     transition: left .5s ease-out, opacity .5s ease-out;
-    max-width:400px;
     position:relative;
     left:-30px;
     opacity:0;
@@ -189,7 +189,6 @@
       background-color: rgba(99, 85, 188, 1) !important;
     }
 
-
     .primary-text-color {
       color: rgba(255, 255, 255, 1) !important;
     }
@@ -223,34 +222,43 @@
       box-shadow: 0 0 60px #000000;
     }
 
+    .flexbox {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
 </style>
 
   </head>
   <body class="plain error-page-wrapper background-color background-image">
-    <div class="content-container">
-  <div class="head-line secondary-text-color">
-    500
-  </div>
-  <div class="subheader primary-text-color">
-    Oops... <br>
-    something went wrong.
-  </div>
-    <hr>
-    <div class="clearfix"></div>
-    <div class="context primary-text-color">
+    <div class="content-container flexbox">
+      <div class="flex-item">
+        <div class="head-line secondary-text-color">
+          500
+        </div>
+        <div class="subheader primary-text-color">
+          Oops, the page you were <br>
+          looking for does not exist.
+        </div>
+        <hr>
+        <div class="clearfix"></div>
+        <div class="context primary-text-color">
+          <p>
+            You may want to head back to the homepage.<br />
+            If you think something is broken, report a problem.
+          </p>
+        </div>
+        <div class="buttons-container">
+          <a class="border-button" href="https://www.filao.co/" target="_blank">Go to homepage</a>
+          <a class="border-button" href="mailto:contact@filao.co" target="_blank">Report a problem</a>
+        </div>
+      </div>
 
-    <p>
-      Go back to the previous page and try again.
-      If you think something is broken, report a problem.
-    </p>
-
+      <div class="flex-item">
+        <img src="images/oops.jpg" alt="error-image">
+      </div>
 
     </div>
-  <div class="buttons-container">
-    <a class="border-button" href="mailto:contact@filao.co" target="_blank">Report a problem</a>
-  </div>
-</div>
-
 
     <script>
      function ErrorPage(container, pageType, templateName) {
@@ -356,7 +364,7 @@
        });
 
      };
-     var ep = new ErrorPage('body', "503", "plain");
+     var ep = new ErrorPage('body', "404", "plain");
      ep.initialize();
 
      // hack to make sure content stays centered >_<
