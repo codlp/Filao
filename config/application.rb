@@ -16,7 +16,7 @@ module Filao
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
 
-
+    config.action_view.embed_authenticity_token_in_remote_forms = true
     config.action_mailer.delivery_method = :postmark
     config.action_mailer.postmark_settings = { :api_token => "a81858be-a278-4a2d-8550-b810f5b17745" }
     # Settings in config/environments/* take precedence over those specified here.
