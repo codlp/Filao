@@ -18,29 +18,24 @@
               <% if @messages == 0 %>
                   <div class="navbar-wagon-item">
                     <div class="dropdown">
-                      <i>
-                        <p><%= cl_image_tag "notification", height: 30, crop: :fill, class: "grayscale" %></p>
-                      </i>
+                      <%= cl_image_tag "notification", height: 30, crop: :fill, class: "grayscale", data: {toggle: "dropdown"} %>
+                      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu" aria-labelledby="dropdownNotification">
+                        <li class="dropdown-item">
+                          <%= link_to "", project_path(@project, step_id: @step.id, anchor: "message")  %>
+                        </li>
+                      </ul>
                     </div>
-                    <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-                      <li>
-                        <a class="dropdown-item" href="#">test to see if dropdown is working</a>
-                        <p>test to see if dropdown is working</p>
-                      </li>
-                    </ul>
                   </div>
               <% else %>
                   <div class="navbar-wagon-item">
                     <div class="dropdown">
-                      <i>
-                        <p><%= cl_image_tag "notification", height: 30, crop: :fill%></p>
-                      </i>
+                      <%= cl_image_tag "notification", height: 30, crop: :fill, data: {toggle: "dropdown"} %>
+                      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu" aria-labelledby="dropdownNotification">
+                        <li class="dropdown-item">
+                          <%= link_to "You have a new message from Matt", project_path(@project, step_id: @step.id, anchor: "message")  %>
+                        </li>
+                      </ul>
                     </div>
-                    <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-                      <li>
-                        <p>test to see if dropdown is working</p>
-                      </li>
-                    </ul>
                   </div>
               <% end %>
             </div>
@@ -63,13 +58,14 @@
       <div class="tabs">
         <% @project.steps.each do |step| %>
           <div class="tab <%= "active" if params[:step_id].to_i == step.id %>">
-              <%= link_to project_path(@project, step_id: step.id) do %>
+            <%= link_to project_path(@project, step_id: step.id) do %>
               <%= step.name %>
-            <%= render 'projects/progressbar', progress: step.progress %>
+              <%= render 'projects/progressbar', progress: step.progress %>
             <% end %>
           </div>
         <% end %>
       </div>
+
         <div class="tabs-content">
           <% @tasks.each do |task| %>
           <div class="each-task">
@@ -92,9 +88,7 @@
                     <p><strong><%= task.description %></strong></p>
                   </div>
                   <div class="task-right">
-                    <div >
-                      <h5 id="messages-toggler" class="send-message-btn">Send new elements</h5>
-                    </div>
+                    <h5 id="messages-toggler" data-target="<%= task.id %>" class="send-message-btn">Send new elements</h5>
                     <div class="tasklinks">
                       <%= link_to task_path(task), method: :delete, data: {confirm: "Are you sure?"} do %>
                       <i class="fas fa-trash-alt"></i>
@@ -106,8 +100,8 @@
                   </div>
                 </div>
               </div>
-
             </div>
+
             <div class="doc_list">
               <% if task.documents.present? %>
               <h5>Shared files for this task ( <%= task.documents.count %> Files)</h5>
@@ -121,7 +115,7 @@
               <% end %>
             </div>
 
-            <div class="active-task" id="tasks_list">
+            <div class="tasks_list hide-task" id="tasks_list_<%= task.id %>">
               <div class="send-message">
                 <%= simple_form_for([task, Message.new]) do |f| %>
                 <%= f.input :content, label: 'Send a message' %>
@@ -136,6 +130,7 @@
                 <% end %>
               </div>
             </div>
+
             <% task.messages.each do |message| %>
 
               <div class="message">

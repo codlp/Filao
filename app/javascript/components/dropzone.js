@@ -9,10 +9,12 @@ const initDropzone = () => {
 }
 
 function toggleTaskMessages() {
-  const togglerButton = document.getElementById('messages-toggler');
-  togglerButton.addEventListener('click', (e) => {
-    const taskMessagesContainer = document.getElementById('tasks_list');
-    taskMessagesContainer.classList.toggle('active-task');
+  const togglerButtons = document.querySelectorAll('#messages-toggler');
+  togglerButtons.forEach((button) => {
+    button.addEventListener('click', (e) => {
+      const targetedMessage = document.querySelector(`#tasks_list_${e.currentTarget.dataset.target}`);
+      targetedMessage.classList.toggle('hide-task');
+    });
   });
 }
 
