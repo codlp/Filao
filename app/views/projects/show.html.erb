@@ -104,7 +104,7 @@
               <% if task.documents.present? %>
               <h5>Shared files for this task ( <%= task.documents.count %> Files)</h5>
                 <% task.documents.each do |document| %>
-                  <%= cl_image_tag(document.name, width: 100) %>
+                  <%= cl_image_tag(document.name, width: 100, class: "zoom") %>
                 <% end %>
               <% else %>
                 <% task.documents.each do |document| %>
