@@ -20,7 +20,7 @@ jason = User.create!(email: "jason.perrier@filao.co", password: "123456", first_
 matt = User.create!(email: "matt.perrier@filao.co", password: "123456", first_name: "Matt", last_name: "Perrier", photo: 'images/matt.png', is_customer: true, company: "IBM")
 
 
-chatbot = Project.create!(user: coralie, customer: matt, name: "Nucleo Mobile App", description: "Creation of the whole native application", category: "Web development")
+chatbot = Project.create!(user: coralie, customer: matt, name: "Nucleo Mobile App", description: "Creation of the whole native application", category: "Software")
 landing_page = Project.create!(user: coralie, customer: matt, name: "Landing page creation", description: "Small shop landing page work", category: "Web development")
 
 puts "project created"

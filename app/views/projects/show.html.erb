@@ -52,9 +52,6 @@
         <div class="edit-project"><%= link_to "Edit", edit_project_path(@project) %><i class="fas fa-pen"></i></div>
         <!-- <div class="edit-project"><%#= link_to "Add a new task", :anchor => "myform" %><i class="fas fa-pen"></i></div> -->
       </div>
-
-      <h2>Timeline : current steps</h2>
-
       <div class="tabs">
         <% @project.steps.each do |step| %>
           <div class="tab <%= "active" if params[:step_id].to_i == step.id %>">
@@ -67,6 +64,7 @@
       </div>
 
         <div class="tabs-content">
+          <h4>Tasks</h4>
           <% @tasks.each do |task| %>
           <div class="each-task">
             <div class="tasks-title">
@@ -85,23 +83,23 @@
                 <div class="message-body">
                   <div class="task">
                     <h5><strong><%= task.name %></strong></h5>
-                    <p><strong><%= task.description %></strong></p>
+                    <p><%= task.description %></p>
                   </div>
                   <div class="task-right">
                     <h5 id="messages-toggler" data-target="<%= task.id %>" class="send-message-btn">Send new elements</h5>
                     <div class="tasklinks">
-                      <%= link_to task_path(task), method: :delete, data: {confirm: "Are you sure?"} do %>
+<!--                       <%#= link_to task_path(task), method: :delete, data: {confirm: "Are you sure?"} do %>
                       <i class="fas fa-trash-alt"></i>
-                      <% end %>
+                      <%# end %> -->
                       <%= link_to edit_task_path(task) do %>
-                      <i class="fas fa-pen"></i>
+                      <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
                       <% end %>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-
+            <% if task.documents.present? %>
             <div class="doc_list">
               <% if task.documents.present? %>
               <h5>Shared files for this task ( <%= task.documents.count %> Files)</h5>
@@ -112,8 +110,8 @@
                 <% task.documents.each do |document| %>
                   <%= cl_image_tag(document.name, width: 100) %>
                 <% end %>
-              <% end %>
-            </div>
+                          </div><% end %>
+
 
             <div class="tasks_list hide-task" id="tasks_list_<%= task.id %>">
               <div class="send-message">
@@ -130,37 +128,40 @@
                 <% end %>
               </div>
             </div>
-
+            <% end %>
             <% task.messages.each do |message| %>
-
               <div class="message">
                 <% if message.user.is_customer %>
                   <%= cl_image_tag message.user.photo, class:"avatar" %>
-                  <strong><%= message.user.first_name %> <%= message.user.last_name %></strong>
-                  <div class="message-body">
+                  <div class="user-name">
+                    <strong><%= message.user.first_name %> <%= message.user.last_name %></strong>
+                  </div>
+                  <div class="message-body-right">
                     <div class="message-content">
                       <%= message.content %>
+                      <p>Send on <%= message.created_at.strftime("%m/%d/%Y")%> at <%= message.created_at.strftime("%I:%M%p") %></p>
                     </div>
                   </div>
-                  <div class="tasklinks">
-                    <%= link_to message_path(message), method: :delete, data: {confirm: "Are you sure?"} do %>
+<!--                   <div class="tasklinks" style="opacity: 0">
+                    <%#= link_to message_path(message), method: :delete, data: {confirm: "Are you sure?"} do %>
                       <i class="fas fa-trash-alt"></i>
-                    <% end %>
-                  </div>
+                    <%# end %>
+                  </div> -->
                 <% else %>
-                  <div class="tasklinks">
-                    <%= link_to message_path(message), method: :delete, data: {confirm: "Are you sure?"} do %>
+<!--                   <div class="tasklinks" style="opacity: 0">
+                    <%#= link_to message_path(message), method: :delete, data: {confirm: "Are you sure?"} do %>
                       <i class="fas fa-trash-alt"></i>
-                    <% end %>
-                  </div>
+                    <%# end %>
+                  </div> -->
                   <div class="message-body">
                     <div class="message-content", id="right">
                       <%= message.content %>
+                      <p>Send on <%= message.created_at.strftime("%m/%d/%Y")%> at <%= message.created_at.strftime("%I:%M%p") %></p>
                     </div>
                   </div>
-                  <strong>
-                    <%= message.user.first_name.upcase %> <%= message.user.last_name.upcase %>
-                  </strong>
+                  <div class="user-name">
+                    <strong><%= message.user.first_name %> <%= message.user.last_name %></strong>
+                  </div>
                   <%= cl_image_tag message.user.photo, class:"avatar" %>
                 <% end %>
               </div>

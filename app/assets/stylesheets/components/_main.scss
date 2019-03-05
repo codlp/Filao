@@ -75,8 +75,8 @@ p {
 
 .each-task {
   background: #FFFFFF;
-  border-radius: 9px;
-  box-shadow: 0px 1px 15px rgb(204, 206, 220);
+  border-radius: 5px;
+  box-shadow: 0px 3px 10px #cccedca1;
   margin: 22px 10px;
   padding: 15px;
 }
@@ -125,9 +125,6 @@ p {
   color: lightgrey;
 }
 
-input[type=file]{
-  border-radius: 15px;
-}
 
 #messages-toggler {
   margin-right: 40px;
@@ -154,12 +151,40 @@ input[type=file]{
 .doc_list {
   display: block;
   width: auto;
-  padding: 10px 20px;
+  padding: 10px 40px;
+  padding-bottom: 26px;
   min-height: 0px;
   height: auto;
+  margin-left: -15px;
+  margin-right: -15px;
+  border-bottom: solid 1px lightgrey;
+  border-top: solid 1px lightgrey;
 }
 
 .task {
   font-size: 16px;
 }
 
+// overwrite present css
+
+input[type=file]{
+  border-radius: 15px;
+}
+
+input[type="checkbox"] {
+  margin: 4px -20px 0;
+  line-height: normal;
+}
+
+.col-md-6 {
+  -ms-flex: 0 0 50%;
+  flex: 0 0 100%;
+  max-width: 50%;
+}
+
+.form-group label {
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
