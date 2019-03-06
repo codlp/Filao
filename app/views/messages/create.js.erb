@@ -8,7 +8,9 @@ function refreshForm(innerHTML) {
 
 function addMessage(messageHTML) {
   const messages = document.querySelector('#tasks_list_<%= @message.task.id %> .all-messages');
+  // select count
   messages.insertAdjacentHTML('beforeend', messageHTML);
+  // update count
 }
 
 <% if @message.errors.any? %>
