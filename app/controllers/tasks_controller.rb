@@ -64,9 +64,18 @@ class TasksController < ApplicationController
     @step = Step.find(params[:step_id])
     @tasks = @step.tasks
     @task.is_done = true
-    @task.save
     @project = @task.project
-    redirect_to project_path(@project, step_id: @step.id)
+    if @task.save
+      respond_to do |format|
+        format.html { redirect_to project_path(@project, step_id: @step.id) }
+        format.js  # <-- will render `app/views/reviews/create.js.erb`
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to project_path(@project, step_id: @step.id) }
+        format.js  # <-- idem
+      end
+    end
   end
 
   def mark_as_undone

@@ -35,6 +35,18 @@ p {
   font-size: 12px;
 }
 
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-s {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
 #calendar {
   padding-right: 30px;
   padding-bottom: 50px;
@@ -152,13 +164,14 @@ p {
 .doc_list {
   display: block;
   width: auto;
-  padding: 10px 40px;
+  padding: 12px 22px;
   padding-bottom: 0px;
   min-height: 0px;
   height: auto;
   margin-left: -15px;
   margin-right: -15px;
   border-top: solid 1px #d3d3d37a;
+  width: 100%;
 }
 
 .checkbox-and-task p {
@@ -172,7 +185,8 @@ p {
 .doc_list h5 {
   color: #7275eb;
   font-size: 15px;
-  margin: 20px 0px;
+  margin: 25px 0px;
+  margin-top: 35px;
 }
 
 .doc_list img {

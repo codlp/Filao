@@ -24,13 +24,15 @@ initSweetalert('#sweet-alert-task', {
 initSweetalert('#sweet-alert-demo', {
   title: "Are you sure?",
   text: "This action cannot be reversed",
-  icon: "warning"
+  icon: "warning",
+  showCancelButton: true
 }, (value) => {
   if (value) {
     const link = document.querySelector('#delete-link');
     link.click();
   }
 });
+
 
 if (document.getElementById('banner-typed-text')) {
 }

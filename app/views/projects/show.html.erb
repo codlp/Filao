@@ -67,12 +67,18 @@
         <h4>Tasks</h4>
 
         <% @tasks.each do |task| %>
+<<<<<<< HEAD
           <div data-aos="fade-right" data-aos-duration="1000" data-aos-easing="ease-in-out" class="each-task">
 
+=======
+          <div data-aos="fade-right" data-aos-duration="600"
+    data-aos-easing="ease-in-out" class="each-task">
+>>>>>>> 4a3e676d470579b3d638dc2d7f537c11eb4cb371
             <div class="tasks-title">
               <div class="checkbox-and-task">
                 <div class="checkbox">
                   <% if task.is_done == false %>
+<<<<<<< HEAD
                   <div class="unchecked-circle">
                     <%= link_to '<i class="fas fa-check-circle"></i>'.html_safe, mark_as_done_task_path(task, step_id: @step.id) %>
                   </div>
@@ -80,6 +86,15 @@
                   <div class="checked-circle" id="sweet-alert-task">
                     <%= link_to '<i class="fas fa-check-circle"></i>'.html_safe, mark_as_undone_task_path(task, step_id: @step.id) %>
                   </div>
+=======
+                    <div class="unchecked-circle">
+                      <%= link_to '<i class="fas fa-check-circle"></i>'.html_safe, mark_as_done_task_path(task, step_id: @step.id)%>
+                    </div>
+                  <% else %>
+                    <div class="checked-circle">
+                      <%= link_to '<i class="fas fa-check-circle"></i>'.html_safe, mark_as_undone_task_path(task, step_id: @step.id)%>
+                    </div>
+>>>>>>> 4a3e676d470579b3d638dc2d7f537c11eb4cb371
                   <% end %>
                 </div>
                 <div class="message-body">
@@ -88,7 +103,11 @@
                     <p><%= task.description %></p>
                   </div>
                   <div class="task-right">
+<<<<<<< HEAD
                     <h5 id="messages-toggler" data-target="<%= task.id %>" class="send-message-btn">Send new elements</h5>
+=======
+                    <h6 id="messages-toggler" data-target="<%= task.id %>" class="send-message-btn">See details</h6>
+>>>>>>> 4a3e676d470579b3d638dc2d7f537c11eb4cb371
                     <div class="tasklinks">
 <!--                       <%#= link_to task_path(task), method: :delete, data: {confirm: "Are you sure?"} do %>
                       <i class="fas fa-trash-alt"></i>
@@ -101,6 +120,7 @@
                 </div>
               </div>
             </div>
+<<<<<<< HEAD
             <% if task.documents.present? %>
             <div class="doc_list">
               <% if task.documents.present? %>
@@ -123,14 +143,47 @@
                 <% end %>
               </div>
               <div class="send-doc">
+=======
+
+          <div class="tasks_list hide-task" id="tasks_list_<%= task.id %>">
+
+            <div class="doc_list">
+              <h5><i class="fas fa-angle-right"></i> Shared files for this task ( <%= task.documents.count %> Files)</h5>
+              <% if task.documents.present? %>
+
+                <div class="docs-div flex">
+                  <div class="docs-img flex-s">
+                    <% task.documents.each do |document| %>
+                      <%= cl_image_tag(document.name, width: 100, class: "zoom") %>
+                  <% end %>
+                </div>
+                <div class="send-doc" style="width:100%">
+                  <!-- Drag and drop -->
+                  <%= simple_form_for(Document.new, url: task_documents_path(task)) do |f| %>
+                    <%= f.input :name, input_html: { class: 'dropzone', id: 'photo-input'}, label_html: { class: 'upload-photo'}, label: 'Add a document' %>
+                    <%= f.submit 'Upload File', class:"send-message-btn"%>
+                  <% end %>
+                </div>
+              </div>
+
+            <% else %>
+
+>>>>>>> 4a3e676d470579b3d638dc2d7f537c11eb4cb371
                 <!-- Drag and drop -->
                 <%= simple_form_for(Document.new, url: task_documents_path(task)) do |f| %>
                 <%= f.input :name, input_html: { class: 'dropzone', id: 'photo-input'}, label_html: { class: 'upload-photo'}, label: 'Add a document' %>
                 <%= f.submit 'Upload File', class:"send-message-btn"%>
                 <% end %>
+<<<<<<< HEAD
               </div>
             </div>
             <% end %>
+=======
+
+            <% end %>
+            <h5><i class="fas fa-angle-right"></i> Messages ( <%= task.messages.count %> Messages)</h5>
+
+>>>>>>> 4a3e676d470579b3d638dc2d7f537c11eb4cb371
             <% task.messages.each do |message| %>
               <div class="message">
                 <% if message.user.is_customer %>
@@ -150,6 +203,7 @@
                     <%# end %>
                   </div> -->
                 <% else %>
+<<<<<<< HEAD
 <!--                   <div class="tasklinks" style="opacity: 0">
                     <%#= link_to message_path(message), method: :delete, data: {confirm: "Are you sure?"} do %>
                       <i class="fas fa-trash-alt"></i>
@@ -158,6 +212,13 @@
                   <div class="message-body">
                     <div class="message-content", id="right">
                       <%= message.content %>
+=======
+                  <div class="message-body-customer">
+                    <div class="user-name">
+                      <%= cl_image_tag message.user.photo, class:"avatar" %>
+                      <strong><%= message.user.first_name %> <%= message.user.last_name %></strong>
+                      <h6><%= message.content %></h6>
+>>>>>>> 4a3e676d470579b3d638dc2d7f537c11eb4cb371
                       <p>Send on <%= message.created_at.strftime("%m/%d/%Y")%> at <%= message.created_at.strftime("%I:%M%p") %></p>
                     </div>
                   </div>
@@ -168,10 +229,26 @@
                 <% end %>
               </div>
             <% end %>
+<<<<<<< HEAD
           </div>
           <% end %>
         </div>
         <%= render 'projects/newtask' %>
+=======
+              <div class="send-message">
+                <%= simple_form_for([task, Message.new]) do |f| %>
+                  <%= f.input :content, label: 'Send a new message', placeholder: 'Enter your message here...' %>
+                  <%= f.submit "Add a message", class: 'btn call-to-action' %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <!-- end of iteration on messages -->
+        </div>
+        <!-- end of .each-task -->
+        <% end %>
+        <!-- end of iteration on @tasks -->
+>>>>>>> 4a3e676d470579b3d638dc2d7f537c11eb4cb371
       </div>
       <!-- End of class main screen -->
     </div>
