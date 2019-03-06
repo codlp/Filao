@@ -5,7 +5,7 @@
       <div class="logo_photo">
         <% if current_user.photo.present? %>
         <div class="image">
-          <%= cl_image_tag current_user.photo, height: 50, width:50, crop: :fill%>
+          <%= cl_image_tag current_user.photo, height: 100, width:100, crop: :fill, class: "profile-pic-on-sidebar"%>
           <div class="user">
             <h5>
               <%= link_to user_path(current_user) do %>
