@@ -166,7 +166,9 @@
         <!-- end of iteration on @tasks -->
       </div>
       <!-- end of .tabs-content -->
-      <%= render 'projects/newtask' %>
+      <% if current_user.is_customer == false%>
+        <%= render 'projects/newtask' %>
+      <% end %>
     </div>
     <!-- End of class main screen -->
   </div>
