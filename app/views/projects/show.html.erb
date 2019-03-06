@@ -35,7 +35,7 @@
         <% @project.steps.each do |step| %>
           <div class="tab <%= "active" if params[:step_id].to_i == step.id %>">
             <%= link_to project_path(@project, step_id: step.id) do %>
-              <%= step.name %>
+              <%= step.name %> <p>( <%= step.tasks.where(is_done: true).count %> / <%= step.tasks.count %> )</p>
               <%= render 'projects/progressbar', progress: step.progress %>
             <% end %>
           </div>
@@ -83,7 +83,7 @@
             <div id="item_counter_<%= task.id %>">
               <% if task.documents.present? %>
                 <div class="doc_list">
-                  <h5><i class="fas fa-angle-right"></i> Shared files for this task ( <%= task.documents.count %> Files)</h5>
+                  <h5><i class="fas fa-angle-right"></i> Shared files for this task ( <%= task.documents.count %> <%= "File".pluralize(task.documents.count) %>)</h5>
                 </div>
               <% end %>
 
@@ -95,6 +95,32 @@
             </div>
 
             <div class="tasks_list hide-task" id="tasks_list_<%= task.id %>">
+              <div id="item_counter_<%= task.id %>">
+                <% if task.documents.present? %>
+                  <div class="docs-div flex">
+                    <div class="docs-img flex-s">
+                      <% task.documents.each do |document| %>
+                        <%= cl_image_tag(document.name, width: 100) %>
+                      <% end %>
+                    </div>
+
+                    <div class="send-doc" style="width:100%">
+                      <!-- Drag and drop -->
+                      <%= simple_form_for(Document.new, url: task_documents_path(task)) do |f| %>
+                        <%= f.input :name, input_html: { class: 'dropzone', id: 'photo-input'}, label_html: { class: 'upload-photo'}, label: 'Add a document' %>
+                        <%= f.submit 'Upload File', class:"send-message-btn"%>
+                      <% end %>
+                    </div>
+                  </div>
+                <% end %>
+
+                <% if task.messages.present? %>
+                  <div class="doc_list">
+                    <h5><i class="fas fa-angle-right"></i> Messages (<%= task.messages.count %> <%= "Message".pluralize(task.messages.count) %>)</h5>
+                  </div>
+                <% end %>
+              </div>
+
               <div class="doc_list">
                 <h5><i class="fas fa-angle-right"></i> Shared files for this task ( <%= task.documents.count %> Files)</h5>
 
@@ -110,18 +136,15 @@
                       <%= render 'projects/drag', task: task %>
                     </div>
                   </div>
-
                 <% else %>
                   <!-- Drag and drop -->
                   <%= render 'projects/drag', task: task %>
                 <% end %>
 
                 <h5 id="message"><i class="fas fa-angle-right"></i> Messages ( <%= task.messages.count %> Messages)</h5>
-
                 <div class="all-messages">
                   <%= render 'messages/index', task: task %>
                 </div>
-
                 <div class="send-message">
                   <%= render 'messages/form', message: Message.new, task: task %>
                 </div>
@@ -133,7 +156,10 @@
         <% end %>
         <!-- end iteration on @tasks -->
       </div>
-      <!-- close tabs content -->
+      <!-- end of .tabs-content -->
+      <% if current_user.is_customer == false%>
+        <%= render 'projects/newtask' %>
+      <% end %>
     </div>
     <!-- close main-screen -->
   </div>
