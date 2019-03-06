@@ -15,6 +15,11 @@ ul {
   box-shadow: 6px 0px 18px rgba(0, 0, 0, 0.06);
 }
 
+.profile-pic-on-sidebar {
+  height: 60px;
+  width: 60px;
+}
+
 .fa-th:before, .fa-user, .fa-cog, .fa-bars, .fa-sign-out, .fa-angle-double-left, .fa-sign-out-alt, .fa-tachometer-alt {
   content: "\f00a";
   padding-right: 10px;
