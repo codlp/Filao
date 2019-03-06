@@ -73,11 +73,11 @@
                 <div class="checkbox">
                   <% if task.is_done == false %>
                     <div class="unchecked-circle">
-                      <%= link_to '<i class="fas fa-check-circle"></i>'.html_safe, mark_as_done_task_path(task, step_id: @step.id)%>
+                      <%= link_to '<i class="fas fa-check"></i>'.html_safe, mark_as_done_task_path(task, step_id: @step.id)%>
                     </div>
                   <% else %>
                     <div class="checked-circle">
-                      <%= link_to '<i class="fas fa-check-circle"></i>'.html_safe, mark_as_undone_task_path(task, step_id: @step.id)%>
+                      <%= link_to '<i class="fas fa-check"></i>'.html_safe, mark_as_undone_task_path(task, step_id: @step.id)%>
                     </div>
                   <% end %>
                 </div>
@@ -87,6 +87,13 @@
                     <p><%= task.description %></p>
                   </div>
                   <div class="task-right">
+                  <% if task.is_done == false %>
+                    <div class="call-to-action"><i class="fas fa-check"></i><%= link_to " Mark as done", mark_as_done_task_path(task, step_id: @step.id) %>
+                    </div>
+                  <% else %>
+                    <div class="call-to-action done"><i class="fas fa-check"></i><%= link_to " Done ", mark_as_undone_task_path(task, step_id: @step.id) %>
+                    </div>
+                  <% end %>
                     <h6 id="messages-toggler" data-target="<%= task.id %>" class="send-message-btn">See details</h6>
                     <div class="tasklinks">
 <!--                       <%#= link_to task_path(task), method: :delete, data: {confirm: "Are you sure?"} do %>
@@ -103,13 +110,13 @@
           <div id="item_counter_<%= task.id %>">
             <% if task.documents.present? %>
               <div class="doc_list">
-                <h5><i class="fas fa-angle-right"></i> Shared files for this task ( <%= task.documents.count %> <%= "File".pluralize(task.documents.count) %>)</h5>
+                <h5><i class="fas fa-angle-right"></i> <%= task.documents.count %> Shared <%= "file".pluralize(task.documents.count) %> for this task</h5>
               </div>
             <% end %>
 
             <% if task.messages.present? %>
               <div class="doc_list">
-                <h5><i class="fas fa-angle-right"></i> Messages (<%= task.messages.count %> <%= "Message".pluralize(task.messages.count) %>)</h5>
+                <h5><i class="fas fa-angle-right"></i> <%= task.messages.count %> <%= "Message".pluralize(task.messages.count) %></h5>
               </div>
             <% end %>
           </div>
@@ -117,7 +124,7 @@
           <div class="tasks_list hide-task" id="tasks_list_<%= task.id %>">
 
             <div class="doc_list">
-              <h5><i class="fas fa-angle-right"></i> Shared files for this task ( <%= task.documents.count %> Files)</h5>
+              <h5><i class="fas fa-angle-right"></i> <%= task.documents.count %> Shared <%= "file".pluralize(task.documents.count) %> for this task</h5>
               <% if task.documents.present? %>
 
                 <div class="docs-div flex">
@@ -144,7 +151,7 @@
                 <% end %>
 
             <% end %>
-            <h5><i class="fas fa-angle-right"></i> Messages ( <%= task.messages.count %> Messages)</h5>
+            <h5><i class="fas fa-angle-right"></i>  Messages (<%= task.messages.count %> <%= "Message".pluralize(task.messages.count) %>)</h5>
 
             <% task.messages.each do |message| %>
               <div class="message">
