@@ -127,6 +127,10 @@ p {
   justify-content: flex-start;
 }
 
+.main-screen h2 {
+  margin-bottom: 0px;
+}
+
 .fa-plus:before, .fa-clock, .fa-tasks {
   content: "\f067";
   padding-right: 8px;
@@ -138,6 +142,9 @@ p {
   color: lightgrey;
 }
 
+.hide-title {
+  display:none;
+}
 
 #messages-toggler {
   margin-right: 40px;
