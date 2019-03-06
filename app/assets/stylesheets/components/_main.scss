@@ -91,7 +91,7 @@ p {
   border-radius: 5px;
   box-shadow: 0px 3px 10px #cccedca1;
   margin: 22px 10px;
-  padding: 15px;
+  padding: 0px 15px;
 }
 
 .title .fa-pen:before {
@@ -171,8 +171,8 @@ p {
 .doc_list {
   display: block;
   width: auto;
-  padding: 12px 22px;
-  padding-bottom: 0px;
+  padding: 1px 68px;
+  padding-bottom: 11px;
   min-height: 0px;
   height: auto;
   margin-left: -15px;
@@ -192,8 +192,9 @@ p {
 .doc_list h5 {
   color: #7275eb;
   font-size: 15px;
-  margin: 25px 0px;
-  margin-top: 35px;
+  margin: 30px -43px;
+  margin-top: 38px;
+  margin-bottom: 26px;
 }
 
 .doc_list img {
