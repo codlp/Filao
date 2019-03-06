@@ -11,13 +11,13 @@ User.destroy_all
 Project.destroy_all
 puts "destroyed every users, projects and tasks"
 
-coralie = User.create!(email: "coralie.d@filao.co", password: "123456", first_name: "Coralie ", last_name: "Delpha", photo: 'images/coralie.png')
-amelie = User.create!(email: "amelie.perrier@filao.co", password: "123456", first_name: "Amélie ", last_name: "Perrier", photo: 'images/amelie.png')
-elie = User.create!(email: "elie.perrier@filao.co", password: "123456", first_name: "Elie ", last_name: "Perrier", photo: 'images/elie.png')
-grace = User.create!(email: "grace.mehrabe@filao.co", password: "123456", first_name: "Grace ", last_name: "Mehrabe", photo: 'images/grace.png')
+coralie = User.create!(email: "coralie.d@filao.co", password: "123456", first_name: "Coralie ", last_name: "Delpha", photo: './images/coralie.png')
+amelie = User.create!(email: "amelie.perrier@filao.co", password: "123456", first_name: "Amélie ", last_name: "Perrier", photo: './images/amelie.png')
+elie = User.create!(email: "elie.perrier@filao.co", password: "123456", first_name: "Elie ", last_name: "Perrier", photo: './images/elie.png')
+grace = User.create!(email: "grace.mehrabe@filao.co", password: "123456", first_name: "Grace ", last_name: "Mehrabe", photo: './images/grace.png')
 
-jason = User.create!(email: "jason.perrier@filao.co", password: "123456", first_name: "Jason ", last_name: "Perrier", photo: 'images/jason.png', is_customer: true, company: "Microsoft")
-matt = User.create!(email: "matt.perrier@filao.co", password: "123456", first_name: "Matt", last_name: "Perrier", photo: 'images/matt.png', is_customer: true, company: "IBM")
+jason = User.create!(email: "jason.perrier@filao.co", password: "123456", first_name: "Jason ", last_name: "Perrier", photo: './images/jason.png', is_customer: true, company: "Microsoft")
+matt = User.create!(email: "matt.perrier@filao.co", password: "123456", first_name: "Matt", last_name: "Perrier", photo: './images/matt.png', is_customer: true, company: "IBM")
 
 
 chatbot = Project.create!(user: coralie, customer: matt, name: "Nucleo Mobile App", description: "Creation of the whole native application", category: "Software")

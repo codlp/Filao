@@ -5,36 +5,41 @@
   <%= render 'shared/sidebar' %>
 
   <div class="all-without-sidebar">
-
     <div class="navnav">
       <!-- Navbar -->
       <div class="navbar-wagon">
         <div class="navbar-wagon-right">
-
           <% if user_signed_in? %>
           <!-- Links when logged in -->
-            <div class="navleft">
-              <p>
-                <%= link_to "Home", projects_path, class: "navbar-wagon-item navbar-wagon-link" %> / <%= link_to "My projects", projects_path, class: "navbar-wagon-item navbar-wagon-link" %> / <%= link_to "#{@project.name}", project_path(@project), class: "navbar-wagon-item navbar-wagon-link" %>
-              </p>
+            <div class="navleft"><p><%= link_to "Home", projects_path, class: "navbar-wagon-item navbar-wagon-link" %> / <%= link_to "My projects", projects_path, class: "navbar-wagon-item navbar-wagon-link" %> / <%= link_to "#{@project.name}", project_path(@project), class: "navbar-wagon-item navbar-wagon-link" %></p>
             </div>
 
             <div class="navright">
-              <div class="navbar-wagon-item">
-                <div class="dropdown">
-                  <% if @messages == 0 %>
-                    <%= cl_image_tag "notification", height: 30, crop: :fill, class: "grayscale", data: {toggle: "dropdown"} %>
-                  <% else %>
-                    <%= cl_image_tag "notification", height: 30, crop: :fill, data: {toggle: "dropdown"} %>
-                  <% end %>
-                  <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu" aria-labelledby="dropdownNotification">
-                    <li class="dropdown-item">
-                      <%= link_to "You have a new message from Matt", project_path(@project, step_id: @step.id, anchor: "message")  %>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+              <% if @messages == 0 %>
+                  <div class="navbar-wagon-item">
+                    <div class="dropdown">
+                      <%= cl_image_tag "notification", height: 30, crop: :fill, class: "grayscale", data: {toggle: "dropdown"} %>
+                      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu" aria-labelledby="dropdownNotification">
+                        <li class="dropdown-item">
+                          <%= link_to "", project_path(@project, step_id: @step.id, anchor: "message")  %>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+              <% else %>
+                  <div class="navbar-wagon-item">
+                    <div class="dropdown">
+                      <%= cl_image_tag "notification", height: 30, crop: :fill, data: {toggle: "dropdown"} %>
+                      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu" aria-labelledby="dropdownNotification">
+                        <li class="dropdown-item">
+                          <%= link_to "You have a new message from Matt", project_path(@project, step_id: @step.id, anchor: "message")  %>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+              <% end %>
             </div>
+
           <% end %>
         </div>
       </div>
@@ -42,19 +47,16 @@
 
     <div class="main-screen">
       <div class="title">
-        <div class="project-name"><h1><%= @project.name %></h1></div>
+        <div class="project-name"><h1> <%= @project.name %></h1></div>
         <!-- Edit a project -->
-        <div class="edit-project">
-          <%= link_to "Edit", edit_project_path(@project) %>
-          <i class="fas fa-pen"></i>
-        </div>
+        <div class="edit-project"><%= link_to "Edit", edit_project_path(@project) %><i class="fas fa-pen"></i></div>
+        <!-- <div class="edit-project"><%#= link_to "Add a new task", :anchor => "myform" %><i class="fas fa-pen"></i></div> -->
       </div>
-
       <div class="tabs">
         <% @project.steps.each do |step| %>
           <div class="tab <%= "active" if params[:step_id].to_i == step.id %>">
             <%= link_to project_path(@project, step_id: step.id) do %>
-              <%= step.name %> <p>( <%= step.tasks.where(is_done: true).count %> / <%= step.tasks.count %> )</p>
+              <%= step.name %>
               <%= render 'projects/progressbar', progress: step.progress %>
             <% end %>
           </div>
@@ -87,15 +89,17 @@
                   <div class="task-right">
                     <h6 id="messages-toggler" data-target="<%= task.id %>" class="send-message-btn">See details</h6>
                     <div class="tasklinks">
+<!--                       <%#= link_to task_path(task), method: :delete, data: {confirm: "Are you sure?"} do %>
+                      <i class="fas fa-trash-alt"></i>
+                      <%# end %> -->
                       <%= link_to edit_task_path(task) do %>
-                        <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                      <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
                       <% end %>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-
           <div class="tasks_list hide-task" id="tasks_list_<%= task.id %>">
 
             <div class="doc_list">
@@ -121,8 +125,8 @@
 
                 <!-- Drag and drop -->
                 <%= simple_form_for(Document.new, url: task_documents_path(task)) do |f| %>
-                  <%= f.input :name, input_html: { class: 'dropzone', id: 'photo-input'}, label_html: { class: 'upload-photo'}, label: 'Add a document' %>
-                  <%= f.submit 'Upload File', class:"send-message-btn"%>
+                <%= f.input :name, input_html: { class: 'dropzone', id: 'photo-input'}, label_html: { class: 'upload-photo'}, label: 'Add a document' %>
+                <%= f.submit 'Upload File', class:"send-message-btn"%>
                 <% end %>
 
             <% end %>
@@ -139,6 +143,11 @@
                       <p>Send on <%= message.created_at.strftime("%m/%d/%Y")%> at <%= message.created_at.strftime("%I:%M%p") %></p>
                     </div>
                   </div>
+<!--                   <div class="tasklinks" style="opacity: 0">
+                    <%#= link_to message_path(message), method: :delete, data: {confirm: "Are you sure?"} do %>
+                      <i class="fas fa-trash-alt"></i>
+                    <%# end %>
+                  </div> -->
                 <% else %>
                   <div class="message-body-customer">
                     <div class="user-name">
@@ -148,6 +157,10 @@
                       <p>Send on <%= message.created_at.strftime("%m/%d/%Y")%> at <%= message.created_at.strftime("%I:%M%p") %></p>
                     </div>
                   </div>
+                  <div class="user-name">
+                    <strong><%= message.user.first_name %> <%= message.user.last_name %></strong>
+                  </div>
+                  <%= cl_image_tag message.user.photo, class:"avatar" %>
                 <% end %>
               </div>
             <% end %>
@@ -164,12 +177,12 @@
         <!-- end of .each-task -->
         <% end %>
         <!-- end of iteration on @tasks -->
+
       </div>
       <!-- end of .tabs-content -->
       <% if current_user.is_customer == false%>
         <%= render 'projects/newtask' %>
       <% end %>
+      <!-- End of class main screen -->
     </div>
-    <!-- End of class main screen -->
   </div>
-</div>
