@@ -1,0 +1,15 @@
+<% if message.user.is_customer == false %>
+  <div class="message-body">
+<% else %>
+  <div class="message-body-customer">
+<% end %>
+    <div class="user-name">
+      <%= cl_image_tag message.user.photo, height: 100, width:100, crop: :fill, class:"avatar" %>
+      <strong><%= message.user.first_name %> <%= message.user.last_name %></strong>
+      <h6><%= message.content %></h6>
+      <p>
+        Send on <%= message.created_at.strftime("%m/%d/%Y")%> at <%= message.created_at.strftime("%I:%M%p") %>
+      </p>
+    </div>
+  </div>
+

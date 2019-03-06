@@ -1,0 +1,23 @@
+function refreshForm(innerHTML) {
+  const newMessageForm = document.querySelector('#tasks_list_<%= @message.task.id %> #new_message');
+  const messageContent = document.querySelector('#tasks_list_<%= @message.task.id %> #message_content')
+  messageContent.innerText = ''
+  messageContent.innerHTML = ''
+  newMessageForm.innerHTML = innerHTML;
+}
+
+function addMessage(messageHTML) {
+  const messages = document.querySelector('#tasks_list_<%= @message.task.id %> .all-messages');
+  // select count
+  messages.insertAdjacentHTML('beforeend', messageHTML);
+  // update count
+}
+
+<% if @message.errors.any? %>
+  refreshForm('<%= j render "messages/form", task: @message.task, message: @message %>');
+<% else %>
+  addMessage('<%= j render "messages/show", message: @message %>');
+  refreshForm('<%= j render "messages/form", task: @message.task, message: Message.new %>');
+<% end %>
+
+

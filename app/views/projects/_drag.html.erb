@@ -1,0 +1,4 @@
+<%= simple_form_for(Document.new, url: task_documents_path(task), remote: true) do |f| %>
+<%= f.input :name, input_html: { class: 'dropzone', id: 'photo-input'}, label_html: { class: 'upload-photo'}, label: 'Add a document' %>
+<%= f.submit 'Upload File', class:"send-message-btn"%>
+<% end %>

@@ -23,9 +23,15 @@ class MessagesController < ApplicationController
     @message.task = @task
     @message.user = current_user
     if @message.save
-      redirect_to project_path(@project, step_id: @step.id)
+      respond_to do |format|
+        format.html { redirect_to projects_path }
+        format.js  # <-- will render `app/views/messages/create.js.erb`
+      end
     else
-      render "projects/show"
+      respond_to do |format|
+        format.html { redirect_to projects_path }
+        format.js  # <-- idem
+      end
     end
   end
 

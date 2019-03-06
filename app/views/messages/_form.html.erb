@@ -1,0 +1,4 @@
+<%= simple_form_for([task, message], remote: true) do |f| %>
+  <%= f.input :content, label: 'Send a new message', placeholder: 'Enter your message here...' %>
+  <%= f.submit "Add a message", class: 'btn call-to-action' %>
+<% end %>
