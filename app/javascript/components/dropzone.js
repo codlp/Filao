@@ -14,7 +14,10 @@ function toggleTaskMessages() {
     button.addEventListener('click', (e) => {
       const targetedMessage = document.querySelector(`#tasks_list_${e.currentTarget.dataset.target}`);
       targetedMessage.classList.toggle('hide-task');
+      const targetedItem = document.querySelector(`#item_counter_${e.currentTarget.dataset.target}`);
+      targetedItem.classList.toggle('hidden');
     });
+
   });
 }
 
