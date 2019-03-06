@@ -11,7 +11,7 @@
         <div class="call-to-action"><i class="fas fa-plus"></i><%= link_to " Add a new project ", new_project_path %>
         </div>
       </div>
-      <h2>On-going (<%= @projects.count %>)</h2>
+      <h2>On-going (<%= @projects.count_undone %>)</h2>
       <div class="projects-list">
         <div class="row">
           <% @projects.each do |project| %>
@@ -48,7 +48,7 @@
           <% end %>
         </div>
       </div>
-      <h2>Closed projects (0)</h2>
+      <h2>Closed projects (<%= @projects.count_done %>)</h2>
       <div class="projects-list">
         <div class="row">
           <% @projects.each do |project| %>
