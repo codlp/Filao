@@ -123,7 +123,7 @@
                 <div class="docs-div flex">
                   <div class="docs-img flex-s">
                     <% task.documents.each do |document| %>
-                      <%= cl_image_tag(document.name, width: 100, class: "zoom") %>
+                      <%= cl_image_tag(document.name, width: 100) %>
                   <% end %>
                 </div>
                 <div class="send-doc" style="width:100%">
