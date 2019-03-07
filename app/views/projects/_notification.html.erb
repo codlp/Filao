@@ -1,0 +1,23 @@
+<% if @messages == 0 %>
+    <div class="navbar-wagon-item">
+      <div class="dropdown">
+        <%= cl_image_tag "notification", height: 30, crop: :fill, class: "grayscale", data: {toggle: "dropdown"} %>
+        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu" aria-labelledby="dropdownNotification">
+          <li class="dropdown-item">
+            <%= link_to "", project_path(@project, step_id: @step.id, anchor: "message")  %>
+          </li>
+        </ul>
+      </div>
+    </div>
+<% else %>
+    <div class="navbar-wagon-item">
+      <div class="dropdown">
+        <%= cl_image_tag "notification", height: 30, crop: :fill, data: {toggle: "dropdown"} %>
+        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu" aria-labelledby="dropdownNotification">
+          <li class="dropdown-item">
+            <%= link_to "You have a new message from Matt", project_path(@project, step_id: @step.id, :anchor => "message")  %>
+          </li>
+        </ul>
+      </div>
+    </div>
+<% end %>

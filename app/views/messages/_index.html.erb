@@ -1,0 +1,5 @@
+<div class="messages" >
+  <% task.messages.each do |message| %>
+    <%= render 'messages/show', message: message %>
+  <% end %>
+</div>

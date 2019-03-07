@@ -6,7 +6,6 @@ import "../components/flatpickr";
 import { initSweetalert } from '../components/init_sweetalert';
 import initAOS from "../components/init_aos.js";
 
-
 initSweetalert('#sweet-alert', {
   title: "Profil Updated",
   text: "Great your profile is up-to-date",

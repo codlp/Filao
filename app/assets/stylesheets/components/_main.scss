@@ -155,6 +155,9 @@ p {
 
 #messages-toggler {
   margin-right: 10px;
+  cursor: pointer;
+  &:hover {
+  }
 }
 
 .tasks_list.hide-task {
@@ -168,6 +171,7 @@ p {
   width: auto;
   padding: 20px;
   padding-right: 0px;
+  padding-bottom: 0px;
 }
 
 .task-right {
