@@ -20,6 +20,20 @@ initSweetalert('#sweet-alert-task', {
 }, (value) => {
 });
 
+initSweetalert('#sweet-alert-task-complete', {
+  title: "Great job!",
+  text: "Your task is completed!",
+  icon: "success"
+}, (value) => {
+});
+
+initSweetalert('#sweet-alert-project-complete', {
+  title: "Great job!",
+  text: "Your project is completed!",
+  icon: "success"
+}, (value) => {
+});
+
 initSweetalert('#sweet-alert-demo', {
   title: "Are you sure?",
   text: "This action cannot be reversed",
