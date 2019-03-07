@@ -2,7 +2,7 @@
   <div class="sidebar">
     <div class="sidebar-titles">
       <%= link_to dashboard_path do %>
-         <%= image_tag "logo", height: 50, width: 50, class: "app-logo"%>
+         <%= cl_image_tag "logo", height: 50, width: 50, class: "app-logo"%>
          <%= link_to "Filao", dashboard_path, id: "app-name" %>
       <% end %>
 
