@@ -5,12 +5,16 @@
     <div class="navnav">
       <%= render 'shared/navbar' %>
     </div>
+
+    <!-- All my projects -->
     <div class="main-screen">
       <div class="title">
         <h1>All my projects</h1>
         <div class="call-to-action"><i class="fas fa-plus"></i><%= link_to " Add a new project ", new_project_path %>
         </div>
       </div>
+
+      <!-- On-going projects -->
       <h2>On-going (<%= @projects.count_undone %>)</h2>
       <div class="projects-list">
         <div class="row">
@@ -32,7 +36,7 @@
               </div>
               <div class="inner-card">
                 <div class="card-icons">
-                  <p><i class="far fa-clock"></i> <%= project.created_at.to_date.strftime("%d %m %Y") %></p>
+                  <p><i class="far fa-clock"></i> <%= project.created_at.to_date.strftime("%e %b %Y") %></p>
                   <p><i class="fas fa-tasks"></i> <%= project.tasks.count %> Tasks</p>
                 </div>
                 <div class="card-desc">
@@ -48,6 +52,8 @@
           <% end %>
         </div>
       </div>
+
+      <!-- Closed projects -->
       <h2>Closed projects (<%= @projects.count_done %>)</h2>
       <div class="projects-list">
         <div class="row">
@@ -69,7 +75,7 @@
               </div>
               <div class="inner-card">
                 <div class="card-icons">
-                  <p><i class="far fa-clock"></i> <%= project.created_at.to_date %></p>
+                  <p><i class="far fa-clock"></i> <%= project.created_at.to_date.strftime("%e %b %Y") %></p>
                   <p><i class="fas fa-tasks"></i> <%= project.tasks.count %> Tasks</p>
                 </div>
                 <div class="card-desc">
