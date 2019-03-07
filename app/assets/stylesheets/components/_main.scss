@@ -83,6 +83,7 @@ p {
   justify-content: space-between;
   align-items: flex-start;
   width: auto;
+  padding-top: 10px;
   padding: 20px 0px;
 }
 
@@ -136,6 +137,12 @@ p {
   padding-right: 8px;
 }
 
+.fa-ellipsis-v:before {
+  content: "\f142";
+  color: lightgrey;
+  padding: 0px 15px;
+}
+
 .fa-pen:before {
   content: "\f304";
   padding: 0px 15px;
@@ -147,7 +154,10 @@ p {
 }
 
 #messages-toggler {
-  margin-right: 40px;
+  margin-right: 10px;
+  cursor: pointer;
+  &:hover {
+  }
 }
 
 .tasks_list.hide-task {
@@ -160,6 +170,8 @@ p {
   align-items: flex-start;
   width: auto;
   padding: 20px;
+  padding-right: 0px;
+  padding-bottom: 0px;
 }
 
 .task-right {
@@ -168,10 +180,14 @@ p {
   justify-content: space-between;
 }
 
+.tasks_list .doc_list {
+  padding: 1px 31px;
+}
+
 .doc_list {
   display: block;
   width: auto;
-  padding: 1px 68px;
+  padding: 1px 50px;
   padding-bottom: 11px;
   min-height: 0px;
   height: auto;
@@ -181,20 +197,20 @@ p {
   width: 100%;
 }
 
+.doc_list h5 {
+  color: #7275eb;
+  font-size: 15px;
+  margin: 30px -5px;
+  margin-top: 38px;
+  margin-bottom: 26px;
+}
+
 .checkbox-and-task p {
   margin: 18px 0px;
 }
 
 .checkbox {
   margin: 25px;
-}
-
-.doc_list h5 {
-  color: #7275eb;
-  font-size: 15px;
-  margin: 30px -43px;
-  margin-top: 38px;
-  margin-bottom: 26px;
 }
 
 .doc_list img {

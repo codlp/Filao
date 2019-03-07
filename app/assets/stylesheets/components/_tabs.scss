@@ -27,27 +27,29 @@
 }
 
 .fa-ellipsis-v:before {
-    content: "\f142";
-    color: lightgrey;
+  content: "\f142";
+  color: lightgrey;
 }
 
 .tabs p {
   opacity: 0.5;
   margin-bottom: 0;
+  font-size: 13px;
 }
+
 .tab {
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    background: #ecf1fdb3;
-    border-radius: 4px;
-    flex: auto;
-    text-align: center;
-    padding-top: 15px;
-    padding-bottom: 10px;
-    margin-bottom: 0px;
-    border-radius: 5px 5px 0 0;
-    margin: 0px 1px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: #ecf1fdb3;
+  border-radius: 4px;
+  flex: auto;
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  margin-bottom: 0px;
+  border-radius: 5px 5px 0 0;
+  margin: 0px 1px;
 }
 
 .tab a {
@@ -76,14 +78,14 @@
 }
 
 .tabs-content h4 {
-    font-size: 18px;
-    margin-top: 36.5px;
-    margin-left: 15px;
-    margin-bottom: 32px;
-    font-weight: 500px;
-    color: #0000008f;
+  font-size: 18px;
+  margin-top: 36.5px;
+  margin-left: 15px;
+  margin-bottom: 32px;
+  font-weight: 500px;
+  color: #0000008f;
 }
 
 .tabs-content h5 {
-    font-size: 16px;
+  font-size: 16px;
 }

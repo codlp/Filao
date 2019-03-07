@@ -23,7 +23,7 @@
 }
 
 .message h6 {
-  padding: 20px;
+  padding: 19px 28px;
   background-color: #e2e4efa6;
   margin: 10px 76px;
   border-radius: 40px;
@@ -70,6 +70,14 @@
 }
 
 .message-body-customer h6 {
+  padding: 20px;
+  margin: 10px 76px;
+  border-radius: 40px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-radius: 0px 40px 40px 40px;
+  color: #000000ab;
   background-color: #257cff30;
 }
 
@@ -78,11 +86,9 @@
   color: rgba(0,0,0,0.9);
 }
 
-.message-body p {
+.message-body p, .message-body-customer p{
   margin: 7px 77px;
-}
-.message-body-customer p {
-  margin: 7px 77px;
+  color: #7b92ab;
 }
 
 .checkbox-and-task p {
@@ -132,14 +138,25 @@
 }
 
 .send-message {
-  margin-top: 0px;
-  margin-bottom: 0px;
-  width: 100%;
-  border-radius: 15px;
-  margin-right: 30px;
+    width: 100%;
+    border-radius: 6px;
+    background-color: #f4f5fa;
+    width: -webkit-fill-available;
+    margin: -1px -51px;
+    margin-right: -61px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    padding-top: 12px;
+    padding-bottom: 9px;
+    margin-top: 30px;
+}
+
+.send-message form {
+  margin: 15px 71px;
+  margin-bottom: 15px;
 }
 
 .user-name {
-  padding: 0px 25px;
   width: -webkit-fill-available;
+  margin: 0 12px;
 }

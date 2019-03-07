@@ -15,7 +15,7 @@ class ProjectsController < ApplicationController
     @document = Document.new
     @step = Step.find(params[:step_id])
     @steps = @project.steps
-    @tasks = @step.tasks
+    @tasks = @step.tasks.order(:created_at)
     # Recuperer toutes les taches qui sont is done
     # Calculer le pourcentage des taches realisees
     # Le stocker dans une variable qui sera exposee a la vue : @progress
