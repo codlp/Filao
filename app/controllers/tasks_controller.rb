@@ -68,7 +68,7 @@ class TasksController < ApplicationController
     if @task.save
       respond_to do |format|
         format.html { redirect_to project_path(@project, step_id: @step.id) }
-        format.js  # <-- will render `app/views/reviews/create.js.erb`
+        format.js  # <-- will render `app/views/tasks/mark_as_done.js.erb`
       end
     else
       respond_to do |format|

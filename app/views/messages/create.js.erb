@@ -6,12 +6,29 @@ function refreshForm(innerHTML) {
   newMessageForm.innerHTML = innerHTML;
 }
 
+function updateCount() {
+  let counts = document.querySelectorAll('.message_count_<%= @message.task.id %>');
+  const labels = document.querySelectorAll('.message_label_<%= @message.task.id %>');
+  counts.forEach((count) => {
+    if (Number.parseInt(count.innerHTML, 10) === 0 ) {
+      labels.forEach((label) => {
+        label.innerHTML = 'Message';
+      });
+    } else {
+      labels.forEach((label) => {
+        label.innerHTML = 'Messages';
+      });
+    }
+    count.innerHTML = Number.parseInt(count.innerHTML, 10) + 1;
+  });
+}
+
 function addMessage(messageHTML) {
   const messages = document.querySelector('#tasks_list_<%= @message.task.id %> .all-messages');
-  // select count
   messages.insertAdjacentHTML('beforeend', messageHTML);
-  // update count
+  updateCount()
 }
+
 
 <% if @message.errors.any? %>
   refreshForm('<%= j render "messages/form", task: @message.task, message: @message %>');
@@ -19,5 +36,3 @@ function addMessage(messageHTML) {
   addMessage('<%= j render "messages/show", message: @message %>');
   refreshForm('<%= j render "messages/form", task: @message.task, message: Message.new %>');
 <% end %>
-
-

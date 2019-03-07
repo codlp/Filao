@@ -1,1 +1,10 @@
-mark_as_done.js.erb
+function updateMark(innerHTML) {
+  const newUpdate = document.querySelector('.unchecked-circle<%= @task.id %>');
+  newMessageForm.innerHTML = innerHTML;
+}
+
+<% if @task.errors.any? %>
+  updateMark('<%= j render "projects/show", step: @task.step');
+<% else %>
+  updateMark('<%= j render "projects/show", task: @task');
+<% end %>
