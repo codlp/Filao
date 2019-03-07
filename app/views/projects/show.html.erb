@@ -91,8 +91,14 @@
               <% end %>
 
               <% if task.messages.present? %>
-                <div class="doc_list">
-                  <h5><i class="fas fa-angle-right"></i> <%= task.messages.count %> <%= "Message".pluralize(task.messages.count) %></h5>
+                <div class="message_count_<%= task.id %>">
+                  <div class="doc_list">
+                    <h5>
+                      <i class="fas fa-angle-right"></i>
+                      Messages (<span class="message_count_<%= task.id %>"><%= task.messages.count %></span>
+                      <span class="message_label_<%= task.id %>"><%="Message".pluralize(task.messages.count)%></span>)
+                    </h5>
+                  </div>
                 </div>
               <% end %>
             </div>
@@ -100,7 +106,6 @@
             <div class="tasks_list hide-task" id="tasks_list_<%= task.id %>">
               <div class="doc_list">
                 <h5><i class="fas fa-angle-right"></i> Shared files for this task ( <%= task.documents.count %> Files)</h5>
-
                 <% if task.documents.present? %>
                   <div class="docs-div flex">
                     <div class="docs-img flex-s">
@@ -118,14 +123,18 @@
                   <%= render 'projects/drag', task: task %>
                 <% end %>
 
-                <h5 id="message"><i class="fas fa-angle-right"></i> Messages ( <%= task.messages.count %> Messages)</h5>
+                <h5>
+                  <i class="fas fa-angle-right"></i>
+                  Messages (<span class="message_count_<%= task.id %>"><%= task.messages.count %></span>
+                  <span class="message_label_<%= task.id %>"><%="Message".pluralize(task.messages.count)%></span>)
+                </h5>
                 <div class="all-messages">
                   <%= render 'messages/index', task: task %>
                 </div>
                 <div class="send-message">
                   <%= render 'messages/form', message: Message.new, task: task %>
                 </div>
-              </div>
+                </div>
             </div>
             <!-- close tasks_list -->
           </div>
