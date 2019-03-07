@@ -43,32 +43,36 @@
       </div>
 
       <div class="tabs-content">
-
         <h4>Tasks</h4>
         <% @tasks.each do |task| %>
           <div class="each-task">
-
             <div class="tasks-title">
               <div class="checkbox-and-task">
                 <div class="checkbox">
                   <% if task.is_done == false %>
-                    <div class="unchecked-circle">
-                      <%= link_to '<i class="fas fa-check-circle"></i>'.html_safe, mark_as_done_task_path(task, step_id: @step.id), remote: true%>
+                    <div class="unchecked-circle" id="sweet-alert">
+                      <%= link_to '<i class="fas fa-circle"></i>'.html_safe, mark_as_done_task_path(task, step_id: @step.id)%>
                     </div>
                   <% else %>
                     <div class="checked-circle">
-                      <%= link_to '<i class="fas fa-check-circle"></i>'.html_safe, mark_as_undone_task_path(task, step_id: @step.id)%>
+                      <%= link_to '<i class="fas fa-circle"></i>'.html_safe, mark_as_undone_task_path(task, step_id: @step.id)%>
                     </div>
                   <% end %>
                 </div>
-
                 <div class="message-body">
                   <div class="task">
                     <h5><strong><%= task.name %></strong></h5>
                     <p><%= task.description %></p>
                   </div>
                   <div class="task-right">
-                    <h6 id="messages-toggler" data-target="<%= task.id %>" class="send-message-btn">See details</h6>
+                  <% if task.is_done == false %>
+                    <div class="call-to-action"><i class="fas fa-check"></i><%= link_to " Mark as done", mark_as_done_task_path(task, step_id: @step.id) %>
+                    </div>
+                  <% else %>
+                    <div class="call-to-action done"><i class="fas fa-check"></i><%= link_to " Done ", mark_as_undone_task_path(task, step_id: @step.id) %>
+                    </div>
+                  <% end %>
+                    <h6 class="send-message-btn" id="messages-toggler" data-target="<%= task.id %>">See details</h6>
                     <div class="tasklinks">
                       <%= link_to edit_task_path(task) do %>
                         <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
@@ -78,12 +82,11 @@
                 </div>
               </div>
             </div>
-            <!-- close task-title -->
 
             <div id="item_counter_<%= task.id %>">
               <% if task.documents.present? %>
                 <div class="doc_list">
-                  <h5><i class="fas fa-angle-right"></i> Shared files for this task ( <%= task.documents.count %> <%= "File".pluralize(task.documents.count) %>)</h5>
+                  <h5><i class="fas fa-angle-right"></i> <%= task.documents.count %> Shared <%= "file".pluralize(task.documents.count) %> for this task</h5>
                 </div>
               <% end %>
 
@@ -101,9 +104,8 @@
             </div>
 
             <div class="tasks_list hide-task" id="tasks_list_<%= task.id %>">
-                <div class="doc_list">
-                  <h5><i class="fas fa-angle-right"></i> Shared files for this task ( <%= task.documents.count %> Files)</h5>
-
+              <div class="doc_list">
+                <h5><i class="fas fa-angle-right"></i> Shared files for this task ( <%= task.documents.count %> Files)</h5>
                 <% if task.documents.present? %>
                   <div class="docs-div flex">
                     <div class="docs-img flex-s">

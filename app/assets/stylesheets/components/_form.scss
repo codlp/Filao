@@ -16,14 +16,31 @@
 }
 
 .checkbox-and-task {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: -webkit-fill-available;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: -webkit-fill-available;
+    padding: 11px 3px;
+    padding-bottom: 10px;
 }
 
 .checkbox {
-  margin: 20px;
+    margin: 33px 24px;
+}
+
+.checkbox .fa-check:before {
+    content: "\f00c";
+    font-size: 22px;
+}
+
+.fa-circle:before {
+    content: "\f111";
+    font-size: 12px;
+    margin: 14px 0px;
+}
+
+.fa-circle {
+display: flex;
 }
 
 .checkbox-and-task p {
@@ -62,11 +79,6 @@ form {
   margin-bottom: 5px;
   font-weight: 600;
   font-size: 16px;
-}
-
-.send-message form {
-  padding: 0;
-  margin: 15px 71px;
 }
 
 .form-item {
