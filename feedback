@@ -1,0 +1,37 @@
+DEMO - Feedback
+
+Refaire le gradient du bouton "Add a new project" et "See my projects", la différence entre la première couleur et la dernière couleur est trop importante
+
+Modal de conclusion disant que le projet est fini
+
+Terminez en disant feature à venir : l'envoi de facture
+
+Préciser que Frédéric est un développeur freelance
+
+Etaler un peu le pitch car là ça fait 2min30. Ralentir le rythme, faire plus de silences.
+
+Faire une conclusion, remercier l'équipe.
+
+La bannière est trop grande. Il faut qu'elle fasse 100vh - la hauteur de la navbar. Il faut voir le call to action.
+
+Enlever le zoom sur les documents
+
+Enlever le check quand la tâche n'est pas faite. Rajouter bouton "mark as done" car l'icône n'est pas un call to action, on ne sait pas qu'elle est cliquable.
+
+0 messages ==> à corriger
+
+Bien montrer la notification : arriver à la base sur le dashboard avec déjà une notification ?
+
+Changer les icônes de la sidebar : elles font trop cheap par rapport au front léché du reste du site
+
+Sur le post-it, enlever "Edit a note"
+
+Remplir le calendrier, exemple : une deadline
+
+Enlever "My Filao", et mettre le logo avec écrit "Filao"
+
+Enlever le form "create a new task" : commenter ou display none
+
+
+
+
